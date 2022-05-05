@@ -1,0 +1,27 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+repositories {
+  mavenCentral()
+}
+
+javafx {
+    version = "17.0.1"
+    modules = [ 'javafx.controls' ]
+}
+
+mainClassName = "StudentDB.App"
+
+// this is a strictly java application so we don't have 
+// to worry about a convoluted file structure like src/main/java
+sourceSets {
+    main { 
+        java { srcDirs = ["src/main"] }
+    }
+    test {
+        java { srcDirs = ["src/test"] }
+    }
+}
