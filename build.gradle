@@ -13,7 +13,7 @@ javafx {
     modules = [ 'javafx.controls' ]
 }
 
-mainClassName = "StudentDB.App"
+mainClassName = "MP.StudentDBDemo"
 
 // this is a strictly java application so we don't have 
 // to worry about a convoluted file structure like src/main/java
