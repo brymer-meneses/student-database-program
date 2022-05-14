@@ -9,9 +9,11 @@ public class StudentDB implements DBInterface {
     public boolean addData(StudentData dbd) {
         // TODO Auto-generated method stub
 
+        if (hasDuplicateEntriesWithDatabase(dbd))
+            return false;
+
         if (head == null) {
             head = dbd;
-            return false;
         } else {
             tail = head;
 
@@ -20,14 +22,23 @@ public class StudentDB implements DBInterface {
             }
             tail.next = dbd;
             tail = dbd;
-            return true;
         }
+        return true;
 
     }
 
     @Override
-    public boolean deleteData(String name) {
-        // TODO Auto-generated method stub
+    public boolean deleteData(String name, int SAISID) {
+        StudentData rover = head;
+
+        while (rover != null) {
+            if (rover.next.name == name && rover.next.saisID == SAISID) {
+                rover.next = rover.next.next;
+                return true;
+            }
+            rover = rover.next;
+        }
+
         return false;
     }
 
@@ -45,8 +56,21 @@ public class StudentDB implements DBInterface {
     }
 
     @Override
-    public boolean editData(String name) {
+    public boolean editData(String name, int SAISID) {
         // TODO Auto-generated method stub
+        return false;
+    }
+
+    public boolean hasDuplicateEntriesWithDatabase(StudentData other) {
+
+        StudentData rover = head;
+
+        while (rover != null) {
+            if (rover.hasSameEntries(other)) {
+                return true;
+            }
+            rover = rover.next;
+        }
         return false;
     }
 

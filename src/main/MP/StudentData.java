@@ -17,4 +17,12 @@ public class StudentData {
         this.next = null;
     }
 
+    public boolean hasSameEntries(StudentData other) {
+
+        if (name.equals(other.name) && saisID == other.saisID)
+            return true;
+
+        return false;
+    }
+
 }
