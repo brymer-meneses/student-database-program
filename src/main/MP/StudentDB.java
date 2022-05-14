@@ -7,8 +7,6 @@ public class StudentDB implements DBInterface {
 
     @Override
     public boolean addData(StudentData dbd) {
-        // TODO Auto-generated method stub
-
         if (hasDuplicateEntriesWithDatabase(dbd))
             return false;
 
@@ -44,8 +42,20 @@ public class StudentDB implements DBInterface {
 
     @Override
     public StudentData[] searchData(String toSearch) {
-        // TODO Auto-generated method stub
         StudentData data[] = new StudentData[10];
+
+        StudentData rover = head;
+
+        int index = 0;
+
+        while (rover != null) {
+            if (rover.keywordInEntries(toSearch)) {
+                data[index] = rover;
+                index++;
+            }
+            rover = rover.next;
+        }
+
         return data;
     }
 

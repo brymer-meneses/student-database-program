@@ -25,4 +25,21 @@ public class StudentData {
         return false;
     }
 
+    public boolean keywordInEntries(String keyword) {
+        if (name.contains(keyword))
+            return true;
+
+        if (address.contains(keyword))
+            return true;
+
+        if (Integer.toString(saisID).contains(keyword))
+            return true;
+
+        if (Integer.toString(studentNumber).contains(keyword))
+            return true;
+
+        return false;
+
+    }
+
 }

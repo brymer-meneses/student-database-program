@@ -39,10 +39,10 @@ public class StudentDBTest {
         sdb.addData(new StudentData("person 2", 2, 2, "Mars"));
         sdb.addData(new StudentData("person 3", 3, 3, "Jupiter"));
 
-        assertEquals(sdb.head.name, "person 1");
-        assertEquals(sdb.tail.name, "person 3");
+        assertEquals("person 1", sdb.head.name);
+        assertEquals("person 3", sdb.tail.name);
 
-        assertEquals(sdb.head.next.name, "person 2");
+        assertEquals("person 2", sdb.head.next.name);
 
     }
 
@@ -57,11 +57,30 @@ public class StudentDBTest {
 
         sdb.deleteData("person 2", 2);
 
-        assertEquals(sdb.head.next.name, "person 3");
+        assertEquals("person 3", sdb.head.next.name);
 
         sdb.deleteData("person 3", 3);
 
-        assertEquals(sdb.head.next.name, "person 4");
+        assertEquals("person 4", sdb.head.next.name);
+
+    }
+
+    @Test
+    public void testSearch() {
+        StudentDB sdb = new StudentDB();
+
+        sdb.addData(new StudentData("Arnold Euler", 1, 1, "Earth"));
+        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
+        sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+
+        StudentData results[] = sdb.searchData("Euler");
+
+        assertEquals(true, results[0].name.contains("Euler"));
+        assertEquals(true, results[1].name.contains("Euler"));
+
+        assertEquals(false, results[0].name.contains("Newton"));
+        assertEquals(false, results[0].name.contains("Einstein"));
 
     }
 
