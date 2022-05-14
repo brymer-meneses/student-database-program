@@ -6,7 +6,7 @@ public interface DBInterface {
 
     abstract boolean deleteData(String name);
 
-    abstract boolean searchData(String toSearch);
+    abstract StudentData[] searchData(String toSearch);
 
     abstract void showData();
 

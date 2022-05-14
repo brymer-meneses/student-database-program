@@ -11,8 +11,11 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    public void initialize(String[] args) {
+    private StudentDB sdb;
+
+    public void initialize(String[] args, StudentDB sdb) {
         launch(args);
+        this.sdb = sdb;
     }
 
     @Override
