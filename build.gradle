@@ -1,7 +1,7 @@
 plugins {
   id 'java'
   id 'application'
-  id 'org.openjfx.javafxplugin' version '0.0.10'
+  id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 repositories {
@@ -10,7 +10,7 @@ repositories {
 
 javafx {
     version = "17.0.1"
-    modules = [ 'javafx.controls' ]
+    modules = [ 'javafx.controls', 'javafx.fxml']
 }
 
 test {
@@ -23,15 +23,31 @@ dependencies {
 }
 
 
-mainClassName = "MP.StudentDBDemo"
+mainClassName = "MP.App"
+
+// jar {
+//     baseName = "Machine Problem"
+//     from("src/main/resources") {
+//         include "**/*.xml"
+//     }
+
+// }
 
 // this is a strictly java application so we don't have 
 // to worry about a convoluted file structure like src/main/java
 sourceSets {
     main { 
-        java { srcDirs = ["src/main"] }
+        java { 
+            srcDirs = ["src/main"]
+        }
+
+        resources {
+            srcDirs = ["src/main/resources"]
+            includes = ["**/*.fxml", "**/*.png", "**/*.css", "src/main/css"]
+        }
     }
     test {
-        java { srcDirs = ["src/test"] }
+        java { srcDirs = ['src/test'] }
     }
 }
+

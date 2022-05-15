@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="644.0" prefWidth="810.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MP.DashFX">
+   <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="815.0" style="-fx-background-color: #111316;">
+         <children>
+            <VBox layoutX="-13.0" prefHeight="644.0" prefWidth="117.0" style="-fx-background-color: #212426;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;">
+                     <children>
+                        <Line endX="1059.333251953125" endY="418.0" layoutX="-244.0" layoutY="-366.0" startX="100.0" startY="418.0" stroke="#34373a" strokeDashOffset="2.0" />
+                     </children></Pane>
+                  <Button fx:id="btnHome" contentDisplay="TOP" mnemonicParsing="false" prefHeight="85.0" prefWidth="139.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Home" textFill="#e5e9f0">
+                     <graphic>
+                        <ImageView id="btnHome" fitHeight="40.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Button id="btnView" fx:id="btnView" contentDisplay="TOP" mnemonicParsing="false" prefHeight="85.0" prefWidth="139.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="View" textFill="#e5e9f0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/view.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btnAdd" contentDisplay="TOP" mnemonicParsing="false" prefHeight="85.0" prefWidth="139.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Add" textFill="#e5e9f0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btnSearch" contentDisplay="TOP" mnemonicParsing="false" prefHeight="85.0" prefWidth="139.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Search" textFill="#e5e9f0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btnEdit" contentDisplay="TOP" mnemonicParsing="false" prefHeight="85.0" prefWidth="139.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btnDelete" contentDisplay="TOP" mnemonicParsing="false" prefHeight="85.0" prefWidth="139.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Delete" textFill="#e5e9f0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <AnchorPane layoutX="203.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="593.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="34.0" text="Buy Wow" textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="157.0" layoutY="34.0" text="Gold" textFill="#fff600">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="39.0" layoutY="81.0" text="The most sophisticated and efficient way of buying gold" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="39.0" layoutY="144.0" text="Select options in order to find the best offer" textFill="#9a9292">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox layoutX="39.0" layoutY="186.0" prefHeight="29.0" prefWidth="155.0" styleClass="combo-box" stylesheets="@../css/fullpackstyling.css" />
+                  <ComboBox layoutX="229.0" layoutY="186.0" prefHeight="29.0" prefWidth="179.0" styleClass="combo-box" stylesheets="@../css/fullpackstyling.css" />
+                  <Pane layoutX="39.0" layoutY="324.0" prefHeight="66.0" prefWidth="472.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons/eruro.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="58.0" layoutY="14.0" text="QUANTITY TIPS:" textFill="#41951c">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="34.0" text="Save 0.03 per gold if you buy more 100 more gold" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="39.0" layoutY="414.0" prefHeight="66.0" prefWidth="472.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/chart.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="58.0" layoutY="9.0" text="TRACK PRICES" textFill="#41951c">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="27.0" text="Save this search and get a notification when price changes" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0" />
+                  <Pane layoutX="39.0" layoutY="241.0" prefHeight="66.0" prefWidth="472.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/eruro.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="58.0" layoutY="14.0" text="QUANTITY TIPS:" textFill="#41951c">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="34.0" text="Save 0.03 per gold if you buy more 100 more gold" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="-88.0" layoutY="-37.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="701.0" style="-fx-background-color: #111111;" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="51.0" prefWidth="815.0" style="-fx-background-color: #1a1d20;" styleClass="linear-grad">
+         <children>
+            <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/meowIcon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="54.0" layoutY="13.0" text="Meow School Student Database" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button id="btnClose" contentDisplay="TOP" layoutX="771.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="44.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" textFill="#e5e9f0">
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="btnMin" contentDisplay="TOP" layoutX="737.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="34.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" textFill="#e5e9f0">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/minimize.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="btnHelp" contentDisplay="TOP" layoutX="683.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" textFill="#e5e9f0">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/help.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

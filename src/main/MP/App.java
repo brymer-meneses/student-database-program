@@ -1,39 +1,45 @@
-
 package MP;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+//import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+//import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
+    // define your offsets here
+    private double xOffset = 0;
+    private double yOffset = 0;
 
-    private StudentDB sdb;
-
-    public void initialize(String[] args, StudentDB sdb) {
+    public static void main(String[] args) {
         launch(args);
-        this.sdb = sdb;
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashFX.fxml"));
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
+        // grab your root here
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
 
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));
+        // move around here
+        root.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffset);
+            primaryStage.setY(event.getScreenY() - yOffset);
+        });
+        Scene scene = new Scene(root);
+        // set transparent
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 }
