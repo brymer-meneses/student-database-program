@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="701.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" />
