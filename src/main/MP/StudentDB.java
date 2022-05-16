@@ -5,9 +5,16 @@ public class StudentDB implements DBInterface {
     public StudentData head;
     public StudentData tail;
 
+    public int length = 0;
+
+    private final int MAX_LENGTH = 10;
+
     @Override
     public boolean addData(StudentData dbd) {
         if (hasDuplicateEntriesWithDatabase(dbd))
+            return false;
+
+        if (length + 1 > MAX_LENGTH)
             return false;
 
         if (head == null) {
@@ -21,8 +28,9 @@ public class StudentDB implements DBInterface {
             tail.next = dbd;
             tail = dbd;
         }
-        return true;
 
+        length++;
+        return true;
     }
 
     @Override
@@ -42,7 +50,7 @@ public class StudentDB implements DBInterface {
 
     @Override
     public StudentData[] searchData(String toSearch) {
-        StudentData data[] = new StudentData[10];
+        StudentData data[] = new StudentData[MAX_LENGTH];
 
         StudentData rover = head;
 

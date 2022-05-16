@@ -16,6 +16,25 @@ public class StudentDBTest {
     }
 
     @Test
+    public void testMaxEntriesInDatabase() {
+        StudentDB sdb = new StudentDB();
+
+        String[] names = { "Euler", "Gauss", "Riemann", "Cardoano", "Cauchy", "Newton", "Leibniz", "Fourier",
+                "Galois", "L'hopital", "Tao" };
+
+        for (int i = 0; i < 8; i++) {
+            sdb.addData(new StudentData(names[i], i, i, names[i]));
+        }
+
+        assertEquals(8, sdb.length);
+        assertEquals(true, sdb.addData(new StudentData(names[8], 8, 8, names[8])));
+        assertEquals(true, sdb.addData(new StudentData(names[9], 9, 9, names[9])));
+
+        assertEquals(10, sdb.length);
+        assertEquals(false, sdb.addData(new StudentData(names[10], 10, 10, names[10])));
+    }
+
+    @Test
     public void testDuplicateEntries() {
 
         StudentDB sdb = new StudentDB();
