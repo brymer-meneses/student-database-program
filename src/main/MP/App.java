@@ -14,10 +14,13 @@ public class App extends Application {
     // define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
+    private StudentDB sdb;
 
-    public static void main(String[] args) {
+    public void initialize(String[] args, StudentDB sdb) {
         launch(args);
+        this.sdb = sdb;
     }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
