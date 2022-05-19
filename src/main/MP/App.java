@@ -23,13 +23,12 @@ public class App extends Application {
     // define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
-    private StudentDB sdb;
+
+
 
     public void initialize(String[] args, StudentDB sdb) {
         launch(args);
-        this.sdb = sdb;
     }
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -54,7 +53,6 @@ public class App extends Application {
         //Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
         //primaryStage.getIcons().add(icon);
         //primaryStage.getIcons().add(new Image("meowIcon.png"));
-        //stage.setTitle("Wow!! Stackoverflow Icon");
         //Image icon = new Image(getClass().getResourceAsStream("icon.png"));
         //stage.getIcons().add(icon);
         primaryStage.setTitle("Meow Student Database");

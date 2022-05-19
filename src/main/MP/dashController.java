@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
+import MP.StudentDBDemo;
+import MP.App.getDatabase;
 // import javafx.fxml.FXML;
 // import javafx.fxml.FXMLLoader;
 // import javafx.scene.control.Button;
@@ -399,7 +401,20 @@ public class dashController {
     private Pane viewPane;
 
     @FXML
-    public void handleClicks(ActionEvent actionEvent) throws IOException {
+    public void handleClicks(ActionEvent actionEvent, StudentDB sdb) throws IOException {
+        StudentDB database = App.getDatabase();
+        //sdk.getData(0).name;
+        if (database.length > 0){
+            Pane1.setVisible(true);
+            name1.setVisible(true);
+            sais1.setVisible(true);
+            stunum1.setVisible(true);
+            address1.setVisible(true);
+            name1.setText(String.valueOf(database.getData(0).name));
+            sais1.setText(String.valueOf(database.getData(0).saisID));
+            stunum1.setText(String.valueOf(database.getData(0).studentNumber));
+            address1.setText(String.valueOf(database.getData(0).address));
+        }
         if (actionEvent.getSource() == btnMin) {
             Stage stage = (Stage) btnMin.getScene().getWindow();
             stage.setIconified(true);
@@ -415,7 +430,7 @@ public class dashController {
             searchPane.setVisible(false);
         }
         if (actionEvent.getSource() == btnHome) {
-            homePane.setVisible(true);
+            homePane.setVisible(false);
             viewPane.setVisible(false);
             addPane.setVisible(false);
             searchPane.setVisible(false);
