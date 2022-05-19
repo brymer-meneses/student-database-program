@@ -23,13 +23,16 @@ public class App extends Application {
     // define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
-    private StudentDB sdb;
+    private static StudentDB database;
 
-    public void initialize(String[] args, StudentDB sdb) {
+    public void initialize(String[] args, StudentDB database) {
         launch(args);
-        this.sdb = sdb;
+        App.database = database;
     }
 
+    public StudentDB getDatabase() {
+        return App.database;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -49,14 +52,15 @@ public class App extends Application {
         });
         Scene scene = new Scene(root);
         // set transparent
-        //here>>
-        //primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("file:meowIcon.png")));
-        //Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
-        //primaryStage.getIcons().add(icon);
-        //primaryStage.getIcons().add(new Image("meowIcon.png"));
-        //stage.setTitle("Wow!! Stackoverflow Icon");
-        //Image icon = new Image(getClass().getResourceAsStream("icon.png"));
-        //stage.getIcons().add(icon);
+        // here>>
+        // primaryStage.getIcons().add(new
+        // Image(this.getClass().getResourceAsStream("file:meowIcon.png")));
+        // Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
+        // primaryStage.getIcons().add(icon);
+        // primaryStage.getIcons().add(new Image("meowIcon.png"));
+        // stage.setTitle("Wow!! Stackoverflow Icon");
+        // Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        // stage.getIcons().add(icon);
         primaryStage.setTitle("Meow Student Database");
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
