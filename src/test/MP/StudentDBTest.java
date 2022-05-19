@@ -103,4 +103,19 @@ public class StudentDBTest {
 
     }
 
+    @Test
+    public void testGetData() {
+        StudentDB sdb = new StudentDB();
+
+        sdb.addData(new StudentData("Arnold Euler", 1, 1, "Earth"));
+        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
+        sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+
+        assertEquals(sdb.head, sdb.getData(0));
+        assertEquals(sdb.head.next, sdb.getData(1));
+        assertEquals(sdb.head.next.next, sdb.getData(2));
+
+    }
+
 }

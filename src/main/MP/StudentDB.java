@@ -1,5 +1,7 @@
 package MP;
 
+import java.security.KeyException;
+
 public class StudentDB implements DBInterface {
 
     public StudentData head;
@@ -77,6 +79,21 @@ public class StudentDB implements DBInterface {
     public boolean editData(String name, int SAISID) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    public StudentData getData(int index) throws KeyException {
+
+        if (index > length || index < 0) {
+            throw new KeyException();
+        }
+
+        StudentData rover = head;
+
+        for (int i = 0; i < index; i++) {
+            rover = rover.next;
+        }
+
+        return rover;
     }
 
     public boolean hasDuplicateEntriesWithDatabase(StudentData other) {
