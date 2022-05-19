@@ -7,8 +7,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 //import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.scene.control.ScrollPane;
 
 public class App extends Application {
     // define your offsets here
@@ -37,6 +46,15 @@ public class App extends Application {
         });
         Scene scene = new Scene(root);
         // set transparent
+        //here>>
+        //primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("file:meowIcon.png")));
+        //Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
+        //primaryStage.getIcons().add(icon);
+        //primaryStage.getIcons().add(new Image("meowIcon.png"));
+        //stage.setTitle("Wow!! Stackoverflow Icon");
+        //Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        //stage.getIcons().add(icon);
+        primaryStage.setTitle("Meow Student Database");
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.show();
