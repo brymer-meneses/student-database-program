@@ -23,7 +23,7 @@ dependencies {
 }
 
 
-mainClassName = "MP.App"
+mainClassName = "MP.StudentDBDemo"
 
 // jar {
 //     baseName = "Machine Problem"
