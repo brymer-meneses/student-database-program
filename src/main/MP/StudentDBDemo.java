@@ -8,21 +8,20 @@ public class StudentDBDemo {
     private final static boolean shouldOverwriteSavedData = true;
 
     public static void main(String[] args) {
-        StudentDB database;
 
         File savedData = new File(filename);
 
         if (savedData.exists() && shouldOverwriteSavedData) {
-            database = StudentDB.readSavedData();
+            StudentDB.readSavedData();
         } else {
-            database = loadDefaultData();
+            StudentDB.initializeDatabase(defaultData());
         }
 
         App app = new App();
-        app.initialize(args, database);
+        app.initialize(args);
     }
 
-    public static StudentDB loadDefaultData() {
+    public static StudentDB defaultData() {
 
         StudentDB database = new StudentDB();
         database.addData(new StudentData("Leonhard Euler", 045612, 17150234, "St. Petersburg, Berlin, Russia"));

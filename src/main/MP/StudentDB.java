@@ -48,6 +48,7 @@ public class StudentDB implements DBInterface, Serializable {
 
             if (database.get(i).isEqualTo(element)) {
                 database.delete(i);
+                updateSavedData();
                 return true;
             }
         }
@@ -97,6 +98,21 @@ public class StudentDB implements DBInterface, Serializable {
             }
         }
         return false;
+    }
+
+    public static void initializeDatabase(StudentDB database) {
+
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filename);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(database);
+            objectOut.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     public static StudentDB readSavedData() {

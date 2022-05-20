@@ -23,9 +23,8 @@ public class App extends Application {
     // define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
-    public StudentDB sdb;
 
-    public void initialize(String[] args, StudentDB database) {
+    public void initialize(String[] args) {
         launch(args);
     }
 

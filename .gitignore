@@ -15,4 +15,6 @@ bin
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# ignore database on git repo
+database.dat
 
