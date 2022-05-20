@@ -1,14 +1,20 @@
 package MP;
 
-import java.security.KeyException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
+import MP.core.DBInterface;
 import MP.core.LinkedList;
 
-public class StudentDB implements DBInterface {
+public class StudentDB implements DBInterface, Serializable {
 
-    private LinkedList<StudentData> database;
+    private static LinkedList<StudentData> database;
 
     private final int MAX_LENGTH = 10;
+    private final static String filename = "database.dat";
 
     public StudentDB() {
         database = new LinkedList<StudentData>();
@@ -29,6 +35,7 @@ public class StudentDB implements DBInterface {
         }
 
         database.append(dbd);
+        updateSavedData();
         return true;
     }
 
@@ -92,4 +99,37 @@ public class StudentDB implements DBInterface {
         return false;
     }
 
+    public static StudentDB readSavedData() {
+
+        try {
+
+            FileInputStream fileIn = new FileInputStream(filename);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+
+            Object obj = objectIn.readObject();
+
+            objectIn.close();
+            return (StudentDB) obj;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public void updateSavedData() {
+
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filename);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(this);
+            objectOut.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
 }
