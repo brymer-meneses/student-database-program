@@ -2,49 +2,47 @@ package MP;
 
 import java.security.KeyException;
 
+import MP.core.LinkedList;
+
 public class StudentDB implements DBInterface {
 
-    public StudentData head;
-    public StudentData tail;
-
-    public int length = 0;
+    private LinkedList<StudentData> database;
 
     private final int MAX_LENGTH = 10;
 
+    public StudentDB() {
+        database = new LinkedList<StudentData>();
+    }
+
+    public int length() {
+        return database.length;
+    }
+
     @Override
     public boolean addData(StudentData dbd) {
-        if (hasDuplicateEntriesWithDatabase(dbd))
+
+        if (isDuplicateOfDatabase(dbd)) {
             return false;
-
-        if (length + 1 > MAX_LENGTH)
+        }
+        if (database.length + 1 > MAX_LENGTH) {
             return false;
-
-        if (head == null) {
-            head = dbd;
-        } else {
-            tail = head;
-
-            while (tail.next != null) {
-                tail = tail.next;
-            }
-            tail.next = dbd;
-            tail = dbd;
         }
 
-        length++;
+        database.append(dbd);
         return true;
     }
 
     @Override
     public boolean deleteData(String name, int SAISID) {
-        StudentData rover = head;
 
-        while (rover != null) {
-            if (rover.next.name == name && rover.next.saisID == SAISID) {
-                rover.next = rover.next.next;
+        StudentData element = new StudentData(name, SAISID, 1, "address");
+
+        for (int i = 0; i < database.length; i++) {
+
+            if (database.get(i).isEqualTo(element)) {
+                database.delete(i);
                 return true;
             }
-            rover = rover.next;
         }
 
         return false;
@@ -54,16 +52,15 @@ public class StudentDB implements DBInterface {
     public StudentData[] searchData(String toSearch) {
         StudentData data[] = new StudentData[MAX_LENGTH];
 
-        StudentData rover = head;
+        int count = 0;
+        for (int i = 0; i < database.length; i++) {
+            StudentData element = database.get(i);
 
-        int index = 0;
-
-        while (rover != null) {
-            if (rover.keywordInEntries(toSearch)) {
-                data[index] = rover;
-                index++;
+            if (element.keywordInEntries(toSearch)) {
+                data[count] = element;
             }
-            rover = rover.next;
+
+            count++;
         }
 
         return data;
@@ -72,7 +69,6 @@ public class StudentDB implements DBInterface {
     @Override
     public void showData() {
         // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -81,30 +77,17 @@ public class StudentDB implements DBInterface {
         return false;
     }
 
-    public StudentData getData(int index) throws KeyException {
-
-        if (index > length || index < 0) {
-            throw new KeyException();
-        }
-
-        StudentData rover = head;
-
-        for (int i = 0; i < index; i++) {
-            rover = rover.next;
-        }
-
-        return rover;
+    public StudentData getData(int index) {
+        return database.get(index);
     }
 
-    public boolean hasDuplicateEntriesWithDatabase(StudentData other) {
+    public boolean isDuplicateOfDatabase(StudentData element) {
 
-        StudentData rover = head;
+        for (int i = 0; i < database.length; i++) {
 
-        while (rover != null) {
-            if (rover.hasSameEntries(other)) {
+            if (database.get(i).isEqualTo(element)) {
                 return true;
             }
-            rover = rover.next;
         }
         return false;
     }
