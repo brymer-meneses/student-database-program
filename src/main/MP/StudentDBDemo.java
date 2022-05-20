@@ -1,20 +1,19 @@
 package MP;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 
 public class StudentDBDemo {
 
-    private final static String filename = "database.dat";
-    private final static boolean shouldOverwriteSavedData = true;
-
     public static void main(String[] args) {
 
-        File savedData = new File(filename);
+        StudentDB.MAX_LENGTH = 10;
+        StudentDB.shouldSaveChanges = true;
+        StudentDB.databasePath = "database.dat";
 
-        if (savedData.exists() && shouldOverwriteSavedData) {
+        try {
             StudentDB.readSavedData();
-        } else {
-            StudentDB.initializeDatabase(defaultData());
+        } catch (FileNotFoundException e) {
+            StudentDB.initializeDefaultData(defaultData());
         }
 
         App app = new App();

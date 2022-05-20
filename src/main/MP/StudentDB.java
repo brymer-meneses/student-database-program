@@ -1,6 +1,7 @@
 package MP;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -13,8 +14,9 @@ public class StudentDB implements DBInterface, Serializable {
 
     private static LinkedList<StudentData> database;
 
-    private final int MAX_LENGTH = 10;
-    private final static String filename = "database.dat";
+    public static int MAX_LENGTH = 10;
+    public static String databasePath = "database.dat";
+    public static boolean shouldSaveChanges = true;
 
     public StudentDB() {
         database = new LinkedList<StudentData>();
@@ -100,11 +102,11 @@ public class StudentDB implements DBInterface, Serializable {
         return false;
     }
 
-    public static void initializeDatabase(StudentDB database) {
+    public static void initializeDefaultData(StudentDB database) {
 
         try {
 
-            FileOutputStream fileOut = new FileOutputStream(filename);
+            FileOutputStream fileOut = new FileOutputStream(databasePath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(database);
             objectOut.close();
@@ -115,11 +117,11 @@ public class StudentDB implements DBInterface, Serializable {
 
     }
 
-    public static StudentDB readSavedData() {
+    public static StudentDB readSavedData() throws FileNotFoundException {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream(filename);
+            FileInputStream fileIn = new FileInputStream(databasePath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
             Object obj = objectIn.readObject();
@@ -128,17 +130,18 @@ public class StudentDB implements DBInterface, Serializable {
             return (StudentDB) obj;
 
         } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+            throw new FileNotFoundException();
         }
 
     }
 
     public void updateSavedData() {
+        if (!shouldSaveChanges)
+            return;
 
         try {
 
-            FileOutputStream fileOut = new FileOutputStream(filename);
+            FileOutputStream fileOut = new FileOutputStream(databasePath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(this);
             objectOut.close();

@@ -102,4 +102,9 @@ public class StudentDBTest {
 
     }
 
+    @Test
+    public void testSaveData() {
+
+    }
+
 }
