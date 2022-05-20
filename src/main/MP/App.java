@@ -1,33 +1,28 @@
 package MP;
 
-import javafx.application.Application;
-//import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-//import javafx.scene.input.MouseEvent;
+import javafx.application.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.stage.*;
+import javafx.scene.layout.*;
+import javafx.geometry.*;
+import javafx.event.*;
+import javafx.fxml.*;
 import javafx.scene.paint.Color;
-import javafx.stage.StageStyle;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.application.Application;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.scene.control.ScrollPane;
 
 public class App extends Application {
     // define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
+    private static StudentDB database;
 
-
-
-    public void initialize(String[] args, StudentDB sdb) {
+    public void initialize(String[] args, StudentDB database) {
         launch(args);
+        App.database = database;
+    }
+
+    public static StudentDB getDatabase() {
+        return App.database;
     }
 
     @Override
@@ -48,15 +43,17 @@ public class App extends Application {
         });
         Scene scene = new Scene(root);
         // set transparent
-        //here>>
-        //primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("file:meowIcon.png")));
-        //Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
-        //primaryStage.getIcons().add(icon);
-        //primaryStage.getIcons().add(new Image("meowIcon.png"));
-        //Image icon = new Image(getClass().getResourceAsStream("icon.png"));
-        //stage.getIcons().add(icon);
+        // here>>
+        // primaryStage.getIcons().add(new
+        // Image(this.getClass().getResourceAsStream("file:meowIcon.png")));
+        // Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
+        // primaryStage.getIcons().add(icon);
+        // primaryStage.getIcons().add(new Image("meowIcon.png"));
+        // stage.setTitle("Wow!! Stackoverflow Icon");
+        // Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+        // stage.getIcons().add(icon);
         primaryStage.setTitle("Meow Student Database");
-        scene.setFill(Color.TRANSPARENT);
+        //scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

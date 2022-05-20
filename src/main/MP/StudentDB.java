@@ -81,11 +81,7 @@ public class StudentDB implements DBInterface {
         return false;
     }
 
-    public StudentData getData(int index) throws KeyException {
-
-        if (index > length || index < 0) {
-            throw new KeyException();
-        }
+    public StudentData getData(int index) {
 
         StudentData rover = head;
 

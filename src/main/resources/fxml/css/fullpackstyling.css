@@ -60,6 +60,39 @@
     -fx-border-color: #1f4c99;
 }
 
+.button5
+{
+    -fx-background-color : #e60017;
+    -fx-border-width: 2; 
+    -fx-border-color: #e60017;
+    -fx-border-radius: 3;
+}
+.button5:hover
+{
+    -fx-background-color : #2966cc ;
+    -fx-border-width: 2; 
+    -fx-border-color: #2966cc;
+}
+.button5:pressed
+{
+    -fx-background-color : #1f4c99 ;
+    -fx-border-width: 2; 
+    -fx-border-color: #1f4c99;
+}
+.button6
+{
+-fx-background-color : #212426;
+}
+.button6:hover
+{
+-fx-background-color : #34373a ;
+}
+.button6:pressed
+{
+-fx-background-color : #34373a ;
+}
+
+
 .TextField
 {
     -fx-text-fill : #eff1f9;
