@@ -1,7 +1,6 @@
 package MP;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,7 +11,7 @@ import MP.interfaces.DBInterface;
 
 public class StudentDB implements DBInterface, Serializable {
 
-    private static LinkedList<StudentData> database;
+    private LinkedList<StudentData> database;
 
     private final static int maxStorageLength = 10;
     private final static String databasePath = "database.dat";
@@ -117,7 +116,7 @@ public class StudentDB implements DBInterface, Serializable {
 
     }
 
-    public static StudentDB readSavedData() throws FileNotFoundException {
+    public static StudentDB readSavedData() {
 
         try {
 
@@ -130,12 +129,12 @@ public class StudentDB implements DBInterface, Serializable {
             return (StudentDB) obj;
 
         } catch (Exception ex) {
-            throw new FileNotFoundException();
+            throw new java.lang.Error("Error: " + ex.getMessage());
         }
 
     }
 
-    public void updateSavedData() {
+    private void updateSavedData() {
         if (!shouldSaveChanges)
             return;
 
@@ -150,5 +149,9 @@ public class StudentDB implements DBInterface, Serializable {
             ex.printStackTrace();
         }
 
+    }
+
+    public void getLatestData() {
+        database = readSavedData().database;
     }
 }

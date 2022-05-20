@@ -1,8 +1,10 @@
 package MP.core;
 
+import java.io.Serializable;
+
 import MP.interfaces.LinkedListInterface;
 
-public class LinkedList<T> implements LinkedListInterface<T> {
+public class LinkedList<T> implements LinkedListInterface<T>, Serializable {
     protected Node<T> head;
     protected Node<T> tail;
     public int length = 0;

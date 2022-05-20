@@ -1,16 +1,10 @@
 package MP;
 
-import java.io.FileNotFoundException;
-
 public class StudentDBDemo {
 
     public static void main(String[] args) {
 
-        try {
-            StudentDB.readSavedData();
-        } catch (FileNotFoundException e) {
-            StudentDB.initializeDefaultData(defaultData());
-        }
+        StudentDB.readSavedData();
 
         App app = new App();
         app.initialize(args);

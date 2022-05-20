@@ -118,7 +118,7 @@ public class StudentDBTest {
     }
 
     @Test
-    public void testDatabaseAutomaticUpdate() throws FileNotFoundException {
+    public void testAutomaticDatabaseUpdate() throws FileNotFoundException {
         StudentDB sdb = new StudentDB();
 
         sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
@@ -132,5 +132,25 @@ public class StudentDBTest {
         assertEquals(sdb.length(), retrievedSdb.length());
         assertEquals(sdb.getData(0).name, retrievedSdb.getData(0).name);
         assertEquals(sdb.getData(1).name, retrievedSdb.getData(1).name);
+    }
+
+    @Test
+    public void testGetLatestData() throws FileNotFoundException {
+        StudentDB sourceSdb = new StudentDB();
+
+        sourceSdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        sourceSdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
+        sourceSdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+
+        StudentDB emptySdb = new StudentDB();
+        StudentDB latestSdb = StudentDB.readSavedData();
+
+        assertNotEquals(emptySdb.length(), latestSdb.length());
+
+        emptySdb.getLatestData();
+
+        assertEquals(emptySdb.length(), latestSdb.length());
+        assertEquals(emptySdb.getData(0).name, latestSdb.getData(0).name);
+        assertEquals(emptySdb.getData(1).name, latestSdb.getData(1).name);
     }
 }

@@ -1,6 +1,8 @@
 package MP;
 
-public class StudentData {
+import java.io.Serializable;
+
+public class StudentData implements Serializable {
     final String name;
     final int saisID;
     final int studentNumber;
