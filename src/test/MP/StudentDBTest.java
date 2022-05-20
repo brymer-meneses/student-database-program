@@ -2,6 +2,9 @@ package MP;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;;
+
+import java.io.FileNotFoundException;
 
 public class StudentDBTest {
 
@@ -80,6 +83,7 @@ public class StudentDBTest {
         sdb.deleteData("person 3", 3);
 
         assertEquals("person 4", sdb.getData(1).name);
+        assertEquals(2, sdb.length());
 
     }
 
@@ -103,8 +107,30 @@ public class StudentDBTest {
     }
 
     @Test
-    public void testSaveData() {
+    public void testSaveData() throws FileNotFoundException {
+        StudentDB sdb = new StudentDB();
 
+        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+
+        StudentDB retrievedSdb = StudentDB.readSavedData();
+
+        assertEquals(sdb.getData(0).name, retrievedSdb.getData(0).name);
     }
 
+    @Test
+    public void testDatabaseAutomaticUpdate() throws FileNotFoundException {
+        StudentDB sdb = new StudentDB();
+
+        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
+        sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+
+        sdb.deleteData("Leonhard Euler", 2);
+
+        StudentDB retrievedSdb = StudentDB.readSavedData();
+
+        assertEquals(sdb.length(), retrievedSdb.length());
+        assertEquals(sdb.getData(0).name, retrievedSdb.getData(0).name);
+        assertEquals(sdb.getData(1).name, retrievedSdb.getData(1).name);
+    }
 }

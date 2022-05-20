@@ -14,9 +14,9 @@ public class StudentDB implements DBInterface, Serializable {
 
     private static LinkedList<StudentData> database;
 
-    public static int MAX_LENGTH = 10;
-    public static String databasePath = "database.dat";
-    public static boolean shouldSaveChanges = true;
+    private final static int maxStorageLength = 10;
+    private final static String databasePath = "database.dat";
+    private final static boolean shouldSaveChanges = true;
 
     public StudentDB() {
         database = new LinkedList<StudentData>();
@@ -32,7 +32,7 @@ public class StudentDB implements DBInterface, Serializable {
         if (isDuplicateOfDatabase(dbd)) {
             return false;
         }
-        if (database.length + 1 > MAX_LENGTH) {
+        if (database.length + 1 > maxStorageLength) {
             return false;
         }
 
@@ -60,7 +60,7 @@ public class StudentDB implements DBInterface, Serializable {
 
     @Override
     public StudentData[] searchData(String toSearch) {
-        StudentData data[] = new StudentData[MAX_LENGTH];
+        StudentData data[] = new StudentData[maxStorageLength];
 
         int count = 0;
         for (int i = 0; i < database.length; i++) {

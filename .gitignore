@@ -16,5 +16,5 @@ bin
 .classpath
 
 # ignore database on git repo
-database.dat
+*.dat
 

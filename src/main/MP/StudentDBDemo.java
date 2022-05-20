@@ -6,10 +6,6 @@ public class StudentDBDemo {
 
     public static void main(String[] args) {
 
-        StudentDB.MAX_LENGTH = 10;
-        StudentDB.shouldSaveChanges = true;
-        StudentDB.databasePath = "database.dat";
-
         try {
             StudentDB.readSavedData();
         } catch (FileNotFoundException e) {
