@@ -1,4 +1,4 @@
-package MP.core;
+package MP.interfaces;
 
 import MP.StudentData;
 

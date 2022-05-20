@@ -1,10 +1,13 @@
 package MP.core;
 
-public class LinkedList<T> {
+import MP.interfaces.LinkedListInterface;
+
+public class LinkedList<T> implements LinkedListInterface<T> {
     public Node<T> head;
     public Node<T> tail;
     public int length = 0;
 
+    @Override
     public void append(T element) {
 
         Node<T> newElement = new Node<T>(element);
@@ -24,6 +27,7 @@ public class LinkedList<T> {
         length++;
     }
 
+    @Override
     public void delete(int index) {
         Node<T> nodeBeforeIndex = getNode(index - 1);
 
@@ -31,6 +35,7 @@ public class LinkedList<T> {
 
     }
 
+    @Override
     public int find(T element) {
 
         Node<T> rover = head;
@@ -48,6 +53,7 @@ public class LinkedList<T> {
 
     }
 
+    @Override
     public T get(int index) {
         return getNode(index).data;
 
