@@ -4,7 +4,11 @@ public class StudentDBDemo {
 
     public static void main(String[] args) {
 
-        StudentDB.readSavedData();
+        if (StudentDB.savedDatabaseExists()) {
+            StudentDB.readSavedData();
+        } else {
+            StudentDB.initializeDefaultData(defaultData());
+        }
 
         App app = new App();
         app.initialize(args);

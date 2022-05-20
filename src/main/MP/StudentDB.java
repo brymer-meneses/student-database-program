@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.io.File;
 
 import MP.core.LinkedList;
 import MP.interfaces.DBInterface;
@@ -23,6 +24,15 @@ public class StudentDB implements DBInterface, Serializable {
 
     public int length() {
         return database.length;
+    }
+
+    public static boolean savedDatabaseExists() {
+        if (new File(databasePath).exists()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     @Override
