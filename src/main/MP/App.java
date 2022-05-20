@@ -14,15 +14,9 @@ public class App extends Application {
     // define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
-    private static StudentDB database;
 
-    public void initialize(String[] args, StudentDB database) {
+    public void initialize(String[] args) {
         launch(args);
-        App.database = database;
-    }
-
-    public static StudentDB getDatabase() {
-        return App.database;
     }
 
     @Override

@@ -1,4 +1,6 @@
-package MP;
+package MP.core;
+
+import MP.StudentData;
 
 public interface DBInterface {
 

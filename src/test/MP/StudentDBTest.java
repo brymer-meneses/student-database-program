@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StudentDBTest {
 
     @Test
-    public void testSameEntries() {
+    public void testDuplicate() {
 
         StudentData student1 = new StudentData("Leonhard Euler", 1, 1, "Earth");
         StudentData student2 = new StudentData("Leonhard Euler", 1, 1, "Earth");
 
-        assertEquals(true, student1.hasSameEntries(student2));
+        assertEquals(true, student1.isEqualTo(student2));
 
     }
 
@@ -26,11 +26,11 @@ public class StudentDBTest {
             sdb.addData(new StudentData(names[i], i, i, names[i]));
         }
 
-        assertEquals(8, sdb.length);
+        assertEquals(8, sdb.length());
         assertEquals(true, sdb.addData(new StudentData(names[8], 8, 8, names[8])));
         assertEquals(true, sdb.addData(new StudentData(names[9], 9, 9, names[9])));
 
-        assertEquals(10, sdb.length);
+        assertEquals(10, sdb.length());
         assertEquals(false, sdb.addData(new StudentData(names[10], 10, 10, names[10])));
     }
 
@@ -45,28 +45,27 @@ public class StudentDBTest {
 
         sdb.addData(student1);
 
-        assertEquals(true, sdb.hasDuplicateEntriesWithDatabase(student2));
-        assertEquals(false, sdb.hasDuplicateEntriesWithDatabase(student3));
+        assertEquals(true, sdb.isDuplicateOfDatabase(student2));
+        assertEquals(false, sdb.isDuplicateOfDatabase(student3));
 
     }
 
     @Test
-    public void testAdd() {
+    public void testAddData() {
         StudentDB sdb = new StudentDB();
 
         sdb.addData(new StudentData("person 1", 1, 1, "Earth"));
         sdb.addData(new StudentData("person 2", 2, 2, "Mars"));
         sdb.addData(new StudentData("person 3", 3, 3, "Jupiter"));
 
-        assertEquals("person 1", sdb.head.name);
-        assertEquals("person 3", sdb.tail.name);
-
-        assertEquals("person 2", sdb.head.next.name);
+        assertEquals("person 1", sdb.getData(0).name);
+        assertEquals("person 2", sdb.getData(1).name);
+        assertEquals("person 3", sdb.getData(2).name);
 
     }
 
     @Test
-    public void testDelete() {
+    public void testDeleteData() {
         StudentDB sdb = new StudentDB();
 
         sdb.addData(new StudentData("person 1", 1, 1, "Earth"));
@@ -76,16 +75,16 @@ public class StudentDBTest {
 
         sdb.deleteData("person 2", 2);
 
-        assertEquals("person 3", sdb.head.next.name);
+        assertEquals("person 3", sdb.getData(1).name);
 
         sdb.deleteData("person 3", 3);
 
-        assertEquals("person 4", sdb.head.next.name);
+        assertEquals("person 4", sdb.getData(1).name);
 
     }
 
     @Test
-    public void testSearch() {
+    public void testSearchData() {
         StudentDB sdb = new StudentDB();
 
         sdb.addData(new StudentData("Arnold Euler", 1, 1, "Earth"));
@@ -100,21 +99,6 @@ public class StudentDBTest {
 
         assertEquals(false, results[0].name.contains("Newton"));
         assertEquals(false, results[0].name.contains("Einstein"));
-
-    }
-
-    @Test
-    public void testGetData() {
-        StudentDB sdb = new StudentDB();
-
-        sdb.addData(new StudentData("Arnold Euler", 1, 1, "Earth"));
-        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
-        sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
-        sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
-
-        assertEquals(sdb.head, sdb.getData(0));
-        assertEquals(sdb.head.next, sdb.getData(1));
-        assertEquals(sdb.head.next.next, sdb.getData(2));
 
     }
 
