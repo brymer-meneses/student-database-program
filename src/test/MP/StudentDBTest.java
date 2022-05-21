@@ -1,6 +1,9 @@
 package MP;
 
 import org.junit.jupiter.api.Test;
+
+import MP.core.LinkedList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;;
 
@@ -97,13 +100,13 @@ public class StudentDBTest {
         sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
         sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
 
-        StudentData results[] = sdb.searchData("Euler");
+        LinkedList<StudentData> results = sdb.searchData("Euler");
 
-        assertEquals(true, results[0].name.contains("Euler"));
-        assertEquals(true, results[1].name.contains("Euler"));
+        assertEquals(true, results.get(0).name.contains("Euler"));
+        assertEquals(true, results.get(1).name.contains("Euler"));
 
-        assertEquals(false, results[0].name.contains("Newton"));
-        assertEquals(false, results[0].name.contains("Einstein"));
+        assertEquals(false, results.get(0).name.contains("Newton"));
+        assertEquals(false, results.get(1).name.contains("Einstein"));
 
     }
 

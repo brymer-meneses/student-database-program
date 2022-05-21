@@ -86,33 +86,18 @@ public class StudentDB implements DBInterface, Serializable {
         return false;
     }
 
-    // Pane[] panes = {pane1, pane2};
-    // Text[] texts = {text1, text2};
-    // StudentData[] results = database.search("hello");
-    // for (int i=0; i<results.length; i++) {
-    // if (i==0) {
-    //
-    // }
-    //
-    //
-    // }
+    public LinkedList<StudentData> searchData(String toSearch) {
+        LinkedList<StudentData> results = new LinkedList<StudentData>();
 
-    @Override
-    public StudentData[] searchData(String toSearch) {
-        StudentData data[] = new StudentData[maxStorageLength];
-
-        int count = 0;
         for (int i = 0; i < database.length; i++) {
             StudentData element = database.get(i);
 
             if (element.keywordInEntries(toSearch)) {
-                data[count] = element;
+                results.append(element);
             }
-
-            count++;
         }
 
-        return data;
+        return results;
     }
 
     @Override

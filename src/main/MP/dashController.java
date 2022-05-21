@@ -1,7 +1,7 @@
 package MP;
 
-
 import MP.StudentDBDemo;
+import MP.core.LinkedList;
 import MP.App;
 import javafx.application.*;
 import javafx.scene.*;
@@ -32,9 +32,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.fxml.*;
 
-
-public class dashController 
-{
+public class dashController {
 
     @FXML
     private Pane pane10b;
@@ -856,10 +854,10 @@ public class dashController
     private Button actionEdit;
 
     private int indexDelete;
+
     @FXML
-    
-    public void handleClicks(ActionEvent actionEvent) throws IOException 
-    {
+
+    public void handleClicks(ActionEvent actionEvent) throws IOException {
         // name1a.setText("SAMPLE1");
         // name1b.setText("SAMPLE1");
         // name1c.setText("SAMPLE1");
@@ -941,16 +939,13 @@ public class dashController
             editPane.setVisible(false);
             helpPane.setVisible(true);
         }
-        if (actionEvent.getSource() == saveAdd) 
-        {
+        if (actionEvent.getSource() == saveAdd) {
             addUIFunction();
         }
-        if (actionEvent.getSource() == searchFunction) 
-        {
+        if (actionEvent.getSource() == searchFunction) {
             searchUIFunction(String.valueOf(searchField.getText()));
         }
-        if (actionEvent.getSource() == delete1) 
-        {   
+        if (actionEvent.getSource() == delete1) {
             String nameLog = name1d.getText();
             String saisLog = sais1d.getText();
             String stunumLog = stunum1d.getText();
@@ -958,160 +953,140 @@ public class dashController
             System.out.println("Gate CHECK1");
             deleteUIFunction(0, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete2) 
-        {
+        if (actionEvent.getSource() == delete2) {
             String nameLog = name2d.getText();
             String saisLog = sais2d.getText();
             String stunumLog = stunum2d.getText();
             String addressLog = address2d.getText();
             deleteUIFunction(1, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete3) 
-        {
+        if (actionEvent.getSource() == delete3) {
             String nameLog = name3d.getText();
             String saisLog = sais3d.getText();
             String stunumLog = stunum3d.getText();
             String addressLog = address3d.getText();
             deleteUIFunction(2, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete4) 
-        {
+        if (actionEvent.getSource() == delete4) {
             String nameLog = name4d.getText();
             String saisLog = sais4d.getText();
             String stunumLog = stunum4d.getText();
             String addressLog = address4d.getText();
             deleteUIFunction(3, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete5) 
-        {
+        if (actionEvent.getSource() == delete5) {
             String nameLog = name5d.getText();
             String saisLog = sais5d.getText();
             String stunumLog = stunum5d.getText();
             String addressLog = address5d.getText();
             deleteUIFunction(4, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete6) 
-        {
+        if (actionEvent.getSource() == delete6) {
             String nameLog = name6d.getText();
             String saisLog = sais6d.getText();
             String stunumLog = stunum6d.getText();
             String addressLog = address6d.getText();
             deleteUIFunction(5, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete7) 
-        {
+        if (actionEvent.getSource() == delete7) {
             String nameLog = name7d.getText();
             String saisLog = sais7d.getText();
             String stunumLog = stunum7d.getText();
             String addressLog = address7d.getText();
             deleteUIFunction(6, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete8) 
-        {
+        if (actionEvent.getSource() == delete8) {
             String nameLog = name8d.getText();
             String saisLog = sais8d.getText();
             String stunumLog = stunum8d.getText();
             String addressLog = address8d.getText();
             deleteUIFunction(7, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete9) 
-        {
+        if (actionEvent.getSource() == delete9) {
             String nameLog = name9d.getText();
             String saisLog = sais9d.getText();
             String stunumLog = stunum9d.getText();
             String addressLog = address9d.getText();
             deleteUIFunction(8, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == delete10) 
-        {
+        if (actionEvent.getSource() == delete10) {
             String nameLog = name10d.getText();
             String saisLog = sais10d.getText();
             String stunumLog = stunum10d.getText();
             String addressLog = address10d.getText();
             deleteUIFunction(9, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit1) 
-        {
+        if (actionEvent.getSource() == edit1) {
             String nameLog = name1c.getText();
             String saisLog = sais1c.getText();
             String stunumLog = stunum1c.getText();
             String addressLog = address1c.getText();
             editUIFunction(0, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit2) 
-        {
+        if (actionEvent.getSource() == edit2) {
             String nameLog = name2c.getText();
             String saisLog = sais2c.getText();
             String stunumLog = stunum2c.getText();
             String addressLog = address2c.getText();
             editUIFunction(1, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit3) 
-        {
+        if (actionEvent.getSource() == edit3) {
             String nameLog = name3c.getText();
             String saisLog = sais3c.getText();
             String stunumLog = stunum3c.getText();
             String addressLog = address3c.getText();
             editUIFunction(2, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit4) 
-        {
+        if (actionEvent.getSource() == edit4) {
             String nameLog = name4c.getText();
             String saisLog = sais4c.getText();
             String stunumLog = stunum4c.getText();
             String addressLog = address4c.getText();
             editUIFunction(3, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit5) 
-        {
+        if (actionEvent.getSource() == edit5) {
             String nameLog = name5c.getText();
             String saisLog = sais5c.getText();
             String stunumLog = stunum5c.getText();
             String addressLog = address5c.getText();
             editUIFunction(4, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit6) 
-        {
+        if (actionEvent.getSource() == edit6) {
             String nameLog = name6c.getText();
             String saisLog = sais6c.getText();
             String stunumLog = stunum6c.getText();
             String addressLog = address6c.getText();
             editUIFunction(5, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit7) 
-        {
+        if (actionEvent.getSource() == edit7) {
             String nameLog = name7c.getText();
             String saisLog = sais7c.getText();
             String stunumLog = stunum7c.getText();
             String addressLog = address7c.getText();
             editUIFunction(6, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit8) 
-        {
+        if (actionEvent.getSource() == edit8) {
             String nameLog = name8c.getText();
             String saisLog = sais8c.getText();
             String stunumLog = stunum8c.getText();
             String addressLog = address8c.getText();
             editUIFunction(7, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit9) 
-        {
+        if (actionEvent.getSource() == edit9) {
             String nameLog = name9c.getText();
             String saisLog = sais9c.getText();
             String stunumLog = stunum9c.getText();
             String addressLog = address9c.getText();
             editUIFunction(8, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == edit10) 
-        {
+        if (actionEvent.getSource() == edit10) {
             String nameLog = name10c.getText();
             String saisLog = sais10c.getText();
             String stunumLog = stunum10c.getText();
             String addressLog = address10c.getText();
             editUIFunction(9, nameLog, saisLog, stunumLog, addressLog);
         }
-        if (actionEvent.getSource() == saveEdit) 
-        {
+        if (actionEvent.getSource() == saveEdit) {
             saveEditFunction();
         }
         if (actionEvent.getSource() == btnOK) {
@@ -1131,57 +1106,61 @@ public class dashController
 
             database.deleteData(database.getData(indexDelete).name, database.getData(indexDelete).saisID);
 
-            dialog("notif_deleted");//testline
+            dialog("notif_deleted");// testline
             System.out.println("TEST GATE1");
-            //dataGenerator();
+            // dataGenerator();
             System.out.println("TEST GATE2");
-            //update entries
+            // update entries
         }
         if (actionEvent.getSource() == actionEdit) {
             Stage stage = (Stage) actionEdit.getScene().getWindow();
             stage.close();
-            dialog("notif_savedchanges");//testline
-            //overwrite changes
-            //dialog("notif_savedchanges");
-            //update entries
+            dialog("notif_savedchanges");// testline
+            // overwrite changes
+            // dialog("notif_savedchanges");
+            // update entries
         }
 
-
-
     }
+
     @FXML
-    public void keyPress(ActionEvent event) throws IOException 
-    {
+    public void keyPress(ActionEvent event) throws IOException {
         searchContent.setVisible(true);
         searchUIFunction(String.valueOf(searchField.getText()));
     }
-    public void dataGenerator()
-    {
+
+    public void dataGenerator() {
         StudentDB database = StudentDB.readSavedData();
 
-        Pane[] panesA= {pane1a, pane2a, pane3a, pane4a, pane5a, pane6a, pane7a, pane8a, pane9a, pane10a};
-        Text[] containNameA = {name1a, name2a, name3a, name4a, name5a, name6a, name7a, name8a, name9a, name10a};
-        Text[] containSaisA  = {sais1a, sais2a, sais3a, sais4a, sais5a, sais6a, sais7a, sais8a, sais9a, sais10a};
-        Text[] containStunumA  = {stunum1a, stunum2a, stunum3a, stunum4a, stunum5a, stunum6a, stunum7a, stunum8a, stunum9a, stunum10a};
-        Text[] containAddressA  = {address1a, address2a, address3a, address4a, address5a, address6a, address7a, address8a, address9a, address10a};
+        Pane[] panesA = { pane1a, pane2a, pane3a, pane4a, pane5a, pane6a, pane7a, pane8a, pane9a, pane10a };
+        Text[] containNameA = { name1a, name2a, name3a, name4a, name5a, name6a, name7a, name8a, name9a, name10a };
+        Text[] containSaisA = { sais1a, sais2a, sais3a, sais4a, sais5a, sais6a, sais7a, sais8a, sais9a, sais10a };
+        Text[] containStunumA = { stunum1a, stunum2a, stunum3a, stunum4a, stunum5a, stunum6a, stunum7a, stunum8a,
+                stunum9a, stunum10a };
+        Text[] containAddressA = { address1a, address2a, address3a, address4a, address5a, address6a, address7a,
+                address8a, address9a, address10a };
 
-        Pane[] panesC= {pane1c, pane2c, pane3c, pane4c, pane5c, pane6c, pane7c, pane8c, pane9c, pane10c};
-        Text[] containNameC = {name1c, name2c, name3c, name4c, name5c, name6c, name7c, name8c, name9c, name10c};
-        Text[] containSaisC  = {sais1c, sais2c, sais3c, sais4c, sais5c, sais6c, sais7c, sais8c, sais9c, sais10c};
-        Text[] containStunumC  = {stunum1c, stunum2c, stunum3c, stunum4c, stunum5c, stunum6c, stunum7c, stunum8c, stunum9c, stunum10c};
-        Text[] containAddressC  = {address1c, address2c, address3c, address4c, address5c, address6c, address7c, address8c, address9c, address10c};
-        
-        Pane[] panesD= {pane1d, pane2d, pane3d, pane4d, pane5d, pane6d, pane7d, pane8d, pane9d, pane10d};
-        Text[] containNameD = {name1d, name2d, name3d, name4d, name5d, name6d, name7d, name8d, name9d, name10d};
-        Text[] containSaisD  = {sais1d, sais2d, sais3d, sais4d, sais5d, sais6d, sais7d, sais8d, sais9d, sais10d};
-        Text[] containStunumD  = {stunum1d, stunum2d, stunum3d, stunum4d, stunum5d, stunum6d, stunum7d, stunum8d, stunum9d, stunum10d};
-        Text[] containAddressD  = {address1d, address2d, address3d, address4d, address5d, address6d, address7d, address8d, address9d, address10d};
+        Pane[] panesC = { pane1c, pane2c, pane3c, pane4c, pane5c, pane6c, pane7c, pane8c, pane9c, pane10c };
+        Text[] containNameC = { name1c, name2c, name3c, name4c, name5c, name6c, name7c, name8c, name9c, name10c };
+        Text[] containSaisC = { sais1c, sais2c, sais3c, sais4c, sais5c, sais6c, sais7c, sais8c, sais9c, sais10c };
+        Text[] containStunumC = { stunum1c, stunum2c, stunum3c, stunum4c, stunum5c, stunum6c, stunum7c, stunum8c,
+                stunum9c, stunum10c };
+        Text[] containAddressC = { address1c, address2c, address3c, address4c, address5c, address6c, address7c,
+                address8c, address9c, address10c };
 
-        Button[] deleteArray = {delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9, delete10};
-        Button[] editArray = {edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, edit10};
+        Pane[] panesD = { pane1d, pane2d, pane3d, pane4d, pane5d, pane6d, pane7d, pane8d, pane9d, pane10d };
+        Text[] containNameD = { name1d, name2d, name3d, name4d, name5d, name6d, name7d, name8d, name9d, name10d };
+        Text[] containSaisD = { sais1d, sais2d, sais3d, sais4d, sais5d, sais6d, sais7d, sais8d, sais9d, sais10d };
+        Text[] containStunumD = { stunum1d, stunum2d, stunum3d, stunum4d, stunum5d, stunum6d, stunum7d, stunum8d,
+                stunum9d, stunum10d };
+        Text[] containAddressD = { address1d, address2d, address3d, address4d, address5d, address6d, address7d,
+                address8d, address9d, address10d };
 
-        for (int i=0; i < 10; i++)
-        {
+        Button[] deleteArray = { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9,
+                delete10 };
+        Button[] editArray = { edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, edit10 };
+
+        for (int i = 0; i < 10; i++) {
             panesA[i].setVisible(false);
             panesC[i].setVisible(false);
             panesD[i].setVisible(false);
@@ -1195,7 +1174,7 @@ public class dashController
             // containSaisC[i].setText("...loading data...");
             // containStunumC[i].setText("...loading data...");
             // containAddressC[i].setText("...loading data...");
-            
+
             // containNameD[i].setText("...loading data...");
             // containSaisD[i].setText("...loading data...");
             // containStunumD[i].setText("...loading data...");
@@ -1203,9 +1182,8 @@ public class dashController
         }
 
         int dataLoad = database.length();
-        
-        for (int i=0; i < dataLoad; i++)
-        {
+
+        for (int i = 0; i < dataLoad; i++) {
             panesA[i].setVisible(true);
             panesC[i].setVisible(true);
             panesD[i].setVisible(true);
@@ -1219,72 +1197,73 @@ public class dashController
             containSaisC[i].setText(String.valueOf(database.getData(i).saisID));
             containStunumC[i].setText(String.valueOf(database.getData(i).studentNumber));
             containAddressC[i].setText(String.valueOf(database.getData(i).address));
-            
+
             containNameD[i].setText(String.valueOf(database.getData(i).name));
             containSaisD[i].setText(String.valueOf(database.getData(i).saisID));
             containStunumD[i].setText(String.valueOf(database.getData(i).studentNumber));
             containAddressD[i].setText(String.valueOf(database.getData(i).address));
         }
     }
-    public void searchEntry(String pathFXML) throws IOException 
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+pathFXML+".fxml"));
+
+    public void searchEntry(String pathFXML) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + pathFXML + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.showAndWait();
     }
-    public void dialog(String pathFXML) throws IOException 
-    {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+pathFXML+".fxml"));
+
+    public void dialog(String pathFXML) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + pathFXML + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.showAndWait();
     }
-    public void searchUIFunction(String searchKeyword) throws IOException
-    {
+
+    public void searchUIFunction(String searchKeyword) throws IOException {
         StudentDB database = StudentDB.readSavedData();
 
-        Pane[] panes= {pane1b, pane2b, pane3b, pane4b, pane5b, pane6b, pane7b, pane8b, pane9b, pane10b};
-        Text[] containName = {name1b, name2b, name3b, name4b, name5b, name6b, name7b, name8b, name9b, name10b};
-        Text[] containSais  = {sais1b, sais2b, sais3b, sais4b, sais5b, sais6b, sais7b, sais8b, sais9b, sais10b};
-        Text[] containStunum  = {stunum1b, stunum2b, stunum3b, stunum4b, stunum5b, stunum6b, stunum7b, stunum8b, stunum9b, stunum10b};
-        Text[] containAddress  = {address1b, address2b, address3b, address4b, address5b, address6b, address7b, address8b, address9b, address10b};
+        Pane[] panes = { pane1b, pane2b, pane3b, pane4b, pane5b, pane6b, pane7b, pane8b, pane9b, pane10b };
+        Text[] containName = { name1b, name2b, name3b, name4b, name5b, name6b, name7b, name8b, name9b, name10b };
+        Text[] containSais = { sais1b, sais2b, sais3b, sais4b, sais5b, sais6b, sais7b, sais8b, sais9b, sais10b };
+        Text[] containStunum = { stunum1b, stunum2b, stunum3b, stunum4b, stunum5b, stunum6b, stunum7b, stunum8b,
+                stunum9b, stunum10b };
+        Text[] containAddress = { address1b, address2b, address3b, address4b, address5b, address6b, address7b,
+                address8b, address9b, address10b };
 
-        System.out.println("RESULT" +database.searchData(searchKeyword).length);
+        System.out.println("RESULT" + database.searchData(searchKeyword).length);
         System.out.println("OWO");
-        if (database.searchData(searchKeyword).length == 0)//revise
+        if (database.searchData(searchKeyword).length == 0)// revise
         {
             nomatchDialog.setVisible(true);
             searchContent.setVisible(false);
-        }
-        else if (database.searchData(searchKeyword).length > 0)//revise
+        } else if (database.searchData(searchKeyword).length > 0)// revise
         {
             nomatchDialog.setVisible(false);
             searchContent.setVisible(true);
-            int searchLoad = (database.searchData(searchKeyword).length) / 2;
 
-            for (int i=0; i < 10; i++)
-            {
+            LinkedList<StudentData> results = database.searchData(searchKeyword);
+
+            for (int i = 0; i < 10; i++) {
                 panes[i].setVisible(false);
             }
 
-            for (int i=0; i < searchLoad; i++)
-            {
+            for (int i = 0; i < results.length; i++) {
                 panes[i].setVisible(true);
-                System.out.println(database.searchData(searchKeyword).length+">>>");
-                containName[i].setText(String.valueOf(database.searchData(searchKeyword)[i].name));
-                containSais[i].setText(String.valueOf(database.searchData(searchKeyword)[i].saisID));
-                containStunum[i].setText(String.valueOf(database.searchData(searchKeyword)[i].studentNumber));
-                containAddress[i].setText(String.valueOf(database.searchData(searchKeyword)[i].address));
+                System.out.println(database.searchData(searchKeyword).length + ">>>");
+                containName[i].setText(String.valueOf(results.get(i).name));
+                containSais[i].setText(String.valueOf(results.get(i).saisID));
+                containStunum[i].setText(String.valueOf(results.get(i).studentNumber));
+                containAddress[i].setText(String.valueOf(results.get(i).address));
             }
         }
     }
-    public void editUIFunction(int numList, String nameLog,String saisLog, String stunumLog, String addressLog) throws IOException
-    {
+
+    public void editUIFunction(int numList, String nameLog, String saisLog, String stunumLog, String addressLog)
+            throws IOException {
         saveEdit.setDisable(false);
         // System.out.println(nameLog);
         // System.out.println(saisLog);
@@ -1295,8 +1274,9 @@ public class dashController
         stunumTxtfielda.setText(stunumLog);
         addressTxtfielda.setText(addressLog);
     }
-    public void deleteUIFunction(int numList, String nameLog,String saisLog, String stunumLog, String addressLog) throws IOException
-    {
+
+    public void deleteUIFunction(int numList, String nameLog, String saisLog, String stunumLog, String addressLog)
+            throws IOException {
         dialog("confirm_delete");
         // nameDelete.setText(nameLog);
         // stunumDelete.setText(stunumLog);
@@ -1304,6 +1284,7 @@ public class dashController
         // saisDelete.setText(saisLog);
         this.indexDelete = numList;
     }
+
     public void saveEditFunction() throws IOException 
     {
         String inputName = nameTxtfielda.getText();
@@ -1393,6 +1374,7 @@ public class dashController
                     // //clear the txtfield
         }
     }
+
     public void addUIFunction() throws IOException 
     {
         String inputName = nameTxtfield.getText();
