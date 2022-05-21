@@ -79,6 +79,16 @@ public class LinkedList<T> implements LinkedListInterface<T>, Serializable {
 
     }
 
+    public boolean exists(int index) {
+
+        if (index > length || index < 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     private Node<T> getNode(int index) {
 
         if (index > length || index < 0) {

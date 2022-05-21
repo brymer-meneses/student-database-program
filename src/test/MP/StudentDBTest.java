@@ -64,7 +64,7 @@ public class StudentDBTest {
         assertEquals("person 1", sdb.getData(0).name);
         assertEquals("person 2", sdb.getData(1).name);
         assertEquals("person 3", sdb.getData(2).name);
-        assertEquals(null, sdb.getData(3));
+        assertEquals(null, sdb.getData(3))
 
     }
 
