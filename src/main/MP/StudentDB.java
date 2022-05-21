@@ -35,6 +35,13 @@ public class StudentDB implements DBInterface, Serializable {
 
     }
 
+    public boolean elementExists(int index) {
+        if (index >= database.length || index < 0) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public boolean addData(StudentData dbd) {
 

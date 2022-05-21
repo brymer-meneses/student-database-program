@@ -1,6 +1,7 @@
 package MP.core;
 
 import java.io.Serializable;
+import java.security.KeyException;
 
 import MP.interfaces.LinkedListInterface;
 
@@ -76,16 +77,6 @@ public class LinkedList<T> implements LinkedListInterface<T>, Serializable {
     @Override
     public T get(int index) {
         return getNode(index).data;
-
-    }
-
-    public boolean exists(int index) {
-
-        if (index > length || index < 0) {
-            return true;
-        } else {
-            return false;
-        }
 
     }
 
