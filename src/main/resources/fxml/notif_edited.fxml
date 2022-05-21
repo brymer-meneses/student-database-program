@@ -43,24 +43,24 @@
             <Image url="@../resources/error.png" />
          </image>
       </ImageView>
-      <Label layoutX="128.0" layoutY="124.0" prefHeight="87.0" prefWidth="264.0" text="Check view for the saved changes" textFill="WHITE" wrapText="true">
+      <Label layoutX="128.0" layoutY="128.0" prefHeight="87.0" prefWidth="247.0" text="The entry you are about to edit will not be saved since it is already exisiting in the database, aside to this entry you are currently editing." textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <Button fx:id="btnOK" contentDisplay="TOP" layoutX="249.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="OK" textFill="#e5e9f0">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font size="13.0" />
          </font>
       </Button>
       <Line endX="306.8333435058594" endY="1.52587890625E-5" layoutX="108.0" layoutY="41.0" startX="-119.873779296875" startY="1.52587890625E-5" stroke="#34373a" strokeWidth="2.0" />
       <Line endX="475.12615966796875" endY="4.57763671875E-5" layoutX="108.0" layoutY="279.0" startX="-119.873779296875" startY="1.52587890625E-5" stroke="#34373a" strokeWidth="2.0" />
       <ImageView fitHeight="72.0" fitWidth="126.0" layoutX="32.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icons/success.png" />
+            <Image url="@../icons/confirmation.png" />
          </image>
       </ImageView>
-      <Label layoutX="124.0" layoutY="55.0" prefHeight="87.0" prefWidth="228.0" text="This entry has been successfully added." textFill="WHITE" wrapText="true">
+      <Label layoutX="124.0" layoutY="55.0" prefHeight="87.0" prefWidth="228.0" text="This entry is already in the database" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
