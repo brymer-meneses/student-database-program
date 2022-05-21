@@ -1234,8 +1234,6 @@ public class dashController {
         Text[] containAddress = { address1b, address2b, address3b, address4b, address5b, address6b, address7b,
                 address8b, address9b, address10b };
 
-        System.out.println("RESULT" + database.searchData(searchKeyword).length);
-        System.out.println("OWO");
         if (database.searchData(searchKeyword).length == 0)// revise
         {
             nomatchDialog.setVisible(true);
@@ -1247,13 +1245,12 @@ public class dashController {
 
             LinkedList<StudentData> results = database.searchData(searchKeyword);
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < panes.length; i++) {
                 panes[i].setVisible(false);
             }
 
             for (int i = 0; i < results.length; i++) {
                 panes[i].setVisible(true);
-                System.out.println(database.searchData(searchKeyword).length + ">>>");
                 containName[i].setText(String.valueOf(results.get(i).name));
                 containSais[i].setText(String.valueOf(results.get(i).saisID));
                 containStunum[i].setText(String.valueOf(results.get(i).studentNumber));
@@ -1382,94 +1379,92 @@ public class dashController {
         String inputStunum = stunumTxtfield.getText();
         String inputAddress = addressTxtfield.getText();
 
-        if(!inputName.matches("[a-zA-Z\s]+")  && inputName.length() > 0)
-        {
+        if (!inputName.matches("[a-zA-Z\s]+")  && inputName.length() > 0) {
             charOnly1.setVisible(true);
         }
-        if(!inputSAIS.matches("[0-9\s]+")  && inputSAIS.length() > 0)
-        {
+        if (!inputSAIS.matches("[0-9\s]+")  && inputSAIS.length() > 0) {
             numOnly1.setVisible(true);
         }
-        if(!inputStunum.matches("[0-9\s]+")  && inputStunum.length() > 0)
-        {
+        if (!inputStunum.matches("[0-9\s]+")  && inputStunum.length() > 0) {
             numOnly2.setVisible(true);
         }
-        if(inputName.matches("[a-zA-Z\s]+") )
-        {
+        if (inputName.matches("[a-zA-Z\s]+") ) {
             charOnly1.setVisible(false);
         }
-        if(inputSAIS.matches("[0-9\s]+") )
-        {
+        if (inputSAIS.matches("[0-9\s]+") ) {
             numOnly1.setVisible(false);
         }
-        if(inputStunum.matches("[0-9\s]+") )
-        {
+
+        if (inputStunum.matches("[0-9\s]+") ) {
             numOnly2.setVisible(false);
         }
-        if(inputStunum.length() > 0)
-        {
+
+        if (inputStunum.length() > 0) {
             stunumTxtfield.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
-        if(inputName.length() > 0)
-        {
+
+        if (inputName.length() > 0) {
             nameTxtfield.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
-        if(inputSAIS.length() > 0)
-        {
+
+        if (inputSAIS.length() > 0) {
             saisTxtfield.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
-        if(inputAddress.length() > 0)
-        {
+
+        if (inputAddress.length() > 0) {
             addressTxtfield.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
         
-        if(inputAddress.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0 || inputStunum.length() == 0)
-        {
+        if (inputAddress.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0 || inputStunum.length() == 0) {
             requireNotif.setVisible(true);
-            if(inputAddress.length() == 0)
-            {
+
+            if (inputAddress.length() == 0) {
                 addressTxtfield.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
             }
-            if(inputName.length() == 0)
-            {
+
+            if (inputName.length() == 0) {
                 charOnly1.setVisible(false);
                 nameTxtfield.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
             }
-            if(inputSAIS.length() == 0)
-            {
+
+            if (inputSAIS.length() == 0) {
                 numOnly1.setVisible(false);
                 saisTxtfield.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
             }
-            if(inputStunum.length() == 0)
-            {
+
+            if(inputStunum.length() == 0) {
                 numOnly2.setVisible(false);
                 stunumTxtfield.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
             }
         }
-        else if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0)
-        {
+        else if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0) {
             requireNotif.setVisible(false);
         }
-        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0
-                && inputName.matches("[a-zA-Z]+")  && inputName.matches("[a-zA-Z]+")  && inputName.matches("[a-zA-Z]+") )
-        {
+
+        // if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0
+        //         && inputName.matches("[a-zA-Z]+")  && inputName.matches("[a-zA-Z]+")  && inputName.matches("[a-zA-Z]+") ) {
             StudentDB database = StudentDB.readSavedData();
-            // if()//CHECK for pre-existing 
-            // {
-            //     dialog("notif_added")
-                if(database.length() == 10)//check for sdb length
-                {
-                    dialog("warn_overflow");
-                }
-                else if(database.length() < 10)
-                {    
-                    // database.addData()
-                    dialog("notif_addsuccess");
-                    nameTxtfield.clear();
-                    stunumTxtfield.clear();
-                    addressTxtfield.clear();
-                    saisTxtfield.clear();
-                }    
-        }
+            System.out.println(inputName);
+            System.out.println(inputAddress);
+            StudentData element = new StudentData(inputName, Integer.parseInt(inputSAIS), Integer.parseInt(inputStunum), inputAddress);
+
+            if(database.length() == 10) {
+                dialog("warn_overflow");
+                return;
+            }
+
+            if (database.isDuplicateOfDatabase(element)) {
+                dialog("notif_added");
+                return;
+            }
+
+            else if(database.length() < 10) {    
+                dialog("notif_addsuccess");
+                nameTxtfield.clear();
+                stunumTxtfield.clear();
+                addressTxtfield.clear();
+                saisTxtfield.clear();
+            }    
+    // }
     }
 }
