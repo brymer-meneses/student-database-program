@@ -864,86 +864,87 @@ public class dashController
         // name1c.setText("SAMPLE1");
         // name1d.setText("SAMPLE1");
 
-        if (actionEvent.getSource() == btnMin) {
-            Stage stage = (Stage) btnMin.getScene().getWindow();
-            stage.setIconified(true);
-        }
-        if (actionEvent.getSource() == btnClose) {
-            Stage stage = (Stage) btnClose.getScene().getWindow();
-            stage.close();
-        }
-        if (actionEvent.getSource() == btnView) {
-            dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(true);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnHome) {
-            homePane.setVisible(true);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnEdit) {
-            dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(true);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnAdd) {
-            dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(true);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnSearch) {
-            dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(true);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnDelete) {
-            dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(true);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnHelp) {
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(true);
-        }
-        if (actionEvent.getSource() == saveAdd) 
-        {
-            addUIFunction();
-        }
+        switch (actionEvent.getSource()) {
+            case btnMin:
+                Stage stage = (Stage) btnMin.getScene().getWindow();
+                stage.setIconified(true);
+                break;
+            case btnClose:
+                Stage stage = (Stage) btnClose.getScene().getWindow();
+                stage.close();
+                break;
+            case btnView:
+                dataGenerator();
+                homePane.setVisible(false);
+                viewPane.setVisible(true);
+                addPane.setVisible(false);
+                searchPane.setVisible(false);
+                deletePane.setVisible(false);
+                editPane.setVisible(false);
+                helpPane.setVisible(false);
+                break;
+            case btnHome:
+                homePane.setVisible(true);
+                viewPane.setVisible(false);
+                addPane.setVisible(false);
+                searchPane.setVisible(false);
+                deletePane.setVisible(false);
+                editPane.setVisible(false);
+                helpPane.setVisible(false);
+                break;
+            case btnEdit:
+                dataGenerator();
+                homePane.setVisible(false);
+                viewPane.setVisible(false);
+                addPane.setVisible(false);
+                searchPane.setVisible(false);
+                deletePane.setVisible(false);
+                editPane.setVisible(true);
+                helpPane.setVisible(false);
+                break;
+            case btnAdd:
+                dataGenerator();
+                homePane.setVisible(false);
+                viewPane.setVisible(false);
+                addPane.setVisible(true);
+                searchPane.setVisible(false);
+                deletePane.setVisible(false);
+                editPane.setVisible(false);
+                helpPane.setVisible(false);
+                break;
+            case btnSearch:
+                dataGenerator();
+                homePane.setVisible(false);
+                viewPane.setVisible(false);
+                addPane.setVisible(false);
+                searchPane.setVisible(true);
+                deletePane.setVisible(false);
+                editPane.setVisible(false);
+                helpPane.setVisible(false);
+                break;
+            case btnDelete:
+                dataGenerator();
+                homePane.setVisible(false);
+                viewPane.setVisible(false);
+                addPane.setVisible(false);
+                searchPane.setVisible(false);
+                deletePane.setVisible(true);
+                editPane.setVisible(false);
+                helpPane.setVisible(false);
+                break;
+            case btnHelp: 
+                homePane.setVisible(false);
+                viewPane.setVisible(false);
+                addPane.setVisible(false);
+                searchPane.setVisible(false);
+                deletePane.setVisible(false);
+                editPane.setVisible(false);
+                helpPane.setVisible(true);
+                break;
+            case saveAdd:
+                addUIFunction();
+                break;
+            
         if (actionEvent.getSource() == searchFunction) 
         {
             searchUIFunction();
@@ -1137,6 +1138,8 @@ public class dashController
             //dialog("notif_savedchanges");
             //update entries
         }
+        }
+
 
 
 
@@ -1613,7 +1616,20 @@ public class dashController
             addressTxtfield.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
         
-        if(inputAddress.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0 || inputStunum.length() == 0)
+        if(inputAddre    @Test
+        public void testGetData() {
+            StudentDB sdb = new StudentDB();
+    
+            sdb.addData(new StudentData("person 1", 1, 1, "Earth"));
+            sdb.addData(new StudentData("person 2", 2, 2, "Mars"));
+            sdb.addData(new StudentData("person 3", 3, 3, "Jupiter"));
+    
+            assertEquals("person 1", sdb.getData(0).name);
+            assertEquals("person 2", sdb.getData(1).name);
+            assertEquals("person 3", sdb.getData(2).name);
+    
+        }
+    ss.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0 || inputStunum.length() == 0)
         {
             requireNotif.setVisible(true);
             if(inputAddress.length() == 0)
