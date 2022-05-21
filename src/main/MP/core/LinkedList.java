@@ -6,6 +6,7 @@ import java.security.KeyException;
 import MP.interfaces.LinkedListInterface;
 
 public class LinkedList<T> implements LinkedListInterface<T>, Serializable {
+    private static final long serialVersionUID = 6529685098267757690L;
     protected Node<T> head;
     protected Node<T> tail;
     public int length = 0;

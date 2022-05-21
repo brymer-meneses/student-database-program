@@ -3,6 +3,7 @@ package MP;
 import java.io.Serializable;
 
 public class StudentData implements Serializable {
+    private static final long serialVersionUID = 6529685098267757690L;
     final String name;
     final int saisID;
     final int studentNumber;
