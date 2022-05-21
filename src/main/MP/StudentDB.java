@@ -97,7 +97,11 @@ public class StudentDB implements DBInterface, Serializable {
     }
 
     public StudentData getData(int index) {
-        return database.get(index);
+        try {
+            return database.get(index);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public boolean isDuplicateOfDatabase(StudentData element) {
