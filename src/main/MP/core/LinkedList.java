@@ -91,7 +91,7 @@ public class LinkedList<T> implements LinkedListInterface<T>, Serializable {
 
     private Node<T> getNode(int index) {
 
-        if (index > length || index < 0) {
+        if (exists(index)) {
             throw new java.lang.Error(
                     String.format("Element cannot be found. Expected integer in range of [0, %d). Got: %d ", length,
                             index));
