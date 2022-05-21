@@ -35,6 +35,17 @@ public class StudentDB implements DBInterface, Serializable {
 
     }
 
+    public void print() {
+        System.out.println("Student Database = {");
+        for (int i = 0; i < database.length; i++) {
+            StudentData element = database.get(i);
+            System.out.println(
+                    String.format("\t Name: %s saisId: %d  studentNumber: %d address: %s", element.name, element.saisID,
+                            element.studentNumber,
+                            element.address));
+        }
+        System.out.println("}");
+    }
 
     public boolean elementExists(int index) {
         if (index >= database.length || index < 0) {
@@ -79,11 +90,11 @@ public class StudentDB implements DBInterface, Serializable {
     // Text[] texts = {text1, text2};
     // StudentData[] results = database.search("hello");
     // for (int i=0; i<results.length; i++) {
-    //    if (i==0) {
+    // if (i==0) {
     //
-    //    } 
-    // 
-    //      
+    // }
+    //
+    //
     // }
 
     @Override
