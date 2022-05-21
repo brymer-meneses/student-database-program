@@ -3,6 +3,7 @@ package MP;
 import MP.StudentDBDemo;
 import MP.core.LinkedList;
 import MP.App;
+
 import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -21,842 +22,92 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.paint.Color;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.stage.*;
-import MP.StudentDBDemo;
-import MP.App;
-import java.io.IOException;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.fxml.*;
 
 public class dashController {
 
     @FXML
-    private Pane pane10b;
+    private Pane pane10b,
+            pane10c, pane10d, pane1b, pane1c, pane1d, pane2b, pane2c, pane2d, pane3d, pane3b, pane3c, pane4b, pane4c,
+            pane4d, pane5b, pane5c, pane5d, pane6b, pane6c, pane6d, pane7b, pane7c, pane7d, pane8b, pane8c, pane8d,
+            pane9b, pane9c, pane9d, pane10a, pane1a, pane2a, pane3a, pane4a, pane5a, pane6a,
+            pane7a, pane8a, pane9a, addPane, deletePane;
 
     @FXML
-    private Pane pane10c;
+    private Text address10a, address10b, address10c, address10d, address1a, address1b, address1c, address1d, address2a,
+            address2b, address2c, address2d, address3a, address3b, address3c, address3d, address4a, address4b,
+            address4c, address4d, address5a, address5b, address5c, address5d, address6a, address6b, address6c,
+            address6d, address7d, address7a, address7b, address7c, address8a, address8b, address8c, address8d,
+            address9a, address9b, address9c, address9d;
 
     @FXML
-    private Pane pane10d;
+    private TextField addressTxtfield, addressTxtfielda;
 
     @FXML
-    private Pane pane1b;
+    private Text charOnly1, charOnly1a;
 
     @FXML
-    private Pane pane1c;
+    private Button btnAdd, btnClose, btnDelete, btnEdit, btnHelp, btnHome, btnMin, btnSearch, btnView,
+            delete1, delete10, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9,
+            edit10, edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9,
+            saveAdd, saveAdd1, saveEdit;
 
     @FXML
-    private Pane pane1d;
+    private Button actionEdit, actionDelete, btnDialogclose, btnOK, searchFunction;
 
     @FXML
-    private Pane pane2b;
+    private Pane editPane, helpPane, homePane;
 
     @FXML
-    private Pane pane2c;
+    private Text name1, name10a, name10b, name10c, name10d, name1a, name1b,
+            name1c, name1d, name2a, name2b, name2c, name2d, name3b, name3a, name3c,
+            name3d, name4a, name4b, name4c, name4d, name5a, name5b, name5c, name5d, name6a,
+            name6b, name6c, name6d, name7a, name7b, name7c, name7d, name8a, name8b,
+            name8c, name8d, name9a, name9b, name9c, name9d;
 
     @FXML
-    private Pane pane2d;
+    private TextField nameTxtfield, nameTxtfielda;
 
     @FXML
-    private Pane pane3d;
+    private Text numOnly1, numOnly1a, numOnly2, numOnly2a;
 
     @FXML
-    private Pane pane3b;
+    private Pane requireNotif, requireNotifa;
 
     @FXML
-    private Pane pane3c;
+    private VBox pnItems, pnItems1, pnItems11, pnItems2;
 
     @FXML
-    private Pane pane4b;
+    private Text sais10a, sais10b, sais10d, sais1a, sais1b, sais1c, sais1d,
+            sais2a, sais2b, sais2c, sais2d, sais3a, sais3b, sais3c, sais3d, sais4a,
+            sais4b, sais4c, sais4d, sais5a, sais5b, sais5c, sais5d, sais6a, sais6b,
+            sais6c, sais6d, sais7a, sais7b, sais7c, sais7d, sais8a, sais8b, sais8c,
+            sais8d, sais9a, sais9b, sais9c, sais9d, sais10c;
 
     @FXML
-    private Pane pane4c;
-
-    @FXML
-    private Pane pane4d;
-
-    @FXML
-    private Pane pane5b;
-
-    @FXML
-    private Pane pane5c;
-
-    @FXML
-    private Pane pane5d;
-
-    @FXML
-    private Pane pane6b;
-
-    @FXML
-    private Pane pane6c;
-
-    @FXML
-    private Pane pane6d;
-
-    @FXML
-    private Pane pane7b;
-
-    @FXML
-    private Pane pane7c;
-
-    @FXML
-    private Pane pane7d;
-
-    @FXML
-    private Pane pane8b;
-
-    @FXML
-    private Pane pane8c;
-
-    @FXML
-    private Pane pane8d;
-
-    @FXML
-    private Pane pane9b;
-
-    @FXML
-    private Pane pane9c;
-
-    @FXML
-    private Pane pane9d;
-
-    @FXML
-    private Pane addPane;
-
-    @FXML
-    private Text address10a;
-
-    @FXML
-    private Text address10b;
-
-    @FXML
-    private Text address10c;
-
-    @FXML
-    private Text address10d;
-
-    @FXML
-    private Text address1a;
-
-    @FXML
-    private Text address1b;
-
-    @FXML
-    private Text address1c;
-
-    @FXML
-    private Text address1d;
-
-    @FXML
-    private Text address2a;
-
-    @FXML
-    private Text address2b;
-
-    @FXML
-    private Text address2c;
-
-    @FXML
-    private Text address2d;
-
-    @FXML
-    private Text address3a;
-
-    @FXML
-    private Text address3b;
-
-    @FXML
-    private Text address3c;
-
-    @FXML
-    private Text address3d;
-
-    @FXML
-    private Text address4a;
-
-    @FXML
-    private Text address4b;
-
-    @FXML
-    private Text address4c;
-
-    @FXML
-    private Text address4d;
-
-    @FXML
-    private Text address5a;
-
-    @FXML
-    private Text address5b;
-
-    @FXML
-    private Text address5c;
-
-    @FXML
-    private Text address5d;
-
-    @FXML
-    private Text address6a;
-
-    @FXML
-    private Text address6b;
-
-    @FXML
-    private Text address6c;
-
-    @FXML
-    private Text address6d;
-
-    @FXML
-    private Text address7d;
-
-    @FXML
-    private Text address7a;
-
-    @FXML
-    private Text address7b;
-
-    @FXML
-    private Text address7c;
-
-    @FXML
-    private Text address8a;
-
-    @FXML
-    private Text address8b;
-
-    @FXML
-    private Text address8c;
-
-    @FXML
-    private Text address8d;
-
-    @FXML
-    private Text address9a;
-
-    @FXML
-    private Text address9b;
-
-    @FXML
-    private Text address9c;
-
-    @FXML
-    private Text address9d;
-
-    @FXML
-    private TextField addressTxtfield;
-
-    @FXML
-    private TextField addressTxtfielda;
-
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnClose;
-
-    @FXML
-    private Button btnDelete;
-
-    @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnHelp;
-
-    @FXML
-    private Button btnHome;
-
-    @FXML
-    private Button btnMin;
-
-    @FXML
-    private Button btnSearch;
-
-    @FXML
-    private Button btnView;
-
-    @FXML
-    private Text charOnly1;
-
-    @FXML
-    private Text charOnly1a;
-
-    @FXML
-    private Button delete1;
-
-    @FXML
-    private Button delete10;
-
-    @FXML
-    private Button delete2;
-
-    @FXML
-    private Button delete3;
-
-    @FXML
-    private Button delete4;
-
-    @FXML
-    private Button delete5;
-
-    @FXML
-    private Button delete6;
-
-    @FXML
-    private Button delete7;
-
-    @FXML
-    private Button delete8;
-
-    @FXML
-    private Button delete9;
-
-    @FXML
-    private Pane deletePane;
-
-    @FXML
-    private Button edit1;
-
-    @FXML
-    private Button edit10;
-
-    @FXML
-    private Button edit2;
-
-    @FXML
-    private Button edit3;
-
-    @FXML
-    private Button edit4;
-
-    @FXML
-    private Button edit5;
-
-    @FXML
-    private Button edit6;
-
-    @FXML
-    private Button edit7;
-
-    @FXML
-    private Button edit8;
-
-    @FXML
-    private Button edit9;
-
-    @FXML
-    private Pane editPane;
-
-    @FXML
-    private Pane helpPane;
-
-    @FXML
-    private Pane homePane;
-
-    @FXML
-    private Text name1;
-
-    @FXML
-    private Text name10a;
-
-    @FXML
-    private Text name10b;
-
-    @FXML
-    private Text name10c;
-
-    @FXML
-    private Text name10d;
-
-    @FXML
-    private Text name1a;
-
-    @FXML
-    private Text name1b;
-
-    @FXML
-    private Text name1c;
-
-    @FXML
-    private Text name1d;
-
-    @FXML
-    private Text name2a;
-
-    @FXML
-    private Text name2b;
-
-    @FXML
-    private Text name2c;
-
-    @FXML
-    private Text name2d;
-
-    @FXML
-    private Text name3b;
-
-    @FXML
-    private Text name3a;
-
-    @FXML
-    private Text name3c;
-
-    @FXML
-    private Text name3d;
-
-    @FXML
-    private Text name4a;
-
-    @FXML
-    private Text name4b;
-
-    @FXML
-    private Text name4c;
-
-    @FXML
-    private Text name4d;
-
-    @FXML
-    private Text name5a;
-
-    @FXML
-    private Text name5b;
-
-    @FXML
-    private Text name5c;
-
-    @FXML
-    private Text name5d;
-
-    @FXML
-    private Text name6a;
-
-    @FXML
-    private Text name6b;
-
-    @FXML
-    private Text name6c;
-
-    @FXML
-    private Text name6d;
-
-    @FXML
-    private Text name7a;
-
-    @FXML
-    private Text name7b;
-
-    @FXML
-    private Text name7c;
-
-    @FXML
-    private Text name7d;
-
-    @FXML
-    private Text name8a;
-
-    @FXML
-    private Text name8b;
-
-    @FXML
-    private Text name8c;
-
-    @FXML
-    private Text name8d;
-
-    @FXML
-    private Text name9a;
-
-    @FXML
-    private Text name9b;
-
-    @FXML
-    private Text name9c;
-
-    @FXML
-    private Text name9d;
-
-    @FXML
-    private TextField nameTxtfield;
-
-    @FXML
-    private TextField nameTxtfielda;
-
-    @FXML
-    private Pane nomatchDialog;
-
-    @FXML
-    private Text numOnly1;
-
-    @FXML
-    private Text numOnly1a;
-
-    @FXML
-    private Text numOnly2;
-
-    @FXML
-    private Text numOnly2a;
-
-    @FXML
-    private Pane pane10a;
-
-    @FXML
-    private Pane pane1a;
-
-    @FXML
-    private Pane pane2a;
-
-    @FXML
-    private Pane pane3a;
-
-    @FXML
-    private Pane pane4a;
-
-    @FXML
-    private Pane pane5a;
-
-    @FXML
-    private Pane pane6a;
-
-    @FXML
-    private Pane pane7a;
-
-    @FXML
-    private Pane pane8a;
-
-    @FXML
-    private Pane pane9a;
-
-    @FXML
-    private VBox pnItems;
-
-    @FXML
-    private VBox pnItems1;
-
-    @FXML
-    private VBox pnItems11;
-
-    @FXML
-    private VBox pnItems2;
-
-    @FXML
-    private Pane requireNotif;
-
-    @FXML
-    private Pane requireNotifa;
-
-    @FXML
-    private Text sais10a;
-
-    @FXML
-    private Text sais10b;
-
-    @FXML
-    private Text sais10c;
-
-    @FXML
-    private Text sais10d;
-
-    @FXML
-    private Text sais1a;
-
-    @FXML
-    private Text sais1b;
-
-    @FXML
-    private Text sais1c;
-
-    @FXML
-    private Text sais1d;
-
-    @FXML
-    private Text sais2a;
-
-    @FXML
-    private Text sais2b;
-
-    @FXML
-    private Text sais2c;
-
-    @FXML
-    private Text sais2d;
-
-    @FXML
-    private Text sais3a;
-
-    @FXML
-    private Text sais3b;
-
-    @FXML
-    private Text sais3c;
-
-    @FXML
-    private Text sais3d;
-
-    @FXML
-    private Text sais4a;
-
-    @FXML
-    private Text sais4b;
-
-    @FXML
-    private Text sais4c;
-
-    @FXML
-    private Text sais4d;
-
-    @FXML
-    private Text sais5a;
-
-    @FXML
-    private Text sais5b;
-
-    @FXML
-    private Text sais5c;
-
-    @FXML
-    private Text sais5d;
-
-    @FXML
-    private Text sais6a;
-
-    @FXML
-    private Text sais6b;
-
-    @FXML
-    private Text sais6c;
-
-    @FXML
-    private Text sais6d;
-
-    @FXML
-    private Text sais7a;
-
-    @FXML
-    private Text sais7b;
-
-    @FXML
-    private Text sais7c;
-
-    @FXML
-    private Text sais7d;
-
-    @FXML
-    private Text sais8a;
-
-    @FXML
-    private Text sais8b;
-
-    @FXML
-    private Text sais8c;
-
-    @FXML
-    private Text sais8d;
-
-    @FXML
-    private Text sais9a;
-
-    @FXML
-    private Text sais9b;
-
-    @FXML
-    private Text sais9c;
-
-    @FXML
-    private Text sais9d;
-
-    @FXML
-    private TextField saisTxtfield;
-
-    @FXML
-    private TextField saisTxtfielda;
-
-    @FXML
-    private Button saveAdd;
-
-    @FXML
-    private Button saveAdd1;
-
-    @FXML
-    private Button saveEdit;
+    private TextField saisTxtfield, saisTxtfielda, stunumTxtfield, stunumTxtfielda, searchField;
 
     @FXML
     private ScrollPane searchContent;
 
     @FXML
-    private TextField searchField;
+    private Pane searchPane, titlePane, viewPane, nomatchDialog;
 
     @FXML
-    private Button searchFunction;
+    private Text stunum10a, stunum10b, stunum10c, stunum10d, stunum1a, stunum1b,
+            stunum1c, stunum1d, stunum2a, stunum2b, stunum2c, stunum2d, stunum3a,
+            stunum3b, stunum3c, stunum3d, stunum4a, stunum4b, stunum4c, stunum4d,
+            stunum5a, stunum5b, stunum5c, stunum6c, stunum6d, stunum5d, stunum6a,
+            stunum6b, stunum7a, stunum7b, stunum7c, stunum7d, stunum8a,
+            stunum8b, stunum8c, stunum8d, stunum9a, stunum9b, stunum9c,
+            stunum9d;
 
     @FXML
-    private Pane searchPane;
+    private Label addressDelete, nameDelete, saisDelete, stunumDelete;
 
     @FXML
-    private Text stunum10a;
-
-    @FXML
-    private Text stunum10b;
-
-    @FXML
-    private Text stunum10c;
-
-    @FXML
-    private Text stunum10d;
-
-    @FXML
-    private Text stunum1a;
-
-    @FXML
-    private Text stunum1b;
-
-    @FXML
-    private Text stunum1c;
-
-    @FXML
-    private Text stunum1d;
-
-    @FXML
-    private Text stunum2a;
-
-    @FXML
-    private Text stunum2b;
-
-    @FXML
-    private Text stunum2c;
-
-    @FXML
-    private Text stunum2d;
-
-    @FXML
-    private Text stunum3a;
-
-    @FXML
-    private Text stunum3b;
-
-    @FXML
-    private Text stunum3c;
-
-    @FXML
-    private Text stunum3d;
-
-    @FXML
-    private Text stunum4a;
-
-    @FXML
-    private Text stunum4b;
-
-    @FXML
-    private Text stunum4c;
-
-    @FXML
-    private Text stunum4d;
-
-    @FXML
-    private Text stunum5a;
-
-    @FXML
-    private Text stunum5b;
-
-    @FXML
-    private Text stunum5c;
-
-    @FXML
-    private Text stunum5d;
-
-    @FXML
-    private Text stunum6a;
-
-    @FXML
-    private Text stunum6b;
-
-    @FXML
-    private Text stunum6c;
-
-    @FXML
-    private Text stunum6d;
-
-    @FXML
-    private Text stunum7a;
-
-    @FXML
-    private Text stunum7b;
-
-    @FXML
-    private Text stunum7c;
-
-    @FXML
-    private Text stunum7d;
-
-    @FXML
-    private Text stunum8a;
-
-    @FXML
-    private Text stunum8b;
-
-    @FXML
-    private Text stunum8c;
-
-    @FXML
-    private Text stunum8d;
-
-    @FXML
-    private Text stunum9a;
-
-    @FXML
-    private Text stunum9b;
-
-    @FXML
-    private Text stunum9c;
-
-    @FXML
-    private Text stunum9d;
-
-    @FXML
-    private TextField stunumTxtfield;
-
-    @FXML
-    private TextField stunumTxtfielda;
-
-    @FXML
-    private Pane titlePane;
-
-    @FXML
-    private Pane viewPane;
-
-    @FXML
-    private Button actionDelete;
-
-    @FXML
-    private Label addressDelete;
-
-    @FXML
-    private Button btnDialogclose;
-
-    @FXML
-    private Button btnOK;
-
-    @FXML
-    private Label nameDelete;
-
-    @FXML
-    private Label saisDelete;
-
-    @FXML
-    private Label stunumDelete;
-
-    @FXML
-    private Button actionEdit;
-
     private int indexDelete;
 
     @FXML
-
     public void handleClicks(ActionEvent actionEvent) throws IOException {
         // name1a.setText("SAMPLE1");
         // name1b.setText("SAMPLE1");
