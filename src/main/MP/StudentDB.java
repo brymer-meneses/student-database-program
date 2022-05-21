@@ -5,16 +5,18 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.io.File;
 
-import MP.core.DBInterface;
 import MP.core.LinkedList;
+import MP.interfaces.DBInterface;
 
 public class StudentDB implements DBInterface, Serializable {
 
-    private static LinkedList<StudentData> database;
+    private LinkedList<StudentData> database;
 
-    private final int MAX_LENGTH = 10;
-    private final static String filename = "database.dat";
+    private final static int maxStorageLength = 10;
+    private final static String databasePath = "database.dat";
+    private final static boolean shouldSaveChanges = true;
 
     public StudentDB() {
         database = new LinkedList<StudentData>();
@@ -24,13 +26,22 @@ public class StudentDB implements DBInterface, Serializable {
         return database.length;
     }
 
+    public static boolean savedDatabaseExists() {
+        if (new File(databasePath).exists()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     @Override
     public boolean addData(StudentData dbd) {
 
         if (isDuplicateOfDatabase(dbd)) {
             return false;
         }
-        if (database.length + 1 > MAX_LENGTH) {
+        if (database.length + 1 > maxStorageLength) {
             return false;
         }
 
@@ -58,7 +69,7 @@ public class StudentDB implements DBInterface, Serializable {
 
     @Override
     public StudentData[] searchData(String toSearch) {
-        StudentData data[] = new StudentData[MAX_LENGTH];
+        StudentData data[] = new StudentData[maxStorageLength];
 
         int count = 0;
         for (int i = 0; i < database.length; i++) {
@@ -100,11 +111,11 @@ public class StudentDB implements DBInterface, Serializable {
         return false;
     }
 
-    public static void initializeDatabase(StudentDB database) {
+    public static void initializeDefaultData(StudentDB database) {
 
         try {
 
-            FileOutputStream fileOut = new FileOutputStream(filename);
+            FileOutputStream fileOut = new FileOutputStream(databasePath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(database);
             objectOut.close();
@@ -119,7 +130,7 @@ public class StudentDB implements DBInterface, Serializable {
 
         try {
 
-            FileInputStream fileIn = new FileInputStream(filename);
+            FileInputStream fileIn = new FileInputStream(databasePath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
             Object obj = objectIn.readObject();
@@ -128,17 +139,18 @@ public class StudentDB implements DBInterface, Serializable {
             return (StudentDB) obj;
 
         } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
+            throw new java.lang.Error("Error: " + ex.getMessage());
         }
 
     }
 
-    public void updateSavedData() {
+    private void updateSavedData() {
+        if (!shouldSaveChanges)
+            return;
 
         try {
 
-            FileOutputStream fileOut = new FileOutputStream(filename);
+            FileOutputStream fileOut = new FileOutputStream(databasePath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(this);
             objectOut.close();
@@ -147,5 +159,9 @@ public class StudentDB implements DBInterface, Serializable {
             ex.printStackTrace();
         }
 
+    }
+
+    public void getLatestData() {
+        database = readSavedData().database;
     }
 }

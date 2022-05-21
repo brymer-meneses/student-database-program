@@ -1,20 +1,13 @@
 package MP;
 
-import java.io.File;
-
 public class StudentDBDemo {
-
-    private final static String filename = "database.dat";
-    private final static boolean shouldOverwriteSavedData = true;
 
     public static void main(String[] args) {
 
-        File savedData = new File(filename);
-
-        if (savedData.exists() && shouldOverwriteSavedData) {
+        if (StudentDB.savedDatabaseExists()) {
             StudentDB.readSavedData();
         } else {
-            StudentDB.initializeDatabase(defaultData());
+            StudentDB.initializeDefaultData(defaultData());
         }
 
         App app = new App();

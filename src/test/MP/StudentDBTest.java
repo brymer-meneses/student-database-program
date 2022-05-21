@@ -2,6 +2,9 @@ package MP;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;;
+
+import java.io.FileNotFoundException;
 
 public class StudentDBTest {
 
@@ -80,6 +83,7 @@ public class StudentDBTest {
         sdb.deleteData("person 3", 3);
 
         assertEquals("person 4", sdb.getData(1).name);
+        assertEquals(2, sdb.length());
 
     }
 
@@ -102,4 +106,51 @@ public class StudentDBTest {
 
     }
 
+    @Test
+    public void testSaveData() throws FileNotFoundException {
+        StudentDB sdb = new StudentDB();
+
+        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+
+        StudentDB retrievedSdb = StudentDB.readSavedData();
+
+        assertEquals(sdb.getData(0).name, retrievedSdb.getData(0).name);
+    }
+
+    @Test
+    public void testAutomaticDatabaseUpdate() throws FileNotFoundException {
+        StudentDB sdb = new StudentDB();
+
+        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
+        sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+
+        sdb.deleteData("Leonhard Euler", 2);
+
+        StudentDB retrievedSdb = StudentDB.readSavedData();
+
+        assertEquals(sdb.length(), retrievedSdb.length());
+        assertEquals(sdb.getData(0).name, retrievedSdb.getData(0).name);
+        assertEquals(sdb.getData(1).name, retrievedSdb.getData(1).name);
+    }
+
+    @Test
+    public void testGetLatestData() throws FileNotFoundException {
+        StudentDB sourceSdb = new StudentDB();
+
+        sourceSdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        sourceSdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
+        sourceSdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+
+        StudentDB emptySdb = new StudentDB();
+        StudentDB latestSdb = StudentDB.readSavedData();
+
+        assertNotEquals(emptySdb.length(), latestSdb.length());
+
+        emptySdb.getLatestData();
+
+        assertEquals(emptySdb.length(), latestSdb.length());
+        assertEquals(emptySdb.getData(0).name, latestSdb.getData(0).name);
+        assertEquals(emptySdb.getData(1).name, latestSdb.getData(1).name);
+    }
 }

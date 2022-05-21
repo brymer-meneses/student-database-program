@@ -1,11 +1,13 @@
 package MP.core;
 
-public class Node<T> {
-    protected T data;
-    public Node<T> next;
+import java.io.Serializable;
 
-    public Node(T _data) {
-        data = _data;
+public class Node<T> implements Serializable {
+    protected T data;
+    protected Node<T> next;
+
+    public Node(T data) {
+        this.data = data;
         next = null;
     }
 }
