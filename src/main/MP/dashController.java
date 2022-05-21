@@ -1151,6 +1151,7 @@ public class dashController
     }
     public void dataGenerator()
     {
+
         StudentDB database = StudentDB.readSavedData();
         //getData(0)
             //check if that has an entry
@@ -1159,246 +1160,247 @@ public class dashController
                     //setname to all 1sais
                     //setname to all 1stunum
                     //setname to all1address
-        if(database.getData(0) != null)
-        {
-            pane1a.setVisible(true);
-            pane1c.setVisible(true);
-            pane1d.setVisible(true);
-            name1a.setText(database.getData(0).name);
-            name1c.setText(database.getData(0).name);
-            name1d.setText(database.getData(0).name);
+        
+        // if(database.getData(0) != null)
+        // {
+        //     pane1a.setVisible(true);
+        //     pane1c.setVisible(true);
+        //     pane1d.setVisible(true);
+        //     name1a.setText(database.getData(0).name);
+        //     name1c.setText(database.getData(0).name);
+        //     name1d.setText(database.getData(0).name);
 
-            sais1a.setText(String.valueOf(database.getData(0).saisID));
-            sais1c.setText(String.valueOf(database.getData(0).saisID));
-            sais1d.setText(String.valueOf(database.getData(0).saisID));
+        //     sais1a.setText(String.valueOf(database.getData(0).saisID));
+        //     sais1c.setText(String.valueOf(database.getData(0).saisID));
+        //     sais1d.setText(String.valueOf(database.getData(0).saisID));
 
-            stunum1a.setText(String.valueOf(database.getData(0).studentNumber));
-            stunum1c.setText(String.valueOf(database.getData(0).studentNumber));
-            stunum1d.setText(String.valueOf(database.getData(0).studentNumber));
+        //     stunum1a.setText(String.valueOf(database.getData(0).studentNumber));
+        //     stunum1c.setText(String.valueOf(database.getData(0).studentNumber));
+        //     stunum1d.setText(String.valueOf(database.getData(0).studentNumber));
 
-            address1a.setText(database.getData(0).address);
-            address1c.setText(database.getData(0).address);
-            address1d.setText(database.getData(0).address);
+        //     address1a.setText(database.getData(0).address);
+        //     address1c.setText(database.getData(0).address);
+        //     address1d.setText(database.getData(0).address);
 
-            edit1.setVisible(true);
-            delete1.setVisible(true);
-        }
-        if(database.getData(1) != null)
-        {
-            pane2a.setVisible(true);
-            pane2c.setVisible(true);
-            pane2d.setVisible(true);
-            name2a.setText(database.getData(1).name);
-            name2c.setText(database.getData(1).name);
-            name2d.setText(database.getData(1).name);
+        //     edit1.setVisible(true);
+        //     delete1.setVisible(true);
+        // }
+        // if(database.getData(1) != null)
+        // {
+        //     pane2a.setVisible(true);
+        //     pane2c.setVisible(true);
+        //     pane2d.setVisible(true);
+        //     name2a.setText(database.getData(1).name);
+        //     name2c.setText(database.getData(1).name);
+        //     name2d.setText(database.getData(1).name);
 
-            sais2a.setText(String.valueOf(database.getData(1).saisID));
-            sais2c.setText(String.valueOf(database.getData(1).saisID));
-            sais2d.setText(String.valueOf(database.getData(1).saisID));
+        //     sais2a.setText(String.valueOf(database.getData(1).saisID));
+        //     sais2c.setText(String.valueOf(database.getData(1).saisID));
+        //     sais2d.setText(String.valueOf(database.getData(1).saisID));
 
-            stunum2a.setText(String.valueOf(database.getData(1).studentNumber));
-            stunum2c.setText(String.valueOf(database.getData(1).studentNumber));
-            stunum2d.setText(String.valueOf(database.getData(1).studentNumber));
+        //     stunum2a.setText(String.valueOf(database.getData(1).studentNumber));
+        //     stunum2c.setText(String.valueOf(database.getData(1).studentNumber));
+        //     stunum2d.setText(String.valueOf(database.getData(1).studentNumber));
 
-            address2a.setText(database.getData(1).address);
-            address2c.setText(database.getData(1).address);
-            address2d.setText(database.getData(1).address);
+        //     address2a.setText(database.getData(1).address);
+        //     address2c.setText(database.getData(1).address);
+        //     address2d.setText(database.getData(1).address);
             
-            edit2.setVisible(true);
-            delete2.setVisible(true);
-        }
-        if(database.getData(2) != null)
-        {
-            pane3a.setVisible(true);
-            pane3c.setVisible(true);
-            pane3d.setVisible(true);
-            name3a.setText(database.getData(2).name);
-            name3c.setText(database.getData(2).name);
-            name3d.setText(database.getData(2).name);
+        //     edit2.setVisible(true);
+        //     delete2.setVisible(true);
+        // }
+        // if(database.getData(2) != null)
+        // {
+        //     pane3a.setVisible(true);
+        //     pane3c.setVisible(true);
+        //     pane3d.setVisible(true);
+        //     name3a.setText(database.getData(2).name);
+        //     name3c.setText(database.getData(2).name);
+        //     name3d.setText(database.getData(2).name);
 
-            sais3a.setText(String.valueOf(database.getData(2).saisID));
-            sais3c.setText(String.valueOf(database.getData(2).saisID));
-            sais3d.setText(String.valueOf(database.getData(2).saisID));
+        //     sais3a.setText(String.valueOf(database.getData(2).saisID));
+        //     sais3c.setText(String.valueOf(database.getData(2).saisID));
+        //     sais3d.setText(String.valueOf(database.getData(2).saisID));
 
-            stunum3a.setText(String.valueOf(database.getData(2).studentNumber));
-            stunum3c.setText(String.valueOf(database.getData(2).studentNumber));
-            stunum3d.setText(String.valueOf(database.getData(2).studentNumber));
+        //     stunum3a.setText(String.valueOf(database.getData(2).studentNumber));
+        //     stunum3c.setText(String.valueOf(database.getData(2).studentNumber));
+        //     stunum3d.setText(String.valueOf(database.getData(2).studentNumber));
 
-            address3a.setText(database.getData(2).address);
-            address3c.setText(database.getData(2).address);
-            address3d.setText(database.getData(2).address);
+        //     address3a.setText(database.getData(2).address);
+        //     address3c.setText(database.getData(2).address);
+        //     address3d.setText(database.getData(2).address);
 
-            edit3.setVisible(true);
-            delete3.setVisible(true);
-        }
-        if(database.getData(3) != null)
-        {
-            pane4a.setVisible(true);
-            pane4c.setVisible(true);
-            pane4d.setVisible(true);
-            name4a.setText(database.getData(3).name);
-            name4c.setText(database.getData(3).name);
-            name4d.setText(database.getData(3).name);
+        //     edit3.setVisible(true);
+        //     delete3.setVisible(true);
+        // }
+        // if(database.getData(3) != null)
+        // {
+        //     pane4a.setVisible(true);
+        //     pane4c.setVisible(true);
+        //     pane4d.setVisible(true);
+        //     name4a.setText(database.getData(3).name);
+        //     name4c.setText(database.getData(3).name);
+        //     name4d.setText(database.getData(3).name);
 
-            sais4a.setText(String.valueOf(database.getData(3).saisID));
-            sais4c.setText(String.valueOf(database.getData(3).saisID));
-            sais4d.setText(String.valueOf(database.getData(3).saisID));
+        //     sais4a.setText(String.valueOf(database.getData(3).saisID));
+        //     sais4c.setText(String.valueOf(database.getData(3).saisID));
+        //     sais4d.setText(String.valueOf(database.getData(3).saisID));
 
-            stunum4a.setText(String.valueOf(database.getData(3).studentNumber));
-            stunum4c.setText(String.valueOf(database.getData(3).studentNumber));
-            stunum4d.setText(String.valueOf(database.getData(3).studentNumber));
+        //     stunum4a.setText(String.valueOf(database.getData(3).studentNumber));
+        //     stunum4c.setText(String.valueOf(database.getData(3).studentNumber));
+        //     stunum4d.setText(String.valueOf(database.getData(3).studentNumber));
 
-            address4a.setText(database.getData(3).address);
-            address4c.setText(database.getData(3).address);
-            address4d.setText(database.getData(3).address);
+        //     address4a.setText(database.getData(3).address);
+        //     address4c.setText(database.getData(3).address);
+        //     address4d.setText(database.getData(3).address);
 
-            edit4.setVisible(true);
-            delete4.setVisible(true);
-        }
-        if(database.getData(4) != null)
-        {
-            pane5a.setVisible(true);
-            pane5c.setVisible(true);
-            pane5d.setVisible(true);
-            name5a.setText(database.getData(4).name);
-            name5c.setText(database.getData(4).name);
-            name5d.setText(database.getData(4).name);
+        //     edit4.setVisible(true);
+        //     delete4.setVisible(true);
+        // }
+        // if(database.getData(4) != null)
+        // {
+        //     pane5a.setVisible(true);
+        //     pane5c.setVisible(true);
+        //     pane5d.setVisible(true);
+        //     name5a.setText(database.getData(4).name);
+        //     name5c.setText(database.getData(4).name);
+        //     name5d.setText(database.getData(4).name);
 
-            sais5a.setText(String.valueOf(database.getData(4).saisID));
-            sais5c.setText(String.valueOf(database.getData(4).saisID));
-            sais5d.setText(String.valueOf(database.getData(4).saisID));
+        //     sais5a.setText(String.valueOf(database.getData(4).saisID));
+        //     sais5c.setText(String.valueOf(database.getData(4).saisID));
+        //     sais5d.setText(String.valueOf(database.getData(4).saisID));
 
-            stunum5a.setText(String.valueOf(database.getData(4).studentNumber));
-            stunum5c.setText(String.valueOf(database.getData(4).studentNumber));
-            stunum5d.setText(String.valueOf(database.getData(4).studentNumber));
+        //     stunum5a.setText(String.valueOf(database.getData(4).studentNumber));
+        //     stunum5c.setText(String.valueOf(database.getData(4).studentNumber));
+        //     stunum5d.setText(String.valueOf(database.getData(4).studentNumber));
 
-            address5a.setText(database.getData(4).address);
-            address5c.setText(database.getData(4).address);
-            address5d.setText(database.getData(4).address);
+        //     address5a.setText(database.getData(4).address);
+        //     address5c.setText(database.getData(4).address);
+        //     address5d.setText(database.getData(4).address);
             
-            edit5.setVisible(true);
-            delete5.setVisible(true);
-        }
-        if(database.getData(5) != null)
-        {
-            pane6a.setVisible(true);
-            pane6c.setVisible(true);
-            pane6d.setVisible(true);
-            name6a.setText(database.getData(5).name);
-            name6c.setText(database.getData(5).name);
-            name6d.setText(database.getData(5).name);
+        //     edit5.setVisible(true);
+        //     delete5.setVisible(true);
+        // }
+        // if(database.getData(5) != null)
+        // {
+        //     pane6a.setVisible(true);
+        //     pane6c.setVisible(true);
+        //     pane6d.setVisible(true);
+        //     name6a.setText(database.getData(5).name);
+        //     name6c.setText(database.getData(5).name);
+        //     name6d.setText(database.getData(5).name);
 
-            sais6a.setText(String.valueOf(database.getData(5).saisID));
-            sais6c.setText(String.valueOf(database.getData(5).saisID));
-            sais6d.setText(String.valueOf(database.getData(5).saisID));
+        //     sais6a.setText(String.valueOf(database.getData(5).saisID));
+        //     sais6c.setText(String.valueOf(database.getData(5).saisID));
+        //     sais6d.setText(String.valueOf(database.getData(5).saisID));
 
-            stunum6a.setText(String.valueOf(database.getData(5).studentNumber));
-            stunum6c.setText(String.valueOf(database.getData(5).studentNumber));
-            stunum6d.setText(String.valueOf(database.getData(5).studentNumber));
+        //     stunum6a.setText(String.valueOf(database.getData(5).studentNumber));
+        //     stunum6c.setText(String.valueOf(database.getData(5).studentNumber));
+        //     stunum6d.setText(String.valueOf(database.getData(5).studentNumber));
 
-            address6a.setText(database.getData(5).address);
-            address6c.setText(database.getData(5).address);
-            address6d.setText(database.getData(5).address);
+        //     address6a.setText(database.getData(5).address);
+        //     address6c.setText(database.getData(5).address);
+        //     address6d.setText(database.getData(5).address);
 
-            edit6.setVisible(true);
-            delete6.setVisible(true);
-        }
-        if(database.getData(6) != null)
-        {
-            pane7a.setVisible(true);
-            pane7c.setVisible(true);
-            pane7d.setVisible(true);
-            name7a.setText(database.getData(6).name);
-            name7c.setText(database.getData(6).name);
-            name7d.setText(database.getData(6).name);
+        //     edit6.setVisible(true);
+        //     delete6.setVisible(true);
+        // }
+        // if(database.getData(6) != null)
+        // {
+        //     pane7a.setVisible(true);
+        //     pane7c.setVisible(true);
+        //     pane7d.setVisible(true);
+        //     name7a.setText(database.getData(6).name);
+        //     name7c.setText(database.getData(6).name);
+        //     name7d.setText(database.getData(6).name);
 
-            sais7a.setText(String.valueOf(database.getData(6).saisID));
-            sais7c.setText(String.valueOf(database.getData(6).saisID));
-            sais7d.setText(String.valueOf(database.getData(6).saisID));
+        //     sais7a.setText(String.valueOf(database.getData(6).saisID));
+        //     sais7c.setText(String.valueOf(database.getData(6).saisID));
+        //     sais7d.setText(String.valueOf(database.getData(6).saisID));
 
-            stunum7a.setText(String.valueOf(database.getData(6).studentNumber));
-            stunum7c.setText(String.valueOf(database.getData(6).studentNumber));
-            stunum7d.setText(String.valueOf(database.getData(6).studentNumber));
+        //     stunum7a.setText(String.valueOf(database.getData(6).studentNumber));
+        //     stunum7c.setText(String.valueOf(database.getData(6).studentNumber));
+        //     stunum7d.setText(String.valueOf(database.getData(6).studentNumber));
 
-            address7a.setText(database.getData(6).address);
-            address7c.setText(database.getData(6).address);
-            address7d.setText(database.getData(6).address);
+        //     address7a.setText(database.getData(6).address);
+        //     address7c.setText(database.getData(6).address);
+        //     address7d.setText(database.getData(6).address);
 
-            edit7.setVisible(true);
-            delete7.setVisible(true);
-        }
-        if(database.getData(7) != null)
-        {
-            pane8a.setVisible(true);
-            pane8c.setVisible(true);
-            pane8d.setVisible(true);
-            name8a.setText(database.getData(7).name);
-            name8c.setText(database.getData(7).name);
-            name8d.setText(database.getData(7).name);
+        //     edit7.setVisible(true);
+        //     delete7.setVisible(true);
+        // }
+        // if(database.getData(7) != null)
+        // {
+        //     pane8a.setVisible(true);
+        //     pane8c.setVisible(true);
+        //     pane8d.setVisible(true);
+        //     name8a.setText(database.getData(7).name);
+        //     name8c.setText(database.getData(7).name);
+        //     name8d.setText(database.getData(7).name);
 
-            sais8a.setText(String.valueOf(database.getData(7).saisID));
-            sais8c.setText(String.valueOf(database.getData(7).saisID));
-            sais8d.setText(String.valueOf(database.getData(7).saisID));
+        //     sais8a.setText(String.valueOf(database.getData(7).saisID));
+        //     sais8c.setText(String.valueOf(database.getData(7).saisID));
+        //     sais8d.setText(String.valueOf(database.getData(7).saisID));
 
-            stunum8a.setText(String.valueOf(database.getData(7).studentNumber));
-            stunum8c.setText(String.valueOf(database.getData(7).studentNumber));
-            stunum8d.setText(String.valueOf(database.getData(7).studentNumber));
+        //     stunum8a.setText(String.valueOf(database.getData(7).studentNumber));
+        //     stunum8c.setText(String.valueOf(database.getData(7).studentNumber));
+        //     stunum8d.setText(String.valueOf(database.getData(7).studentNumber));
 
-            address8a.setText(database.getData(7).address);
-            address8c.setText(database.getData(7).address);
-            address8d.setText(database.getData(7).address);
+        //     address8a.setText(database.getData(7).address);
+        //     address8c.setText(database.getData(7).address);
+        //     address8d.setText(database.getData(7).address);
 
-            edit8.setVisible(true);
-            delete8.setVisible(true);
-        }
-        if(database.getData(8) != null)
-        {
-            pane9a.setVisible(true);
-            pane9c.setVisible(true);
-            pane9d.setVisible(true);
-            name9a.setText(database.getData(8).name);
-            name9c.setText(database.getData(8).name);
-            name9d.setText(database.getData(8).name);
+        //     edit8.setVisible(true);
+        //     delete8.setVisible(true);
+        // }
+        // if(database.getData(8) != null)
+        // {
+        //     pane9a.setVisible(true);
+        //     pane9c.setVisible(true);
+        //     pane9d.setVisible(true);
+        //     name9a.setText(database.getData(8).name);
+        //     name9c.setText(database.getData(8).name);
+        //     name9d.setText(database.getData(8).name);
 
-            sais9a.setText(String.valueOf(database.getData(8).saisID));
-            sais9c.setText(String.valueOf(database.getData(8).saisID));
-            sais9d.setText(String.valueOf(database.getData(8).saisID));
+        //     sais9a.setText(String.valueOf(database.getData(8).saisID));
+        //     sais9c.setText(String.valueOf(database.getData(8).saisID));
+        //     sais9d.setText(String.valueOf(database.getData(8).saisID));
 
-            stunum9a.setText(String.valueOf(database.getData(8).studentNumber));
-            stunum9c.setText(String.valueOf(database.getData(8).studentNumber));
-            stunum9d.setText(String.valueOf(database.getData(8).studentNumber));
+        //     stunum9a.setText(String.valueOf(database.getData(8).studentNumber));
+        //     stunum9c.setText(String.valueOf(database.getData(8).studentNumber));
+        //     stunum9d.setText(String.valueOf(database.getData(8).studentNumber));
 
-            address9a.setText(database.getData(8).address);
-            address9c.setText(database.getData(8).address);
-            address9d.setText(database.getData(8).address);
+        //     address9a.setText(database.getData(8).address);
+        //     address9c.setText(database.getData(8).address);
+        //     address9d.setText(database.getData(8).address);
 
-            edit9.setVisible(true);
-            delete9.setVisible(true);
-        }
-        if(database.getData(9) != null)
-        {
-            pane10a.setVisible(true);
-            pane10c.setVisible(true);
-            pane10d.setVisible(true);
-            name10a.setText(database.getData(9).name);
-            name10c.setText(database.getData(9).name);
-            name10d.setText(database.getData(9).name);
+        //     edit9.setVisible(true);
+        //     delete9.setVisible(true);
+        // }
+        // if(database.getData(9) != null)
+        // {
+        //     pane10a.setVisible(true);
+        //     pane10c.setVisible(true);
+        //     pane10d.setVisible(true);
+        //     name10a.setText(database.getData(9).name);
+        //     name10c.setText(database.getData(9).name);
+        //     name10d.setText(database.getData(9).name);
 
-            sais10a.setText(String.valueOf(database.getData(9).saisID));
-            sais10c.setText(String.valueOf(database.getData(9).saisID));
-            sais10d.setText(String.valueOf(database.getData(9).saisID));
+        //     sais10a.setText(String.valueOf(database.getData(9).saisID));
+        //     sais10c.setText(String.valueOf(database.getData(9).saisID));
+        //     sais10d.setText(String.valueOf(database.getData(9).saisID));
 
-            stunum10a.setText(String.valueOf(database.getData(9).studentNumber));
-            stunum10c.setText(String.valueOf(database.getData(9).studentNumber));
-            stunum10d.setText(String.valueOf(database.getData(9).studentNumber));
+        //     stunum10a.setText(String.valueOf(database.getData(9).studentNumber));
+        //     stunum10c.setText(String.valueOf(database.getData(9).studentNumber));
+        //     stunum10d.setText(String.valueOf(database.getData(9).studentNumber));
 
-            address10a.setText(database.getData(9).address);
-            address10c.setText(database.getData(9).address);
-            address10d.setText(database.getData(9).address);
+        //     address10a.setText(database.getData(9).address);
+        //     address10c.setText(database.getData(9).address);
+        //     address10d.setText(database.getData(9).address);
 
-            edit10.setVisible(true);
-            delete10.setVisible(true);
-        }
+        //     edit10.setVisible(true);
+        //     delete10.setVisible(true);
+        // }
         
                     // 10 ifs
         
