@@ -107,6 +107,40 @@ public class dashController {
     @FXML
     private int indexDelete;
 
+    public void navigateTo(String paneName) {
+        homePane.setVisible(false);
+        viewPane.setVisible(false);
+        addPane.setVisible(false);
+        searchPane.setVisible(false);
+        deletePane.setVisible(false);
+        editPane.setVisible(false);
+        helpPane.setVisible(false);
+        switch (paneName) {
+            case "home":
+                homePane.setVisible(true);
+                break;
+            case "view":
+                viewPane.setVisible(true);
+                break;
+            case "add":
+                addPane.setVisible(true);
+                break;
+            case "search":
+                searchPane.setVisible(true);
+                break;
+            case "delete":
+                deletePane.setVisible(true);
+                break;
+            case "edit":
+                editPane.setVisible(true);
+                break;
+            case "help":
+                helpPane.setVisible(true);
+                break;
+        }
+
+    };
+
     @FXML
     public void handleClicks(ActionEvent actionEvent) throws IOException {
         // name1a.setText("SAMPLE1");
@@ -117,238 +151,78 @@ public class dashController {
         if (actionEvent.getSource() == btnMin) {
             Stage stage = (Stage) btnMin.getScene().getWindow();
             stage.setIconified(true);
-        }
-        if (actionEvent.getSource() == btnClose) {
+        } else if (actionEvent.getSource() == btnClose) {
             Stage stage = (Stage) btnClose.getScene().getWindow();
             stage.close();
         }
+
         if (actionEvent.getSource() == btnView) {
             dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(true);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnHome) {
-            homePane.setVisible(true);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnEdit) {
+            navigateTo("view");
+
+        } else if (actionEvent.getSource() == btnHome) {
+            navigateTo("home");
+        } else if (actionEvent.getSource() == btnEdit) {
             dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(true);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnAdd) {
+            navigateTo("edit");
+        } else if (actionEvent.getSource() == btnAdd) {
             dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(true);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnSearch) {
+            navigateTo("add");
+        } else if (actionEvent.getSource() == btnSearch) {
             dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(true);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
-        }
-        if (actionEvent.getSource() == btnDelete) {
+            navigateTo("search");
+        } else if (actionEvent.getSource() == btnDelete) {
             dataGenerator();
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(true);
-            editPane.setVisible(false);
-            helpPane.setVisible(false);
+            navigateTo("delete");
+        } else if (actionEvent.getSource() == btnHelp) {
+            dataGenerator();
+            navigateTo("help");
         }
-        if (actionEvent.getSource() == btnHelp) {
-            homePane.setVisible(false);
-            viewPane.setVisible(false);
-            addPane.setVisible(false);
-            searchPane.setVisible(false);
-            deletePane.setVisible(false);
-            editPane.setVisible(false);
-            helpPane.setVisible(true);
-        }
+
         if (actionEvent.getSource() == saveAdd) {
             addUIFunction();
-        }
-        if (actionEvent.getSource() == searchFunction) {
+        } else if (actionEvent.getSource() == searchFunction) {
             searchUIFunction(String.valueOf(searchField.getText()));
         }
-        if (actionEvent.getSource() == delete1) {
-            String nameLog = name1d.getText();
-            String saisLog = sais1d.getText();
-            String stunumLog = stunum1d.getText();
-            String addressLog = address1d.getText();
-            System.out.println("Gate CHECK1");
-            deleteUIFunction(0, nameLog, saisLog, stunumLog, addressLog);
+
+        Button[] deleteButtons = { delete1, delete2, delete3, delete4, delete5, delete6, delete7, delete8, delete9,
+                delete10 };
+        Text[] namesGroupD = { name1d, name2d, name3d, name4d, name5d, name6d, name7d, name8d, name9d, name10d };
+        Text[] saisGroupD = { sais1d, sais2d, sais3d, sais4d, sais5d, sais6d, sais7d, sais8d, sais9d, sais10d };
+        Text[] stunumGroupD = { stunum1d, stunum2d, stunum3d, stunum4d, stunum5d, stunum6d, stunum7d, stunum8d,
+                stunum9d, stunum10d };
+        Text[] addressGroupD = { address1d, address2d, address3d, address4d, address5d, address6d, address7d, address8d,
+                address9d, address10d };
+
+        for (int i = 0; i < 10; i++) {
+            if (actionEvent.getSource() == deleteButtons[i]) {
+                this.indexDelete = i;
+                String inputName = namesGroupD[i].getText();
+                String inputSais = saisGroupD[i].getText();
+                String inputStunum = stunumGroupD[i].getText();
+                String inputAddress = addressGroupD[i].getText();
+                deleteUIFunction(i, inputName, inputSais, inputStunum, inputAddress);
+            }
         }
-        if (actionEvent.getSource() == delete2) {
-            String nameLog = name2d.getText();
-            String saisLog = sais2d.getText();
-            String stunumLog = stunum2d.getText();
-            String addressLog = address2d.getText();
-            deleteUIFunction(1, nameLog, saisLog, stunumLog, addressLog);
+
+        Button[] editButtons = { edit1, edit2, edit3, edit4, edit5, edit6, edit7, edit8, edit9, edit10 };
+        Text[] namesGroupC = { name1c, name2c, name3c, name4c, name5c, name6c, name7c, name8c, name9c, name10c };
+        Text[] saisGroupC = { sais1c, sais2c, sais3c, sais4c, sais5c, sais6c, sais7c, sais8c, sais9c, sais10c };
+        Text[] stunumGroupC = { stunum1c, stunum2c, stunum3c, stunum4c, stunum5c, stunum6c, stunum7c, stunum8c,
+                stunum9d, stunum10d };
+        Text[] addressGroupC = { address1c, address2c, address3c, address4c, address5c, address6c, address7c, address8c,
+                address9d, address10d };
+
+        for (int i = 0; i < 10; i++) {
+            if (actionEvent.getSource() == editButtons[i]) {
+                String inputName = namesGroupC[i].getText();
+                String inputSais = saisGroupC[i].getText();
+                String inputStunum = stunumGroupC[i].getText();
+                String inputAddress = addressGroupC[i].getText();
+                editUIFunction(i, inputName, inputSais, inputStunum, inputAddress);
+            }
         }
-        if (actionEvent.getSource() == delete3) {
-            String nameLog = name3d.getText();
-            String saisLog = sais3d.getText();
-            String stunumLog = stunum3d.getText();
-            String addressLog = address3d.getText();
-            deleteUIFunction(2, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete4) {
-            String nameLog = name4d.getText();
-            String saisLog = sais4d.getText();
-            String stunumLog = stunum4d.getText();
-            String addressLog = address4d.getText();
-            deleteUIFunction(3, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete5) {
-            String nameLog = name5d.getText();
-            String saisLog = sais5d.getText();
-            String stunumLog = stunum5d.getText();
-            String addressLog = address5d.getText();
-            deleteUIFunction(4, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete6) {
-            String nameLog = name6d.getText();
-            String saisLog = sais6d.getText();
-            String stunumLog = stunum6d.getText();
-            String addressLog = address6d.getText();
-            deleteUIFunction(5, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete7) {
-            String nameLog = name7d.getText();
-            String saisLog = sais7d.getText();
-            String stunumLog = stunum7d.getText();
-            String addressLog = address7d.getText();
-            deleteUIFunction(6, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete8) {
-            String nameLog = name8d.getText();
-            String saisLog = sais8d.getText();
-            String stunumLog = stunum8d.getText();
-            String addressLog = address8d.getText();
-            deleteUIFunction(7, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete9) {
-            String nameLog = name9d.getText();
-            String saisLog = sais9d.getText();
-            String stunumLog = stunum9d.getText();
-            String addressLog = address9d.getText();
-            deleteUIFunction(8, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == delete10) {
-            String nameLog = name10d.getText();
-            String saisLog = sais10d.getText();
-            String stunumLog = stunum10d.getText();
-            String addressLog = address10d.getText();
-            deleteUIFunction(9, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit1) {
-            String nameLog = name1c.getText();
-            String saisLog = sais1c.getText();
-            String stunumLog = stunum1c.getText();
-            String addressLog = address1c.getText();
-            editUIFunction(0, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit2) {
-            String nameLog = name2c.getText();
-            String saisLog = sais2c.getText();
-            String stunumLog = stunum2c.getText();
-            String addressLog = address2c.getText();
-            editUIFunction(1, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit3) {
-            String nameLog = name3c.getText();
-            String saisLog = sais3c.getText();
-            String stunumLog = stunum3c.getText();
-            String addressLog = address3c.getText();
-            editUIFunction(2, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit4) {
-            String nameLog = name4c.getText();
-            String saisLog = sais4c.getText();
-            String stunumLog = stunum4c.getText();
-            String addressLog = address4c.getText();
-            editUIFunction(3, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit5) {
-            String nameLog = name5c.getText();
-            String saisLog = sais5c.getText();
-            String stunumLog = stunum5c.getText();
-            String addressLog = address5c.getText();
-            editUIFunction(4, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit6) {
-            String nameLog = name6c.getText();
-            String saisLog = sais6c.getText();
-            String stunumLog = stunum6c.getText();
-            String addressLog = address6c.getText();
-            editUIFunction(5, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit7) {
-            String nameLog = name7c.getText();
-            String saisLog = sais7c.getText();
-            String stunumLog = stunum7c.getText();
-            String addressLog = address7c.getText();
-            editUIFunction(6, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit8) {
-            String nameLog = name8c.getText();
-            String saisLog = sais8c.getText();
-            String stunumLog = stunum8c.getText();
-            String addressLog = address8c.getText();
-            editUIFunction(7, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit9) {
-            String nameLog = name9c.getText();
-            String saisLog = sais9c.getText();
-            String stunumLog = stunum9c.getText();
-            String addressLog = address9c.getText();
-            editUIFunction(8, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == edit10) {
-            String nameLog = name10c.getText();
-            String saisLog = sais10c.getText();
-            String stunumLog = stunum10c.getText();
-            String addressLog = address10c.getText();
-            editUIFunction(9, nameLog, saisLog, stunumLog, addressLog);
-        }
-        if (actionEvent.getSource() == saveEdit) {
-            saveEditFunction();
-        }
-        if (actionEvent.getSource() == btnOK) {
-            Stage stage = (Stage) btnOK.getScene().getWindow();
-            stage.close();
-            dataGenerator();
-        }
-        if (actionEvent.getSource() == btnDialogclose) {
-            Stage stage = (Stage) btnDialogclose.getScene().getWindow();
-            stage.close();
-        }
+
         if (actionEvent.getSource() == actionDelete) {
             // dataGenerator();
             StudentDB database = StudentDB.readSavedData();
@@ -357,13 +231,10 @@ public class dashController {
 
             database.deleteData(database.getData(indexDelete).name, database.getData(indexDelete).saisID);
 
+            System.out.println(indexDelete);
             dialog("notif_deleted");// testline
-            System.out.println("TEST GATE1");
-            // dataGenerator();
-            System.out.println("TEST GATE2");
             // update entries
-        }
-        if (actionEvent.getSource() == actionEdit) {
+        } else if (actionEvent.getSource() == actionEdit) {
             Stage stage = (Stage) actionEdit.getScene().getWindow();
             stage.close();
             dialog("notif_savedchanges");// testline
@@ -372,6 +243,16 @@ public class dashController {
             // update entries
         }
 
+        if (actionEvent.getSource() == saveEdit) {
+            saveEditFunction();
+        } else if (actionEvent.getSource() == btnOK) {
+            Stage stage = (Stage) btnOK.getScene().getWindow();
+            stage.close();
+            dataGenerator();
+        } else if (actionEvent.getSource() == btnDialogclose) {
+            Stage stage = (Stage) btnDialogclose.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
@@ -439,19 +320,21 @@ public class dashController {
             panesC[i].setVisible(true);
             panesD[i].setVisible(true);
 
-            containNameA[i].setText(String.valueOf(database.getData(i).name));
-            containSaisA[i].setText(String.valueOf(database.getData(i).saisID));
-            containStunumA[i].setText(String.valueOf(database.getData(i).studentNumber));
-            containAddressA[i].setText(String.valueOf(database.getData(i).address));
+            StudentData element = database.getData(i);
 
-            containNameC[i].setText(String.valueOf(database.getData(i).name));
-            containSaisC[i].setText(String.valueOf(database.getData(i).saisID));
-            containStunumC[i].setText(String.valueOf(database.getData(i).studentNumber));
-            containAddressC[i].setText(String.valueOf(database.getData(i).address));
+            containNameA[i].setText(String.valueOf(element.name));
+            containSaisA[i].setText(String.valueOf(element.saisID));
+            containStunumA[i].setText(String.valueOf(element.studentNumber));
+            containAddressA[i].setText(String.valueOf(element.address));
 
-            containNameD[i].setText(String.valueOf(database.getData(i).name));
-            containSaisD[i].setText(String.valueOf(database.getData(i).saisID));
-            containStunumD[i].setText(String.valueOf(database.getData(i).studentNumber));
+            containNameC[i].setText(String.valueOf(element.name));
+            containSaisC[i].setText(String.valueOf(element.saisID));
+            containStunumC[i].setText(String.valueOf(element.studentNumber));
+            containAddressC[i].setText(String.valueOf(element.address));
+
+            containNameD[i].setText(String.valueOf(element.name));
+            containSaisD[i].setText(String.valueOf(element.saisID));
+            containStunumD[i].setText(String.valueOf(element.studentNumber));
             containAddressD[i].setText(String.valueOf(database.getData(i).address));
         }
     }
@@ -525,12 +408,12 @@ public class dashController {
 
     public void deleteUIFunction(int numList, String nameLog, String saisLog, String stunumLog, String addressLog)
             throws IOException {
+
         dialog("confirm_delete");
         // nameDelete.setText(nameLog);
         // stunumDelete.setText(stunumLog);
         // addressDelete.setText(addressLog);
         // saisDelete.setText(saisLog);
-        this.indexDelete = numList;
     }
 
     public void saveEditFunction() throws IOException 
