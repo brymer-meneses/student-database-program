@@ -40,7 +40,7 @@ public class dashController {
     private Pane homePane, viewPane, addPane, deletePane, editPane, searchPane, helpPane;
 
     @FXML
-    private VBox viewEntries, searchEntries, editEntries;
+    private VBox viewEntries, searchEntries, editEntries, deleteEntries;
 
     @FXML
     private ScrollPane searchContent;
@@ -166,14 +166,26 @@ public class dashController {
         StudentDB database = StudentDB.readSavedData();
         LinkedList<StudentData> students = database.showData();
         viewEntries.getChildren().clear();
+        editEntries.getChildren().clear();
+        deleteEntries.getChildren().clear();
         for (int i = 0; i < database.length(); i++) {
             DatabaseEntry entry = new DatabaseEntry();
-            entry.setData(i, false, database.getData(i));
 
-            if (location == "view") {
-                viewEntries.getChildren().add(entry);
-            } else {
-                editEntries.getChildren().add(entry);
+            entry.setData(database.getData(i));
+            switch (location) {
+                case "view":
+                    entry.setButtonFunction(null);
+                    viewEntries.getChildren().add(entry);
+                    break;
+                case "edit":
+                    entry.setButtonFunction("edit");
+                    editEntries.getChildren().add(entry);
+                    break;
+                case "delete":
+                    entry.setButtonFunction("delete");
+                    entry.setParent(deleteEntries);
+                    deleteEntries.getChildren().add(entry);
+                    break;
             }
         }
     }
@@ -194,7 +206,8 @@ public class dashController {
 
             for (int i = 0; i < results.length; i++) {
                 DatabaseEntry entry = new DatabaseEntry();
-                entry.setData(i, false, results.get(i));
+                entry.setData(results.get(i));
+                entry.setButtonFunction(null);
 
                 searchEntries.getChildren().add(entry);
             }
@@ -259,13 +272,11 @@ public class dashController {
             showEntriesIn("edit");
             navigateTo("edit");
         } else if (clickedButton == btnAdd) {
-            // dataGenerator();
             navigateTo("add");
         } else if (clickedButton == btnSearch) {
-            // dataGenerator();
             navigateTo("search");
         } else if (clickedButton == btnDelete) {
-            // dataGenerator();
+            showEntriesIn("delete");
             navigateTo("delete");
         } else if (clickedButton == btnHelp) {
             // dataGenerator();
