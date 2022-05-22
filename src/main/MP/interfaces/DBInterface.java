@@ -11,7 +11,7 @@ public interface DBInterface {
 
     abstract LinkedList<StudentData> searchData(String toSearch);
 
-    abstract void showData();
+    abstract LinkedList<StudentData> showData();
 
     abstract boolean editData(String name, int SAISID);
 

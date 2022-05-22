@@ -72,11 +72,9 @@ public class StudentDB implements DBInterface, Serializable {
     @Override
     public boolean deleteData(String name, int SAISID) {
 
-        StudentData element = new StudentData(name, SAISID, 1, "address");
-
         for (int i = 0; i < database.length; i++) {
 
-            if (database.get(i).isEqualTo(element)) {
+            if (database.get(i).name == name && database.get(i).saisID == SAISID) {
                 database.delete(i);
                 updateSavedData();
                 return true;
@@ -101,13 +99,17 @@ public class StudentDB implements DBInterface, Serializable {
     }
 
     @Override
-    public void showData() {
-        // TODO Auto-generated method stub
+    public LinkedList<StudentData> showData() {
+        LinkedList<StudentData> results = new LinkedList<StudentData>();
+        for (int i = 0; i < database.length; i++) {
+            results.append(database.get(i));
+        }
+        return results;
     }
 
     @Override
-    public boolean editData(String name, int SAISID) {
-        // TODO Auto-generated method stub
+    public boolean editData(String name, int saisID) {
+
         return false;
     }
 

@@ -14,6 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import MP.components.DatabaseEntry?>
+
+
 <AnchorPane prefHeight="621.0" prefWidth="815.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MP.dashController">
    <children>
       <VBox prefHeight="644.0" prefWidth="117.0" style="-fx-background-color: #212426;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -146,251 +149,11 @@
                   </Pane>
                   <ScrollPane layoutX="42.0" layoutY="147.0" prefHeight="419.0" prefWidth="582.0" stylesheets="@css/fullpackstyling.css">
                      <content>
-                        <VBox fx:id="pnItems1" prefHeight="512.0" prefWidth="563.0" spacing="5.0" style="-fx-background-color: #111111;">
+                        <VBox fx:id="viewEntries" prefHeight="512.0" prefWidth="563.0" spacing="5.0" style="-fx-background-color: #111111;">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <Pane fx:id="pane1a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name1a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais1a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum1a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address1a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane2a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name2a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais2a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum2a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address2a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane3a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name3a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais3a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum3a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address3a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane4a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name4a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais4a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum4a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address4a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                           <Pane fx:id="pane5a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name5a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais5a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum5a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address5a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane6a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name6a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais6a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum6a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address6a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane7a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name7" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais7a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum7a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address7a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane8a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name8a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais8a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum8a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address8a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane9a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name9a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais9a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum9a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address9a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane10a" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name10a" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais10a" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum10a" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address10a" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
                            </children>
                         </VBox>
                      </content>
@@ -432,9 +195,9 @@
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="nameTxtfield" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="saisTxtfield" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="stunumTxtfield" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="nameTextField" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="saisIDTextField" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="studentNumberTextField" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <Button fx:id="saveAdd" contentDisplay="TOP" layoutX="284.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Save" textFill="#e5e9f0">
                            <font>
                               <Font name="System Bold" size="13.0" />
@@ -455,7 +218,7 @@
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="addressTxtfield" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="addressTextField" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <Pane fx:id="requireNotif" layoutX="23.0" layoutY="221.0" prefHeight="39.0" prefWidth="337.0" style="-fx-background-radius: 5; -fx-background-color: #693e47;" visible="false">
                            <children>
                               <Label layoutX="61.0" layoutY="11.0" text="Please complete all the required fields" textFill="#ff6767">
@@ -502,251 +265,11 @@
                   </Pane>
                   <ScrollPane fx:id="searchContent" layoutX="42.0" layoutY="147.0" prefHeight="419.0" prefWidth="582.0" stylesheets="@css/fullpackstyling.css" visible="false">
                      <content>
-                        <VBox fx:id="pnItems" prefHeight="512.0" prefWidth="563.0" spacing="5.0" style="-fx-background-color: #111111;">
+                        <VBox fx:id="searchEntries" prefHeight="512.0" prefWidth="563.0" spacing="5.0" style="-fx-background-color: #111111;">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <Pane fx:id="pane1b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name1b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais1b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum1b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address1b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane2b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name2b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais2b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum2b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address2b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane3b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name3b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais3b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum3b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address3b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane4b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name4b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais4b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum4b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address4b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane5b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name5b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais5b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum5b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address5b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane6b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name6b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais6b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum6b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address6b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane7b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name7b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais7b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum7b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address7b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane8b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name8b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais8b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum8b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address8b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane9b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name9b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais9b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum9b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address9b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane10b" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" visible="false">
-                                 <children>
-                                    <Text fx:id="name10b" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais10b" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum10b" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address10b" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </Pane>
                            </children>
                         </VBox>
                      </content>
@@ -763,7 +286,7 @@
                      </graphic>
                   </Button>
                   <TextField fx:id="searchField" layoutX="321.0" layoutY="49.0" minHeight="-Infinity" onAction="#keyPress" prefHeight="25.0" prefWidth="277.0" style="-fx-background-color: #1a1d20; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                  <Pane fx:id="nomatchDialog" layoutX="48.0" layoutY="158.0" prefHeight="200.0" prefWidth="553.0" style="-fx-border-color: #212426; -fx-background-color: #1a1d20; -fx-border-width: 3; -fx-border-radius: 5; -fx-border-style: dashed;" visible="false">
+                  <Pane fx:id="nothingMatchedDialog" layoutX="48.0" layoutY="158.0" prefHeight="200.0" prefWidth="553.0" style="-fx-border-color: #212426; -fx-background-color: #1a1d20; -fx-border-width: 3; -fx-border-radius: 5; -fx-border-style: dashed;" visible="false">
                      <children>
                         <ImageView fitHeight="39.0" fitWidth="150.0" layoutX="257.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -817,301 +340,11 @@
                   </Pane>
                   <ScrollPane layoutX="42.0" layoutY="493.0" prefHeight="73.0" prefWidth="658.0" stylesheets="@css/fullpackstyling.css">
                      <content>
-                        <VBox fx:id="pnItems2" prefHeight="512.0" prefWidth="639.0" spacing="5.0" style="-fx-background-color: #111111;">
+                        <VBox fx:id="editEntries" prefHeight="512.0" prefWidth="639.0" spacing="5.0" style="-fx-background-color: #111111;">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <Pane fx:id="pane1c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name1c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais1c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum1c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address1c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit1" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane2c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name2c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais2c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum2c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address2c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit2" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane3c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name3c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais3c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum3c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address3c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit3" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane4c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name4c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais4c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum4c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address4c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit4" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane5c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name5c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais5c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum5c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address5c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit5" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane6c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name6c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais6c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum6c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address6c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit6" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane7c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name7c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais7c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum7c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address7c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit7" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane8c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name8c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais8c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum8c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address8c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit8" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane9c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name9c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais9c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum9c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address9c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit9" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
-                              <Pane fx:id="pane10c" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-radius: 5; -fx-background-color: #212426;" visible="false">
-                                 <children>
-                                    <Text fx:id="name10c" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="sais10c" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="stunum10c" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="address10c" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Button fx:id="edit10" contentDisplay="TOP" layoutX="558.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="27.0" prefWidth="63.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Edit" textFill="#e5e9f0">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </Pane>
                            </children>
                         </VBox>
                      </content>
@@ -1187,9 +420,9 @@
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="nameTxtfielda" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="saisTxtfielda" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="stunumTxtfielda" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="nameTextFielda" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="saisIDTextFielda" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="studentNumberTextFielda" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <Button fx:id="saveEdit" contentDisplay="TOP" disable="true" layoutX="284.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Save" textFill="#e5e9f0">
                            <font>
                               <Font name="System Bold" size="13.0" />
@@ -1210,7 +443,7 @@
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="addressTxtfielda" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="addressTextFielda" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <Pane fx:id="requireNotifa" layoutX="23.0" layoutY="221.0" prefHeight="39.0" prefWidth="337.0" style="-fx-background-radius: 5; -fx-background-color: #693e47;" visible="false">
                            <children>
                               <Label layoutX="61.0" layoutY="11.0" text="Please complete all the required fields" textFill="#ff6767">

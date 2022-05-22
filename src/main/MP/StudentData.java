@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class StudentData implements Serializable {
     private static final long serialVersionUID = 6529685098267757690L;
-    final String name;
-    final int saisID;
-    final int studentNumber;
-    final String address;
+    public final String name;
+    public final int saisID;
+    public final int studentNumber;
+    public final String address;
 
     public StudentData next;
 

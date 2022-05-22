@@ -47,7 +47,7 @@ public class App extends Application {
         // Image icon = new Image(getClass().getResourceAsStream("icon.png"));
         // stage.getIcons().add(icon);
         primaryStage.setTitle("Meow Student Database");
-        //scene.setFill(Color.TRANSPARENT);
+        // scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
