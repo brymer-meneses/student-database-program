@@ -5,23 +5,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
-    <Text fx:id="name" fill="WHITE" layoutX="19.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+<fx:root minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="542.0" style="-fx-background-color: #212426; -fx-background-radius: 5;" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <Text fx:id="name" fill="WHITE" layoutX="19.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="70.33447647094727">
         <font>
             <Font size="13.0" />
         </font>
     </Text>
-    <Text fx:id="saisId" fill="WHITE" layoutX="115.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID">
+    <Text fx:id="saisId" fill="WHITE" layoutX="115.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAIS ID" wrappingWidth="78.45965576171875">
         <font>
             <Font size="13.0" />
         </font>
     </Text>
-    <Text fx:id="studentNumber" fill="WHITE" layoutX="201.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number">
+    <Text fx:id="studentNumber" fill="WHITE" layoutX="201.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Number" wrappingWidth="109.01788330078125">
         <font>
             <Font size="13.0" />
         </font>
     </Text>
-    <Text fx:id="address" fill="WHITE" layoutX="327.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+    <Text fx:id="address" fill="WHITE" layoutX="327.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="142.0457763671875">
         <font>
             <Font size="13.0" />
         </font>

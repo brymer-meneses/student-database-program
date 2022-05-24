@@ -17,12 +17,11 @@ public class StudentDBDemo {
     public static StudentDB defaultData() {
 
         StudentDB database = new StudentDB();
-        database.addData(new StudentData("name",1,11,"address1"));
-        //database.addData(new StudentData("Leonhard Euler", 045612, 17150234, "St. Petersburg, Berlin, Russia"));
-        database.addData(new StudentData("name2",2,22,"address2"));
-        database.addData(new StudentData("name3",3,33,"address3"));
-        database.addData(new StudentData("name4",4,44,"address4"));
-        database.addData(new StudentData("name5",5,55,"address5"));   
+        database.addData(new StudentData("Leonhard Euler", 045612, 17150234, "St. Petersburg, Russia"));
+        database.addData(new StudentData("Archimedes of Syracuse", 314, 287314152,"Syracuse, Italy"));
+        database.addData(new StudentData("Max Planck",66260,19476626,"Humboldtstrasse 13,Heidelberg, Germany"));
+        database.addData(new StudentData("Katherine Johnson",2020,19581969,"1400 Bell St. Sacramento, California"));
+        database.addData(new StudentData("Alan Turing",1947,01000001,"96 Euston Road, London"));   
         //database.addData(new StudentData("Leonhard Euler", 045612, 17150234, "St. Petersburg, Berlin, Russia"));
         return database;
 
