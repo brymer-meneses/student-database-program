@@ -67,20 +67,20 @@ public class dashController {
         if (!inputName.matches("[a-zA-Z\\s]+") && inputName.length() > 0) {
             charOnly1.setVisible(true);
         }
-        if (!inputSAIS.matches("[0-9\\s]+") && inputSAIS.length() > 0) {
+        if (!inputSAIS.matches("[0-9]+") && inputSAIS.length() > 0) {
             numOnly1.setVisible(true);
         }
-        if (!inputStunum.matches("[0-9\\s]+") && inputStunum.length() > 0) {
+        if (!inputStunum.matches("[0-9]+") && inputStunum.length() > 0) {
             numOnly2.setVisible(true);
         }
         if (inputName.matches("[a-zA-Z\\s]+")) {
             charOnly1.setVisible(false);
         }
-        if (inputSAIS.matches("[0-9\\s]+")) {
+        if (inputSAIS.matches("[0-9s]+")) {
             numOnly1.setVisible(false);
         }
 
-        if (inputStunum.matches("[0-9\\s]+")) {
+        if (inputStunum.matches("[0-9s]+")) {
             numOnly2.setVisible(false);
         }
 
@@ -133,8 +133,8 @@ public class dashController {
         }
 
         if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0
-                && inputName.matches("[a-zA-Z]+") && inputName.matches("[a-zA-Z]+") &&
-                inputName.matches("[a-zA-Z]+")) {
+                && inputName.matches("[a-zA-Z\\s]+") && inputSAIS.matches("[0-9s]+") &&
+                inputStunum.matches("[0-9s]+")) {
             StudentDB database = StudentDB.readSavedData();
             System.out.println(inputName);
             System.out.println(inputAddress);

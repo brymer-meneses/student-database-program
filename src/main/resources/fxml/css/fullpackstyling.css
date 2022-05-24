@@ -69,15 +69,15 @@
 }
 .button5:hover
 {
-    -fx-background-color : #2966cc ;
+    -fx-background-color : #a60011 ;
     -fx-border-width: 2; 
-    -fx-border-color: #2966cc;
+    -fx-border-color: #a60011;
 }
 .button5:pressed
 {
-    -fx-background-color : #1f4c99 ;
+    -fx-background-color : #80000d ;
     -fx-border-width: 2; 
-    -fx-border-color: #1f4c99;
+    -fx-border-color: #80000d;
 }
 .button6
 {
