@@ -74,19 +74,26 @@ public class StudentDBTest {
     public void testDeleteData() {
         StudentDB sdb = new StudentDB();
 
-        sdb.addData(new StudentData("person 1", 1, 1, "Earth"));
-        sdb.addData(new StudentData("person 2", 2, 2, "Mars"));
-        sdb.addData(new StudentData("person 3", 3, 3, "Jupiter"));
-        sdb.addData(new StudentData("person 4", 4, 4, "Jupiter"));
+        StudentData s0 = new StudentData("Arnold Euler", 1, 1, "Earth");
+        StudentData s1 = new StudentData("Leonhard Euler", 2, 2, "Mars");
+        StudentData s2 = new StudentData("Isaac Newton", 3, 3, "Jupiter");
+        StudentData s3 = new StudentData("Albert Einstein", 4, 4, "Jupiter");
 
-        sdb.deleteData("person 2", 2);
+        sdb.addData(s0);
+        sdb.addData(s1);
+        sdb.addData(s2);
+        sdb.addData(s3);
 
-        assertEquals("person 3", sdb.getData(1).name);
+        assertEquals(s0, sdb.getData(0));
+        assertEquals(s1, sdb.getData(1));
+        assertEquals(s2, sdb.getData(2));
+        assertEquals(s3, sdb.getData(3));
 
-        sdb.deleteData("person 3", 3);
+        sdb.deleteData(s0.name, s0.saisID);
+        sdb.deleteData(s1.name, s1.saisID);
+        sdb.deleteData(s2.name, s2.saisID);
 
-        assertEquals("person 4", sdb.getData(1).name);
-        assertEquals(2, sdb.length());
+        assertEquals(s3, sdb.getData(0));
 
     }
 

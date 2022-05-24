@@ -74,7 +74,7 @@ public class StudentDB implements DBInterface, Serializable {
 
         for (int i = 0; i < database.length; i++) {
 
-            if (database.get(i).name == name && database.get(i).saisID == SAISID) {
+            if (database.get(i).name.equals(name) && database.get(i).saisID == SAISID) {
                 database.delete(i);
                 updateSavedData();
                 return true;
