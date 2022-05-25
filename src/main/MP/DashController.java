@@ -47,14 +47,14 @@ public class DashController {
     private Text charOnly1, charOnly1a, numOnly1, numOnly2;
 
     @FXML
-    private TextField saisIDTextField, saisIDTextFielda, studentNumberTextField,
-            studentNumberTextFielda, nameTextField, addressTextField;
+    public TextField addSaisIdTextField, saisIdTextFielda, addStudentNumberTextField,
+            studentNumberTextFielda, addNameTextField, addAddressTextField;
 
     public void handleAdd() {
-        String inputName = nameTextField.getText();
-        String inputSAIS = saisIDTextField.getText();
-        String inputStudentNumber = studentNumberTextField.getText();
-        String inputAddress = addressTextField.getText();
+        String inputName = addNameTextField.getText();
+        String inputSAIS = addSaisIdTextField.getText();
+        String inputStudentNumber = addStudentNumberTextField.getText();
+        String inputAddress = addAddressTextField.getText();
 
         StudentData student = new StudentData(inputName, Integer.parseInt(inputSAIS), Integer.parseInt(inputStudentNumber), inputAddress);
         DialogBox dialogBox = new DialogBox();
@@ -80,20 +80,20 @@ public class DashController {
         }
 
         if (inputStudentNumber.length() > 0) {
-            studentNumberTextField
+            addStudentNumberTextField
                     .setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputName.length() > 0) {
-            nameTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+            addNameTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputSAIS.length() > 0) {
-            saisIDTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+            addSaisIdTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputAddress.length() > 0) {
-            addressTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+            addAddressTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputAddress.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0
@@ -102,22 +102,22 @@ public class DashController {
         }
 
         if (inputAddress.length() == 0) {
-            addressTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+            addAddressTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputName.length() == 0) {
             charOnly1.setVisible(false);
-            nameTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+            addNameTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputSAIS.length() == 0) {
             numOnly1.setVisible(false);
-            saisIDTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+            addSaisIdTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
         if (inputStudentNumber.length() == 0) {
             numOnly2.setVisible(false);
-            studentNumberTextField
+            addStudentNumberTextField
                     .setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
@@ -148,10 +148,10 @@ public class DashController {
 
             else if (database.length() < 10) {
                 dialogBox.load("notif_add_success", student);
-                nameTextField.clear();
-                studentNumberTextField.clear();
-                addressTextField.clear();
-                saisIDTextField.clear();
+                addNameTextField.clear();
+                addStudentNumberTextField.clear();
+                addAddressTextField.clear();
+                addSaisIdTextField.clear();
                 database.addData(element);
             }
         }

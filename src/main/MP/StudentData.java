@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class StudentData implements Serializable {
     private static final long serialVersionUID = 6529685098267757690L;
-    public final String name;
-    public final int saisID;
-    public final int studentNumber;
-    public final String address;
+    public String name;
+    public int saisId;
+    public int studentNumber;
+    public  String address;
 
     public StudentData next;
 
-    public StudentData(String name, int saisID, int studentNumber, String address) {
+    public StudentData(String name, int saisId, int studentNumber, String address) {
         this.name = name;
-        this.saisID = saisID;
+        this.saisId = saisId;
         this.studentNumber = studentNumber;
         this.address = address;
 
@@ -22,7 +22,7 @@ public class StudentData implements Serializable {
 
     public boolean isEqualTo(StudentData other) {
 
-        if (name.equals(other.name) && saisID == other.saisID)
+        if (name.equals(other.name) && saisId == other.saisId)
             return true;
 
         return false;
@@ -35,7 +35,7 @@ public class StudentData implements Serializable {
         if (address.contains(keyword))
             return true;
 
-        if (Integer.toString(saisID).contains(keyword))
+        if (Integer.toString(saisId).contains(keyword))
             return true;
 
         if (Integer.toString(studentNumber).contains(keyword))

@@ -49,7 +49,7 @@ public class DatabaseEntry extends Pane {
         }
 
         this.name.setText(data.name);
-        this.saisId.setText(String.valueOf(data.saisID));
+        this.saisId.setText(String.valueOf(data.saisId));
         this.address.setText(data.address);
         this.studentNumber.setText(String.valueOf(data.studentNumber));
 
