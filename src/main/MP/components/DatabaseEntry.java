@@ -1,5 +1,7 @@
 package MP.components;
 
+import MP.DashController;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -21,54 +23,20 @@ public class DatabaseEntry extends Pane {
     @FXML
     private Button btn;
 
-    private boolean isDeletable;
-
     @FXML
-    private VBox parent;
+    public VBox parent;
 
-    public void setParent(VBox parent) {
+    private final String type;
+    private final StudentData data;
+    private DialogBox dialogBox;
+
+
+    public DatabaseEntry(String type, StudentData data, VBox parent) {
+
+        this.type = type;
+        this.data = data;
         this.parent = parent;
-    }
 
-    public void setButtonFunction(String function) {
-        if (function == null) {
-            this.btn.setVisible(false);
-        } else {
-            this.btn.setVisible(true);
-        }
-
-        if (function == "delete") {
-            this.btn.setText("Delete");
-            this.btn.setOnAction((ActionEvent e) -> {
-                this.handleDelete(e);
-            });
-        } else if (function == "edit") {
-            this.btn.setText("Edit");
-            this.btn.setOnAction((ActionEvent e) -> {
-                this.handleEdit(e);
-            });
-        }
-    }
-
-    public void setData(StudentData student) {
-        this.name.setText(student.name);
-        this.saisId.setText(String.valueOf(student.saisID));
-        this.address.setText(student.address);
-        this.studentNumber.setText(String.valueOf(student.studentNumber));
-
-    }
-
-    public void handleEdit(ActionEvent e) {
-
-    }
-
-    public void handleDelete(ActionEvent actionEvent) {
-        this.parent.getChildren().remove(this);
-        StudentDB database = StudentDB.readSavedData();
-        database.deleteData(this.name.getText(), Integer.parseInt(this.saisId.getText()));
-    }
-
-    public DatabaseEntry() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fxml/DatabaseEntry.fxml"));
         fxmlLoader.setRoot(this);
@@ -79,5 +47,28 @@ public class DatabaseEntry extends Pane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        this.name.setText(data.name);
+        this.saisId.setText(String.valueOf(data.saisID));
+        this.address.setText(data.address);
+        this.studentNumber.setText(String.valueOf(data.studentNumber));
+
+        dialogBox = new DialogBox();
+        dialogBox.setEntryCaller(this);
+
+        btn.setVisible(true);
+
+        if (type.equals("view") || type.equals("search")) {
+            btn.setVisible(false);
+        }
+
+        // Capitalize first letter of the string "type"
+        String btnTitle =  type.substring(0, 1).toUpperCase() + type.substring(1);
+        btn.setText(btnTitle);
+
+        btn.setOnAction((ActionEvent e) -> {
+            dialogBox.load("confirm_" + type, data);
+        });
+
     }
 }

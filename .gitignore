@@ -2,6 +2,7 @@
 .settings
 .classpath
 .vscode
+.idea
 
 build
 bin

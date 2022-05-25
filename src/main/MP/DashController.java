@@ -1,31 +1,23 @@
 package MP;
 
-import MP.StudentDBDemo;
 import MP.components.DatabaseEntry;
+import MP.components.DialogBox;
 import MP.core.LinkedList;
-import MP.App;
 
-import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
-import javafx.scene.layout.*;
-import javafx.geometry.*;
-import javafx.event.*;
 import javafx.fxml.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-import javafx.scene.paint.Color;
-
-public class dashController {
+public class DashController {
 
     @FXML
     private Button btnMin, btnClose;
@@ -61,8 +53,11 @@ public class dashController {
     public void handleAdd() {
         String inputName = nameTextField.getText();
         String inputSAIS = saisIDTextField.getText();
-        String inputStunum = studentNumberTextField.getText();
+        String inputStudentNumber = studentNumberTextField.getText();
         String inputAddress = addressTextField.getText();
+
+        StudentData student = new StudentData(inputName, Integer.parseInt(inputSAIS), Integer.parseInt(inputStudentNumber), inputAddress);
+        DialogBox dialogBox = new DialogBox();
 
         if (!inputName.matches("[a-zA-Z\\s]+") && inputName.length() > 0) {
             charOnly1.setVisible(true);
@@ -70,7 +65,7 @@ public class dashController {
         if (!inputSAIS.matches("[0-9]+") && inputSAIS.length() > 0) {
             numOnly1.setVisible(true);
         }
-        if (!inputStunum.matches("[0-9]+") && inputStunum.length() > 0) {
+        if (!inputStudentNumber.matches("[0-9]+") && inputStudentNumber.length() > 0) {
             numOnly2.setVisible(true);
         }
         if (inputName.matches("[a-zA-Z\\s]+")) {
@@ -80,11 +75,11 @@ public class dashController {
             numOnly1.setVisible(false);
         }
 
-        if (inputStunum.matches("[0-9s]+")) {
+        if (inputStudentNumber.matches("[0-9s]+")) {
             numOnly2.setVisible(false);
         }
 
-        if (inputStunum.length() > 0) {
+        if (inputStudentNumber.length() > 0) {
             studentNumberTextField
                     .setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
@@ -102,7 +97,7 @@ public class dashController {
         }
 
         if (inputAddress.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0
-                || inputStunum.length() == 0) {
+                || inputStudentNumber.length() == 0) {
             requireNotif.setVisible(true);
         }
 
@@ -120,39 +115,39 @@ public class dashController {
             saisIDTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
-        if (inputStunum.length() == 0) {
+        if (inputStudentNumber.length() == 0) {
             numOnly2.setVisible(false);
             studentNumberTextField
                     .setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
         }
 
-        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0)
+        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStudentNumber.length() > 0)
 
         {
             requireNotif.setVisible(false);
         }
 
-        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStunum.length() > 0
+        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStudentNumber.length() > 0
                 && inputName.matches("[a-zA-Z\\s]+") && inputSAIS.matches("[0-9s]+") &&
-                inputStunum.matches("[0-9s]+")) {
+                inputStudentNumber.matches("[0-9s]+")) {
             StudentDB database = StudentDB.readSavedData();
             System.out.println(inputName);
             System.out.println(inputAddress);
             StudentData element = new StudentData(inputName, Integer.parseInt(inputSAIS),
-                    Integer.parseInt(inputStunum), inputAddress);
+                    Integer.parseInt(inputStudentNumber), inputAddress);
 
             if (database.length() == 10) {
-                dialog("warn_overflow");
+                dialogBox.load("warn_overflow", student);
                 return;
             }
 
             if (database.isDuplicateOfDatabase(element)) {
-                dialog("notif_added");
+                dialogBox.load("notif_added", student);
                 return;
             }
 
             else if (database.length() < 10) {
-                dialog("notif_addsuccess");
+                dialogBox.load("notif_add_success", student);
                 nameTextField.clear();
                 studentNumberTextField.clear();
                 addressTextField.clear();
@@ -168,22 +163,21 @@ public class dashController {
         viewEntries.getChildren().clear();
         editEntries.getChildren().clear();
         deleteEntries.getChildren().clear();
-        for (int i = 0; i < database.length(); i++) {
-            DatabaseEntry entry = new DatabaseEntry();
 
-            entry.setData(database.getData(i));
+        DatabaseEntry entry;
+        for (int i = 0; i < database.length(); i++) {
+
             switch (location) {
                 case "view":
-                    entry.setButtonFunction(null);
+                    entry = new DatabaseEntry("view", database.getData(i), viewEntries);
                     viewEntries.getChildren().add(entry);
                     break;
                 case "edit":
-                    entry.setButtonFunction("edit");
+                    entry = new DatabaseEntry("edit", database.getData(i), editEntries);
                     editEntries.getChildren().add(entry);
                     break;
                 case "delete":
-                    entry.setButtonFunction("delete");
-                    entry.setParent(deleteEntries);
+                    entry = new DatabaseEntry("delete", database.getData(i),deleteEntries);
                     deleteEntries.getChildren().add(entry);
                     break;
             }
@@ -205,9 +199,7 @@ public class dashController {
             searchContent.setVisible(true);
 
             for (int i = 0; i < results.length; i++) {
-                DatabaseEntry entry = new DatabaseEntry();
-                entry.setData(results.get(i));
-                entry.setButtonFunction(null);
+                DatabaseEntry entry = new DatabaseEntry("search", database.getData((i)), searchEntries);
 
                 searchEntries.getChildren().add(entry);
             }
@@ -297,18 +289,6 @@ public class dashController {
 
     }
 
-    public void dialog(String pathFXML) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/" + pathFXML + ".fxml"));
-        try {
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.getStackTrace();
-        }
-    }
 
     @FXML
     public void keyPress(ActionEvent actionEvent) {

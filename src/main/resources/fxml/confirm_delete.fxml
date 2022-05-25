@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="402.0" style="-fx-background-color: #1a1d20;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MP.dashController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="402.0" style="-fx-background-color: #1a1d20;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="2.0" layoutY="-11.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="457.0" style="-fx-background-color: #212426;">
          <children>
@@ -22,7 +22,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button id="btnClose" fx:id="btnDialogclose" contentDisplay="TOP" layoutX="354.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="43.0" prefWidth="44.0" styleClass="button6" stylesheets="@css/fullpackstyling.css" textFill="#e5e9f0">
+            <Button fx:id="btnClose" contentDisplay="TOP" layoutX="354.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="43.0" prefWidth="44.0" styleClass="button6" stylesheets="@css/fullpackstyling.css" textFill="#e5e9f0">
                <graphic>
                   <ImageView fitHeight="14.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,7 +35,7 @@
       </Pane>
       <Pane layoutX="2.0" layoutY="385.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="561.0" style="-fx-background-color: #212426;">
          <children>
-            <Button fx:id="btnOK" contentDisplay="TOP" layoutX="113.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: #212426;" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Cancel" textFill="#e5e9f0">
+            <Button fx:id="btnCancel" contentDisplay="TOP" layoutX="113.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" style="-fx-background-color: #212426;" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Cancel" textFill="#e5e9f0">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -55,7 +55,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="actionDelete" contentDisplay="TOP" layoutX="248.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Delete" textFill="#e5e9f0">
+      <Button fx:id="btnConfirm" contentDisplay="TOP" layoutX="248.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Delete" textFill="#e5e9f0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -92,22 +92,22 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="nameDelete" layoutX="180.0" layoutY="172.0" prefHeight="20.0" prefWidth="180.0" text="Name1" textFill="WHITE">
+      <Label fx:id="name" layoutX="180.0" layoutY="172.0" prefHeight="20.0" prefWidth="180.0" text="Name1" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="saisDelete" layoutX="186.0" layoutY="203.0" prefHeight="20.0" prefWidth="172.0" text="12301238129381023" textFill="WHITE">
+      <Label fx:id="saisId" layoutX="186.0" layoutY="203.0" prefHeight="20.0" prefWidth="172.0" text="12301238129381023" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="stunumDelete" layoutX="246.0" layoutY="234.0" prefHeight="20.0" prefWidth="110.0" text="12301238129381023" textFill="WHITE">
+      <Label fx:id="student" layoutX="246.0" layoutY="234.0" prefHeight="20.0" prefWidth="110.0" text="12301238129381023" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="addressDelete" layoutX="192.0" layoutY="265.0" prefHeight="20.0" prefWidth="172.0" text="124124 sdfsdfs sdfsdf sdfsdfsdf sdfsdfsdfsdfs sdfsdf " textFill="WHITE">
+      <Label fx:id="address" layoutX="192.0" layoutY="265.0" prefHeight="20.0" prefWidth="172.0" text="124124 sdfsdfs sdfsdf sdfsdfsdf sdfsdfsdfsdfs sdfsdf " textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
