@@ -189,17 +189,18 @@ public class DashController {
         StudentDB database = StudentDB.readSavedData();
         LinkedList<StudentData> results = database.searchData(searchKeyword);
 
+        searchEntries.getChildren().clear();
+
         if (results.length == 0) {
             nothingMatchedDialog.setVisible(true);
             searchContent.setVisible(false);
         } else if (results.length > 0) {
-            searchEntries.getChildren().clear();
 
             nothingMatchedDialog.setVisible(false);
             searchContent.setVisible(true);
 
             for (int i = 0; i < results.length; i++) {
-                DatabaseEntry entry = new DatabaseEntry("search", database.getData((i)), searchEntries);
+                DatabaseEntry entry = new DatabaseEntry("search", results.get(i), searchEntries);
 
                 searchEntries.getChildren().add(entry);
             }

@@ -7,7 +7,7 @@ public class StudentData implements Serializable {
     public String name;
     public int saisId;
     public int studentNumber;
-    public  String address;
+    public String address;
 
     public StudentData next;
 
@@ -29,16 +29,16 @@ public class StudentData implements Serializable {
     }
 
     public boolean keywordInEntries(String keyword) {
-        if (name.contains(keyword))
+        if (name.toLowerCase().contains(keyword.toLowerCase()))
             return true;
 
-        if (address.contains(keyword))
+        if (address.toLowerCase().contains(keyword.toLowerCase()))
             return true;
 
-        if (Integer.toString(saisId).contains(keyword))
+        if (Integer.toString(saisId).contains(keyword.toLowerCase()))
             return true;
 
-        if (Integer.toString(studentNumber).contains(keyword))
+        if (Integer.toString(studentNumber).contains(keyword.toLowerCase()))
             return true;
 
         return false;

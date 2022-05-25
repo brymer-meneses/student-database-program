@@ -89,9 +89,9 @@ public class StudentDBTest {
         assertEquals(s2, sdb.getData(2));
         assertEquals(s3, sdb.getData(3));
 
-        sdb.deleteData(s0.name, s0.saisID);
-        sdb.deleteData(s1.name, s1.saisID);
-        sdb.deleteData(s2.name, s2.saisID);
+        sdb.deleteData(s0.name, s0.saisId);
+        sdb.deleteData(s1.name, s1.saisId);
+        sdb.deleteData(s2.name, s2.saisId);
 
         assertEquals(s3, sdb.getData(0));
 
@@ -101,18 +101,32 @@ public class StudentDBTest {
     public void testSearchData() {
         StudentDB sdb = new StudentDB();
 
-        sdb.addData(new StudentData("Arnold Euler", 1, 1, "Earth"));
-        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
-        sdb.addData(new StudentData("Isaac Newton", 3, 3, "Jupiter"));
-        sdb.addData(new StudentData("Albert Einstein", 4, 4, "Jupiter"));
+        StudentData s0 = new StudentData("Albert Einstein", 4, 4, "Jupiter");
+        StudentData s1 = new StudentData("Arnold Euler", 1, 1, "Earth");
+        StudentData s2 = new StudentData("Leonhard Euler", 2, 2, "Mars");
+        StudentData s3 = new StudentData("Isaac Newton", 3, 3, "Jupiter");
 
-        LinkedList<StudentData> results = sdb.searchData("Euler");
+        sdb.addData(s0);
+        sdb.addData(s1);
+        sdb.addData(s2);
+        sdb.addData(s3);
+        LinkedList<StudentData> results;
 
-        assertEquals(true, results.get(0).name.contains("Euler"));
-        assertEquals(true, results.get(1).name.contains("Euler"));
+        results = sdb.searchData("Earth");
 
-        assertEquals(false, results.get(0).name.contains("Newton"));
-        assertEquals(false, results.get(1).name.contains("Einstein"));
+        assertEquals(s1, results.get(0));
+        assertEquals(1, results.length);
+
+        results = sdb.searchData("Einstein");
+
+        assertEquals(s0, results.get(0));
+        assertEquals(1, results.length);
+
+        results = sdb.searchData("Jupiter");
+
+        assertEquals(s0, results.get(0));
+        assertEquals(s3, results.get(1));
+        assertEquals(2, results.length);
 
     }
 
