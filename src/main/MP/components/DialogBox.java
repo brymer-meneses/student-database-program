@@ -36,7 +36,7 @@ public class DialogBox extends Pane {
         if (clickedButton ==  btnConfirm) {
             switch (type) {
                 case "confirm_delete":
-                    database.deleteData(data.name, data.saisID);
+                    database.deleteData(data.name, data.saisId);
                     entryCaller.parent.getChildren().remove(entryCaller);
                     break;
                 case "confirm_edit":

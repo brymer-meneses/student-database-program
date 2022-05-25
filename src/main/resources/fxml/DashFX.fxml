@@ -192,9 +192,9 @@
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="nameTextField" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="saisIDTextField" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="studentNumberTextField" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="addNameTextField" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="addSaisIdTextField" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="addStudentNumberTextField" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <Button fx:id="saveAdd" contentDisplay="TOP" layoutX="284.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Save" textFill="#e5e9f0">
                            <font>
                               <Font name="System Bold" size="13.0" />
@@ -417,9 +417,9 @@
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="nameTextFielda" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="saisIDTextFielda" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <TextField fx:id="studentNumberTextFielda" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="editNameTextField" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="editSaisIdTextField" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <TextField fx:id="editStudentNumberTextField" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <Button fx:id="saveEdit" contentDisplay="TOP" disable="true" layoutX="284.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Save" textFill="#e5e9f0">
                            <font>
                               <Font name="System Bold" size="13.0" />

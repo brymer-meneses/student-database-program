@@ -35,23 +35,16 @@ public class StudentDB implements DBInterface, Serializable {
 
     }
 
-    public void print() {
-        System.out.println("Student Database = {");
-        for (int i = 0; i < database.length; i++) {
-            StudentData element = database.get(i);
-            System.out.println(
-                    String.format("\t Name: %s saisId: %d  studentNumber: %d address: %s", element.name, element.saisID,
-                            element.studentNumber,
-                            element.address));
-        }
-        System.out.println("}");
-    }
+    private String currentNameEdit;
+    private int currentSaisIdEdit;
+    private String currentAddressEdit;
+    private int currentStudentNumberEdit;
 
-    public boolean elementExists(int index) {
-        if (index >= database.length || index < 0) {
-            return false;
-        }
-        return true;
+    public void setCurrentEdit(String currentNameEdit, int currentSaisIdEdit, int currentStudentNumberEdit, String currentAddressEdit) {
+        this.currentNameEdit = currentNameEdit;
+        this.currentSaisIdEdit = currentSaisIdEdit;
+        this.currentStudentNumberEdit = currentStudentNumberEdit;
+        this.currentAddressEdit = currentAddressEdit;
     }
 
     @Override
@@ -74,7 +67,7 @@ public class StudentDB implements DBInterface, Serializable {
 
         for (int i = 0; i < database.length; i++) {
 
-            if (database.get(i).name.equals(name) && database.get(i).saisID == SAISID) {
+            if (database.get(i).name.equals(name) && database.get(i).saisId == SAISID) {
                 database.delete(i);
                 updateSavedData();
                 return true;
@@ -109,6 +102,16 @@ public class StudentDB implements DBInterface, Serializable {
 
     @Override
     public boolean editData(String name, int saisID) {
+        StudentData element;
+        for (int i=0; i < database.length; i++) {
+            element = database.get(i);
+            if (element.name.equals(name) && element.saisId == saisID) {
+                element.name = currentNameEdit;
+                element.saisId = currentSaisIdEdit;
+                element.address = currentAddressEdit;
+                element.studentNumber = currentStudentNumberEdit;
+            }
+        }
 
         return false;
     }
