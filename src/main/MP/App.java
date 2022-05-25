@@ -1,8 +1,8 @@
 package MP;
 
-import MP.components.DialogBox;
 import javafx.application.*;
 import javafx.scene.*;
+import javafx.scene.image.Image;
 import javafx.scene.control.*;
 import javafx.stage.*;
 import javafx.scene.layout.*;
@@ -37,18 +37,8 @@ public class App extends Application {
             primaryStage.setY(event.getScreenY() - yOffset);
         });
         Scene scene = new Scene(root);
-        // set transparent
-        // here>>
-        // primaryStage.getIcons().add(new
-        // Image(this.getClass().getResourceAsStream("file:meowIcon.png")));
-        // Image icon = new Image(getClass().getResourceAsStream("files:meowIcon.png"));
-        // primaryStage.getIcons().add(icon);
-        // primaryStage.getIcons().add(new Image("meowIcon.png"));
-        // stage.setTitle("Wow!! Stackoverflow Icon");
-        // Image icon = new Image(getClass().getResourceAsStream("icon.png"));
-        // stage.getIcons().add(icon);
         primaryStage.setTitle("Meow Student Database");
-        // scene.setFill(Color.TRANSPARENT);
+        primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/icons/meowIcon.png")));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
