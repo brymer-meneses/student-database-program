@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +20,9 @@ public class DialogBox extends Pane {
 
     @FXML
     private Button btnConfirm, btnClose, btnCancel;
+
+    @FXML
+    private Label name, saisId,  studentNumber, address;
 
     private StudentData data;
     private String type;
@@ -52,21 +56,32 @@ public class DialogBox extends Pane {
 
 
     public void load(String type, StudentData data) {
+        Parent root;
         this.data = data;
         this.type = type;
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+type+".fxml"));
         fxmlLoader.setController(this);
         try {
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.showAndWait();
+            root = (Parent) fxmlLoader.load();
         } catch (IOException e){
             e.printStackTrace();
+            return;
         }
 
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UNDECORATED);
+
+        if (type.equals("confirm_delete")) {
+            name.setText(data.name);
+            studentNumber.setText(String.valueOf(data.studentNumber));
+            saisId.setText(String.valueOf(data.saisId));
+            address.setText(data.address);
+        }
+
+        stage.showAndWait();
     }
 
 }
