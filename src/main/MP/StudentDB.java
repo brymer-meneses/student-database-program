@@ -14,7 +14,7 @@ public class StudentDB implements DBInterface, Serializable {
 
     private LinkedList<StudentData> database;
 
-    private final static int maxStorageLength = 10;
+    public final  int maxStorageLength = 10;
     private final static String databasePath = "database.dat";
     private final static boolean shouldSaveChanges = true;
 
@@ -101,15 +101,17 @@ public class StudentDB implements DBInterface, Serializable {
     }
 
     @Override
-    public boolean editData(String name, int saisID) {
+    public boolean editData(String name, int saisId) {
         StudentData element;
         for (int i=0; i < database.length; i++) {
             element = database.get(i);
-            if (element.name.equals(name) && element.saisId == saisID) {
+            if (element.name.equals(name) && element.saisId == saisId) {
                 element.name = currentNameEdit;
                 element.saisId = currentSaisIdEdit;
                 element.address = currentAddressEdit;
                 element.studentNumber = currentStudentNumberEdit;
+                updateSavedData();
+                return true;
             }
         }
 

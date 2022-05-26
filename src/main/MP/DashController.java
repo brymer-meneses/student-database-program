@@ -4,6 +4,7 @@ import MP.components.DatabaseEntry;
 import MP.components.DialogBox;
 import MP.core.LinkedList;
 
+import MP.interfaces.Callback;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
@@ -23,10 +24,10 @@ public class DashController {
     private Button btnMin, btnClose;
 
     @FXML
-    private Button btnHome, btnView, btnAdd, btnDelete, btnEdit, btnSearch, btnHelp, btnOK, btnDialogclose;
+    private Button btnHome, btnView, btnAdd, btnDelete, btnEdit, btnSearch, btnHelp;
 
     @FXML
-    private Button saveAdd;
+    private Button saveAdd, saveEdit;
 
     @FXML
     private Pane homePane, viewPane, addPane, deletePane, editPane, searchPane, helpPane;
@@ -41,144 +42,207 @@ public class DashController {
     private TextField searchField;
 
     @FXML
-    private Pane nothingMatchedDialog, requireNotif;
+    private Pane nothingMatchedDialog, editRequireNotif, addRequireNotif;
 
     @FXML
-    private Text charOnly1, charOnly1a, numOnly1, numOnly2;
+    private Text editCharOnlyReminder, editNumOnlyReminder1, editNumOnlyReminder2;
 
     @FXML
-    public TextField addSaisIdTextField, saisIdTextFielda, addStudentNumberTextField,
-            studentNumberTextFielda, addNameTextField, addAddressTextField;
+    private Text addCharOnlyReminder, addNumOnlyReminder1, addNumOnlyReminder2;
+
+    @FXML
+    public TextField addSaisIdTextField, addStudentNumberTextField, addNameTextField, addAddressTextField;
+    @FXML
+    public TextField editSaisIdTextField, editStudentNumberTextField, editNameTextField, editAddressTextField;
+
+    public void handleEdit() {
+        String inputName = editNameTextField.getText();
+        String inputSaisId = editSaisIdTextField.getText();
+        String inputStudentNumber =  editStudentNumberTextField.getText();
+        String inputAddress = editAddressTextField.getText();
+
+        boolean isNameCharOnly = Utils.isCharOnly(inputName);
+        boolean isSaisIdNumberOnly = Utils.isNumberOnly(inputSaisId);
+        boolean isStudentNumberOnly = Utils.isNumberOnly(inputStudentNumber);
+
+        boolean areSomeInputsBlank = inputAddress.isBlank() || inputName.isBlank() || inputSaisId.isBlank() || inputStudentNumber.isBlank();
+        boolean areAllInputsValid = !areSomeInputsBlank && isNameCharOnly && isSaisIdNumberOnly && isStudentNumberOnly;
+
+        editCharOnlyReminder.setVisible(!isNameCharOnly || inputName.isBlank());
+        editNumOnlyReminder1.setVisible(!isSaisIdNumberOnly || inputSaisId.isBlank());
+        editNumOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
+        editRequireNotif.setVisible(areSomeInputsBlank);
+
+
+        if (inputStudentNumber.isBlank()) {
+            editNumOnlyReminder1.setVisible(false);
+            Utils.setStyleWarning(addStudentNumberTextField);
+        } else {
+            Utils.setStyleNormal(addAddressTextField);
+        }
+
+        if (inputName.isBlank()) {
+            editCharOnlyReminder.setVisible(false);
+            Utils.setStyleWarning(addNameTextField);
+        } else {
+            Utils.setStyleNormal(addNameTextField);
+        }
+
+        if (inputSaisId.isBlank()) {
+            editNumOnlyReminder1.setVisible(false);
+            Utils.setStyleWarning(addSaisIdTextField);
+        } else {
+            Utils.setStyleNormal(addSaisIdTextField);
+        }
+
+        if (inputAddress.isBlank()) {
+            Utils.setStyleWarning(addAddressTextField);
+        } else {
+            Utils.setStyleNormal(addAddressTextField);
+        }
+
+        if (areAllInputsValid) {
+            StudentDB database = StudentDB.readSavedData();
+
+
+            DialogBox dialogBox = new DialogBox();
+            dialogBox.setConfirmButtonAction(()->{
+                database.setCurrentEdit(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
+                database.editData(inputName, Integer.parseInt(inputSaisId));
+
+                editSaisIdTextField.clear();
+                editNameTextField.clear();
+                editAddressTextField.clear();
+                editNameTextField.clear();
+            });
+            dialogBox.load("confirm_edit");
+
+        }
+
+
+    }
 
     public void handleAdd() {
         String inputName = addNameTextField.getText();
-        String inputSAIS = addSaisIdTextField.getText();
+        String inputSaisId = addSaisIdTextField.getText();
         String inputStudentNumber = addStudentNumberTextField.getText();
         String inputAddress = addAddressTextField.getText();
 
-        StudentData student = new StudentData(inputName, Integer.parseInt(inputSAIS), Integer.parseInt(inputStudentNumber), inputAddress);
-        DialogBox dialogBox = new DialogBox();
+        boolean isNameCharOnly = Utils.isCharOnly(inputName);
+        boolean isSaisIdNumberOnly = Utils.isNumberOnly(inputSaisId);
+        boolean isStudentNumberOnly = Utils.isNumberOnly(inputStudentNumber);
 
-        if (!inputName.matches("[a-zA-Z\\s]+") && inputName.length() > 0) {
-            charOnly1.setVisible(true);
-        }
-        if (!inputSAIS.matches("[0-9]+") && inputSAIS.length() > 0) {
-            numOnly1.setVisible(true);
-        }
-        if (!inputStudentNumber.matches("[0-9]+") && inputStudentNumber.length() > 0) {
-            numOnly2.setVisible(true);
-        }
-        if (inputName.matches("[a-zA-Z\\s]+")) {
-            charOnly1.setVisible(false);
-        }
-        if (inputSAIS.matches("[0-9s]+")) {
-            numOnly1.setVisible(false);
-        }
+        boolean areSomeInputsBlank = inputAddress.isBlank() || inputName.isBlank() || inputSaisId.isBlank() || inputStudentNumber.isBlank();
+        boolean areAllInputsValid = !areSomeInputsBlank && isNameCharOnly && isSaisIdNumberOnly && isStudentNumberOnly;
 
-        if (inputStudentNumber.matches("[0-9s]+")) {
-            numOnly2.setVisible(false);
+        addCharOnlyReminder.setVisible(!isNameCharOnly || inputName.isBlank());
+        addNumOnlyReminder1.setVisible(!isSaisIdNumberOnly || inputSaisId.isBlank());
+        addNumOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
+        addRequireNotif.setVisible(areSomeInputsBlank);
+
+        if (inputName.isBlank()) {
+            editCharOnlyReminder.setVisible(false);
+            Utils.setStyleWarning(addNameTextField);
+        } else {
+            Utils.setStyleNormal(addNameTextField);
         }
 
-        if (inputStudentNumber.length() > 0) {
-            addStudentNumberTextField
-                    .setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+        if (inputSaisId.isBlank()) {
+            editNumOnlyReminder1.setVisible(false);
+            Utils.setStyleWarning(addSaisIdTextField);
+        } else {
+
+            if (inputStudentNumber.isBlank()) {
+                editNumOnlyReminder2.setVisible(false);
+                Utils.setStyleWarning(addStudentNumberTextField);
+            } else {
+                Utils.setStyleNormal(addAddressTextField);
+            }
+
+            if (inputAddress.isBlank()) {
+                Utils.setStyleWarning(addAddressTextField);
+            } else {
+                Utils.setStyleNormal(addAddressTextField);
+            }
+
         }
 
-        if (inputName.length() > 0) {
-            addNameTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
 
-        if (inputSAIS.length() > 0) {
-            addSaisIdTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
+        if (areAllInputsValid) {
 
-        if (inputAddress.length() > 0) {
-            addAddressTextField.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
-
-        if (inputAddress.length() == 0 || inputName.length() == 0 || inputSAIS.length() == 0
-                || inputStudentNumber.length() == 0) {
-            requireNotif.setVisible(true);
-        }
-
-        if (inputAddress.length() == 0) {
-            addAddressTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
-
-        if (inputName.length() == 0) {
-            charOnly1.setVisible(false);
-            addNameTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
-
-        if (inputSAIS.length() == 0) {
-            numOnly1.setVisible(false);
-            addSaisIdTextField.setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
-
-        if (inputStudentNumber.length() == 0) {
-            numOnly2.setVisible(false);
-            addStudentNumberTextField
-                    .setStyle("-fx-border-color: #ff6767;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
-        }
-
-        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStudentNumber.length() > 0)
-
-        {
-            requireNotif.setVisible(false);
-        }
-
-        if (inputAddress.length() > 0 && inputName.length() > 0 && inputSAIS.length() > 0 && inputStudentNumber.length() > 0
-                && inputName.matches("[a-zA-Z\\s]+") && inputSAIS.matches("[0-9s]+") &&
-                inputStudentNumber.matches("[0-9s]+")) {
+            DialogBox dialogBox = new DialogBox();
             StudentDB database = StudentDB.readSavedData();
-            System.out.println(inputName);
-            System.out.println(inputAddress);
-            StudentData element = new StudentData(inputName, Integer.parseInt(inputSAIS),
+            StudentData student = new StudentData(inputName, Integer.parseInt(inputSaisId),
                     Integer.parseInt(inputStudentNumber), inputAddress);
 
-            if (database.length() == 10) {
+            if (database.isDuplicateOfDatabase(student)) {
+                dialogBox.load("warn_duplicate", student);
+            } else if (database.length() + 1 > database.maxStorageLength) {
                 dialogBox.load("warn_overflow", student);
-                return;
-            }
-
-            if (database.isDuplicateOfDatabase(element)) {
-                dialogBox.load("notif_added", student);
-                return;
-            }
-
-            else if (database.length() < 10) {
+            } else {
                 dialogBox.load("notif_add_success", student);
-                addNameTextField.clear();
-                addStudentNumberTextField.clear();
-                addAddressTextField.clear();
-                addSaisIdTextField.clear();
-                database.addData(element);
+
+                dialogBox.setConfirmButtonAction(()-> {
+                    addNameTextField.clear();
+                    addStudentNumberTextField.clear();
+                    addAddressTextField.clear();
+                    addSaisIdTextField.clear();
+                    database.addData(student);
+                });
             }
+
+
         }
+    }
+
+    public void handleView() {
+
     }
 
     public void showEntriesIn(String location) {
         StudentDB database = StudentDB.readSavedData();
         LinkedList<StudentData> students = database.showData();
+
         viewEntries.getChildren().clear();
         editEntries.getChildren().clear();
         deleteEntries.getChildren().clear();
 
-        DatabaseEntry entry;
         for (int i = 0; i < database.length(); i++) {
+            String name = database.getData(i).name;
+            int studentNumber = database.getData(i).studentNumber;
+            int saisId = database.getData(i).saisId;
+            String address = database.getData(i).address;
 
             switch (location) {
                 case "view":
-                    entry = new DatabaseEntry("view", database.getData(i), viewEntries);
-                    viewEntries.getChildren().add(entry);
+                    DatabaseEntry viewEntry = new DatabaseEntry("view", database.getData(i), viewEntries);
+                    viewEntries.getChildren().add(viewEntry);
                     break;
                 case "edit":
-                    entry = new DatabaseEntry("edit", database.getData(i), editEntries);
-                    editEntries.getChildren().add(entry);
+                    DatabaseEntry editEntry = new DatabaseEntry("edit", database.getData(i), editEntries);
+
+                    editEntry.setButtonAction(() -> {
+                        editAddressTextField.setText(address);
+                        editNameTextField.setText(name);
+                        editSaisIdTextField.setText(String.valueOf(saisId));
+                        editStudentNumberTextField.setText(String.valueOf(studentNumber));
+                    });
+                    editEntries.getChildren().add(editEntry);
+
                     break;
                 case "delete":
-                    entry = new DatabaseEntry("delete", database.getData(i),deleteEntries);
-                    deleteEntries.getChildren().add(entry);
+                    DatabaseEntry deleteEntry = new DatabaseEntry("delete", database.getData(i),deleteEntries);
+
+                    deleteEntry.setButtonAction(()-> {
+                        DialogBox dialogBox = new DialogBox();
+                        dialogBox.setConfirmButtonAction(()-> {
+                            database.deleteData(name, saisId);
+                            deleteEntries.getChildren().remove(deleteEntry);
+                        });
+                        dialogBox.load("confirm_delete", new StudentData(name, saisId, studentNumber, address));
+                    });
+
+                    deleteEntries.getChildren().add(deleteEntry);
                     break;
             }
         }
@@ -272,20 +336,13 @@ public class DashController {
             showEntriesIn("delete");
             navigateTo("delete");
         } else if (clickedButton == btnHelp) {
-            // dataGenerator();
             navigateTo("help");
         }
 
         if (clickedButton == saveAdd) {
             handleAdd();
-        }
-
-        if (actionEvent.getSource() == btnOK) {
-            Stage stage = (Stage) btnOK.getScene().getWindow();
-            stage.close();
-        } else if (actionEvent.getSource() == btnDialogclose) {
-            Stage stage = (Stage) btnDialogclose.getScene().getWindow();
-            stage.close();
+        } else if (clickedButton == saveEdit) {
+            handleEdit();
         }
 
     }

@@ -200,23 +200,23 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Text fx:id="charOnly1" fill="#ff6767" layoutX="67.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Characters only" visible="false">
+                        <Text fx:id="addCharOnlyReminder" fill="#ff6767" layoutX="67.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Characters only" visible="false">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fx:id="numOnly1" fill="#ff6767" layoutX="76.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
+                        <Text fx:id="addNumOnlyReminder1" fill="#ff6767" layoutX="76.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fx:id="numOnly2" fill="#ff6767" layoutX="301.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
+                        <Text fx:id="addNumOnlyReminder2" fill="#ff6767" layoutX="301.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="addressTextField" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <Pane fx:id="requireNotif" layoutX="23.0" layoutY="221.0" prefHeight="39.0" prefWidth="337.0" style="-fx-background-radius: 5; -fx-background-color: #693e47;" visible="false">
+                        <TextField fx:id="addAddressTextField" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <Pane fx:id="addRequireNotif" layoutX="23.0" layoutY="221.0" prefHeight="39.0" prefWidth="337.0" style="-fx-background-radius: 5; -fx-background-color: #693e47;" visible="false">
                            <children>
                               <Label layoutX="61.0" layoutY="11.0" text="Please complete all the required fields" textFill="#ff6767">
                                  <font>
@@ -420,28 +420,28 @@
                         <TextField fx:id="editNameTextField" layoutX="25.0" layoutY="45.0" prefHeight="25.0" prefWidth="253.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <TextField fx:id="editSaisIdTextField" layoutX="25.0" layoutY="105.0" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
                         <TextField fx:id="editStudentNumberTextField" layoutX="195.0" layoutY="106.0" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <Button fx:id="saveEdit" contentDisplay="TOP" disable="true" layoutX="284.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Save" textFill="#e5e9f0">
+                        <Button fx:id="saveEdit" contentDisplay="TOP" layoutX="284.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="119.0" styleClass="button4" stylesheets="@css/fullpackstyling.css" text="Save" textFill="#e5e9f0">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Text fx:id="charOnly1a" fill="#ff6767" layoutX="67.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Characters only" visible="false">
+                        <Text fx:id="editCharOnlyReminder" fill="#ff6767" layoutX="67.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Characters only" visible="false">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fx:id="numOnly1a" fill="#ff6767" layoutX="76.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
+                        <Text fx:id="editNumOnlyReminder1" fill="#ff6767" layoutX="76.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Text fx:id="numOnly2a" fill="#ff6767" layoutX="301.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
+                        <Text fx:id="editNumOnlyReminder2" fill="#ff6767" layoutX="301.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers only" visible="false">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="addressTextFielda" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
-                        <Pane fx:id="requireNotifa" layoutX="23.0" layoutY="221.0" prefHeight="39.0" prefWidth="337.0" style="-fx-background-radius: 5; -fx-background-color: #693e47;" visible="false">
+                        <TextField fx:id="editAddressTextField" layoutX="23.0" layoutY="168.0" prefHeight="28.0" prefWidth="337.0" style="-fx-background-color: #1a1d20; -fx-border-color: #6a7281; -fx-border-radius: 5;" styleClass="TextField" stylesheets="@css/fullpackstyling.css" />
+                        <Pane fx:id="editRequireNotif" layoutX="23.0" layoutY="221.0" prefHeight="39.0" prefWidth="337.0" style="-fx-background-radius: 5; -fx-background-color: #693e47;" visible="false">
                            <children>
                               <Label layoutX="61.0" layoutY="11.0" text="Please complete all the required fields" textFill="#ff6767">
                                  <font>

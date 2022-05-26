@@ -1,6 +1,7 @@
 package MP.components;
 
 import MP.DashController;
+import MP.interfaces.Callback;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -30,6 +31,27 @@ public class DatabaseEntry extends Pane {
     private final StudentData data;
     private DialogBox dialogBox;
 
+    private Callback buttonAction;
+
+    public void setButtonAction(Callback buttonAction) {
+        this.buttonAction = buttonAction;
+    }
+    private void configureButton() {
+
+        btn.setVisible(!type.equals("view") && !type.equals("search"));
+
+        // Capitalize first letter of the string "type"
+        String btnTitle =  type.substring(0, 1).toUpperCase() + type.substring(1);
+        btn.setText(btnTitle);
+
+        btn.setOnAction((ActionEvent e) -> {
+            if (buttonAction != null) {
+                buttonAction.call();
+            }
+        });
+
+    }
+
 
     public DatabaseEntry(String type, StudentData data, VBox parent) {
 
@@ -53,22 +75,7 @@ public class DatabaseEntry extends Pane {
         this.address.setText(data.address);
         this.studentNumber.setText(String.valueOf(data.studentNumber));
 
-        dialogBox = new DialogBox();
-        dialogBox.setEntryCaller(this);
-
-        btn.setVisible(true);
-
-        if (type.equals("view") || type.equals("search")) {
-            btn.setVisible(false);
-        }
-
-        // Capitalize first letter of the string "type"
-        String btnTitle =  type.substring(0, 1).toUpperCase() + type.substring(1);
-        btn.setText(btnTitle);
-
-        btn.setOnAction((ActionEvent e) -> {
-            dialogBox.load("confirm_" + type, data);
-        });
+        configureButton();
 
     }
 }
