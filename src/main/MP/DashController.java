@@ -212,12 +212,23 @@ public class DashController {
                     Integer.parseInt(inputStudentNumber), inputAddress);
 
             if (database.isDuplicateOfDatabase(student)) {
-                System.out.println(database.length());
-                System.out.println(database.maxStorageLength);
+                dialogBox.setConfirmButtonAction(()-> {
+                    addNameTextField.clear();
+                    addStudentNumberTextField.clear();
+                    addAddressTextField.clear();
+                    addSaisIdTextField.clear();
+                });
                 dialogBox.load("warn_duplicate_for_add");
-
                 return;
-            } else if (database.length() + 1 > database.maxStorageLength) {
+            }
+
+            if (database.length() + 1 > database.maxStorageLength) {
+                dialogBox.setConfirmButtonAction(()-> {
+                    addNameTextField.clear();
+                    addStudentNumberTextField.clear();
+                    addAddressTextField.clear();
+                    addSaisIdTextField.clear();
+                });
                 dialogBox.load("warn_overflow");
             } else {
 
