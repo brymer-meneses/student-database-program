@@ -206,7 +206,7 @@ public class DashController {
                     Integer.parseInt(inputStudentNumber), inputAddress);
 
             if (database.isDuplicateOfDatabase(student)) {
-                dialogBox.load("warn_duplicate", student);
+                dialogBox.load("warn_duplicate_for_add", student);
             } else if (database.length() + 1 > database.maxStorageLength) {
                 dialogBox.load("warn_overflow", student);
             } else {
