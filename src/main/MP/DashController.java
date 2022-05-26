@@ -190,7 +190,7 @@ public class DashController {
                     database.addData(student);
                 });
 
-                dialogBox.load("notif_add_success", student);
+                dialogBox.load("notif_add_success");
             }
 
 
