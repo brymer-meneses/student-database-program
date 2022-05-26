@@ -115,6 +115,12 @@ public class DashController {
             boolean isNewEntryDuplicate = database.isDuplicateOfDatabase(newStudent);
 
             if (isNewEntryDuplicate) {
+                dialogBox.setConfirmButtonAction(()->{
+                    editSaisIdTextField.clear();
+                    editNameTextField.clear();
+                    editAddressTextField.clear();
+                    editStudentNumberTextField.clear();
+                });
                 dialogBox.load("warn_duplicate_for_edit");
             } else {
                 dialogBox.setConfirmButtonAction(()->{
