@@ -4,11 +4,7 @@ import MP.components.DatabaseEntry;
 import MP.components.DialogBox;
 import MP.core.LinkedList;
 
-import MP.interfaces.Callback;
-import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.stage.*;
-import javafx.fxml.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,9 +12,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.io.IOException;
 
-public class DashController {
+public class AppController {
 
     @FXML
     private Button btnMin;
@@ -190,24 +185,10 @@ public class DashController {
         } else {
             Utils.setStyleNormal(addAddressTextField);
         }
-        
-        if (Utils.isCharOnly(inputName)) {
-            addCharOnlyReminder.setVisible(false);
-        } else {
-            addCharOnlyReminder.setVisible(true);
-        }
 
-        if (Utils.isNumberOnly(inputSaisId)) {
-            addNumOnlyReminder1.setVisible(false);
-        } else {
-            addNumOnlyReminder1.setVisible(true);
-        }
-
-        if (Utils.isNumberOnly(inputStudentNumber)) {
-            addNumOnlyReminder2.setVisible(false);
-        } else {
-            addNumOnlyReminder2.setVisible(true);
-        }
+        addCharOnlyReminder.setVisible(!isNameCharOnly);
+        addNumOnlyReminder1.setVisible(!isSaisIdNumberOnly);
+        addNumOnlyReminder2.setVisible(!isStudentNumberOnly);
 
 
         if (areAllInputsValid) {

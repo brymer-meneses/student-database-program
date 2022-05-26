@@ -4,8 +4,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+/**
+ * This class holds commonly used utility functions that are used throughout the program.
+ */
 public class Utils {
 
+    /**
+     *
+     * @param input
+     * @return
+     */
     public static boolean isCharOnly(String input) {
         return input.matches("[a-zA-Z\\s]+");
     }

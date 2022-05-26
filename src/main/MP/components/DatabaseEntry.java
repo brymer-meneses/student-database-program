@@ -1,18 +1,12 @@
 package MP.components;
 
-import MP.DashController;
 import MP.interfaces.Callback;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-import javax.swing.Action;
-
-import MP.StudentDB;
 import MP.StudentData;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
