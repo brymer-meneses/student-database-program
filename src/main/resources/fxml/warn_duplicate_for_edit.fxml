@@ -43,7 +43,7 @@
             <Image url="@../resources/error.png" />
          </image>
       </ImageView>
-      <Label layoutX="128.0" layoutY="128.0" prefHeight="87.0" prefWidth="247.0" text="The entry you are about to edit will not be saved since it is already exisiting in the database, aside to this entry you are currently editing." textFill="WHITE" wrapText="true">
+      <Label layoutX="128.0" layoutY="128.0" prefHeight="87.0" prefWidth="247.0" text="The changes you have written will not be saved since it will result in two duplicate entries in the database." textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>

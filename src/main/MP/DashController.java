@@ -108,23 +108,29 @@ public class DashController {
 
         if (areAllInputsValid) {
             StudentDB database = StudentDB.readSavedData();
-
+            StudentData newStudent = new StudentData(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
 
             DialogBox dialogBox = new DialogBox();
-            dialogBox.setConfirmButtonAction(()->{
-                database.setCurrentEdit(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
-                database.editData(currentEditName, currentEditSaisId);
 
-                editSaisIdTextField.clear();
-                editNameTextField.clear();
-                editAddressTextField.clear();
-                editStudentNumberTextField.clear();
+            boolean isNewEntryDuplicate = database.isDuplicateOfDatabase(newStudent);
 
-                // refresh contents
-                populateEntries("edit");
-            });
-            dialogBox.load("confirm_edit");
+            if (isNewEntryDuplicate) {
+                dialogBox.load("warn_duplicate_for_edit");
+            } else {
+                dialogBox.setConfirmButtonAction(()->{
+                    database.setCurrentEdit(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
+                    database.editData(currentEditName, currentEditSaisId);
 
+                    editSaisIdTextField.clear();
+                    editNameTextField.clear();
+                    editAddressTextField.clear();
+                    editStudentNumberTextField.clear();
+
+                    // refresh contents
+                    populateEntries("edit");
+                });
+                dialogBox.load("confirm_edit");
+            }
 
         }
 
