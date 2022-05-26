@@ -65,6 +65,18 @@ public class DialogBox extends Pane {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initStyle(StageStyle.UNDECORATED);
+
+        // NOTE: the following methods enable the dialog box to be
+        //        movable.
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        root.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
         stage.showAndWait();
     }
 
