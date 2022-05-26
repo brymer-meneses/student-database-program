@@ -92,7 +92,7 @@ public class DialogBox extends Pane {
         name.setText(data.name);
         address.setText(data.address);
         studentNumber.setText(String.valueOf(data.studentNumber));
-        studentNumber.setText(String.valueOf(data.saisId));
+        saisId.setText(String.valueOf(data.saisId));
 
         stage.showAndWait();
     }
