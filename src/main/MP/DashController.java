@@ -21,7 +21,13 @@ import java.io.IOException;
 public class DashController {
 
     @FXML
-    private Button btnMin;
+    private Button btnMin, btnClose;
+
+    @FXML
+    private Button btnHome, btnView, btnAdd, btnDelete, btnEdit, btnSearch, btnHelp;
+
+    @FXML
+    private Button saveAdd, saveEdit;
 
     @FXML
     private Pane homePane, viewPane, addPane, deletePane, editPane, searchPane, helpPane;
@@ -72,30 +78,51 @@ public class DashController {
 
 
         if (inputStudentNumber.isBlank()) {
-            editNumOnlyReminder1.setVisible(false);
-            Utils.setStyleWarning(addStudentNumberTextField);
+            editNumOnlyReminder2.setVisible(true);
+            Utils.setStyleWarning(editStudentNumberTextField);
         } else {
-            Utils.setStyleNormal(addAddressTextField);
+            editNumOnlyReminder2.setVisible(false);
+            Utils.setStyleNormal(editStudentNumberTextField);
         }
 
         if (inputName.isBlank()) {
-            editCharOnlyReminder.setVisible(false);
-            Utils.setStyleWarning(addNameTextField);
+            editCharOnlyReminder.setVisible(true);
+            Utils.setStyleWarning(editNameTextField);
         } else {
-            Utils.setStyleNormal(addNameTextField);
+            editCharOnlyReminder.setVisible(false);
+            Utils.setStyleNormal(editNameTextField);
         }
 
         if (inputSaisId.isBlank()) {
-            editNumOnlyReminder1.setVisible(false);
-            Utils.setStyleWarning(addSaisIdTextField);
+            editNumOnlyReminder1.setVisible(true);
+            Utils.setStyleWarning(editSaisIdTextField);
         } else {
-            Utils.setStyleNormal(addSaisIdTextField);
+            editNumOnlyReminder1.setVisible(false);
+            Utils.setStyleNormal(editSaisIdTextField);
         }
 
         if (inputAddress.isBlank()) {
-            Utils.setStyleWarning(addAddressTextField);
+            Utils.setStyleWarning(editAddressTextField);
         } else {
-            Utils.setStyleNormal(addAddressTextField);
+            Utils.setStyleNormal(editAddressTextField);
+        }
+        
+        if (Utils.isCharOnly(inputName)) {
+            editCharOnlyReminder.setVisible(false);
+        } else {
+            editCharOnlyReminder.setVisible(true);
+        }
+
+        if (Utils.isNumberOnly(inputSaisId)) {
+            editNumOnlyReminder1.setVisible(false);
+        } else {
+            editNumOnlyReminder1.setVisible(true);
+        }
+
+        if (Utils.isNumberOnly(inputStudentNumber)) {
+            editNumOnlyReminder2.setVisible(false);
+        } else {
+            editNumOnlyReminder2.setVisible(true);
         }
 
         if (areAllInputsValid) {
@@ -141,31 +168,52 @@ public class DashController {
         addNumOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
         addRequireNotif.setVisible(areSomeInputsBlank);
 
+        if (inputStudentNumber.isBlank()) {
+            addNumOnlyReminder2.setVisible(true);
+            Utils.setStyleWarning(addStudentNumberTextField);
+        } else {
+            addNumOnlyReminder2.setVisible(false);
+            Utils.setStyleNormal(addStudentNumberTextField);
+        }
+
         if (inputName.isBlank()) {
-            editCharOnlyReminder.setVisible(false);
+            addCharOnlyReminder.setVisible(true);
             Utils.setStyleWarning(addNameTextField);
         } else {
+            addCharOnlyReminder.setVisible(false);
             Utils.setStyleNormal(addNameTextField);
         }
 
         if (inputSaisId.isBlank()) {
-            editNumOnlyReminder1.setVisible(false);
+            addNumOnlyReminder1.setVisible(true);
             Utils.setStyleWarning(addSaisIdTextField);
         } else {
+            addNumOnlyReminder1.setVisible(false);
+            Utils.setStyleNormal(addSaisIdTextField);
+        }
 
-            if (inputStudentNumber.isBlank()) {
-                editNumOnlyReminder2.setVisible(false);
-                Utils.setStyleWarning(addStudentNumberTextField);
-            } else {
-                Utils.setStyleNormal(addAddressTextField);
-            }
+        if (inputAddress.isBlank()) {
+            Utils.setStyleWarning(addAddressTextField);
+        } else {
+            Utils.setStyleNormal(addAddressTextField);
+        }
+        
+        if (Utils.isCharOnly(inputName)) {
+            addCharOnlyReminder.setVisible(false);
+        } else {
+            addCharOnlyReminder.setVisible(true);
+        }
 
-            if (inputAddress.isBlank()) {
-                Utils.setStyleWarning(addAddressTextField);
-            } else {
-                Utils.setStyleNormal(addAddressTextField);
-            }
+        if (Utils.isNumberOnly(inputSaisId)) {
+            addNumOnlyReminder1.setVisible(false);
+        } else {
+            addNumOnlyReminder1.setVisible(true);
+        }
 
+        if (Utils.isNumberOnly(inputStudentNumber)) {
+            addNumOnlyReminder2.setVisible(false);
+        } else {
+            addNumOnlyReminder2.setVisible(true);
         }
 
 
@@ -190,7 +238,7 @@ public class DashController {
                     database.addData(student);
                 });
 
-                dialogBox.load("notif_add_success");
+                dialogBox.load("notif_add_success", student);
             }
 
 
@@ -219,6 +267,7 @@ public class DashController {
                     DatabaseEntry editEntry = new DatabaseEntry("edit", database.getData(i));
 
                     editEntry.setButtonAction(() -> {
+                        saveEdit.setDisable(false);
                         editAddressTextField.setText(address);
                         editNameTextField.setText(name);
                         editSaisIdTextField.setText(String.valueOf(saisId));
@@ -301,6 +350,7 @@ public class DashController {
                 deletePane.setVisible(true);
                 break;
             case "edit":
+                saveEdit.setDisable(true);
                 populateEntries("edit");
                 editPane.setVisible(true);
                 break;
@@ -332,6 +382,7 @@ public class DashController {
                 break;
             case "btnEdit":
                 changePage("edit");
+                saveEdit.setDisable(true);
                 break;
             case "btnAdd":
                 changePage("add");

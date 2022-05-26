@@ -107,7 +107,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="address" layoutX="192.0" layoutY="265.0" prefHeight="20.0" prefWidth="172.0" text="124124 sdfsdfs sdfsdf sdfsdfsdf sdfsdfsdfsdfs sdfsdf " textFill="WHITE">
+      <Label fx:id="address" layoutX="192.0" layoutY="262.0" prefHeight="43.0" prefWidth="172.0" text="124124 sdfsdfs sdfsdf sdfsdfsdf sdfsdfsdfsdfs sdfsdf " textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
