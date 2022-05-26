@@ -134,11 +134,54 @@ public class StudentDBTest {
     public void testSaveData() throws FileNotFoundException {
         StudentDB sdb = new StudentDB();
 
-        sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
+        StudentData s0 = new StudentData("Albert Einstein", 4, 4, "Jupiter");
+        StudentData s1 = new StudentData("Arnold Euler", 1, 1, "Earth");
+        StudentData s2 = new StudentData("Leonhard Euler", 2, 2, "Mars");
+        StudentData s3 = new StudentData("Isaac Newton", 3, 3, "Jupiter");
+
+        sdb.addData(s0);
+        sdb.addData(s1);
+        sdb.addData(s2);
+        sdb.addData(s3);
 
         StudentDB retrievedSdb = StudentDB.readSavedData();
 
         assertEquals(sdb.getData(0).name, retrievedSdb.getData(0).name);
+    }
+
+    @Test
+    public void testEditData() {
+        StudentDB sdb = new StudentDB();
+
+        StudentData s0 = new StudentData("Albert Einstein", 4, 4, "Jupiter");
+        StudentData s1 = new StudentData("Arnold Euler", 1, 1, "Earth");
+        StudentData s2 = new StudentData("Leonhard Euler", 2, 2, "Mars");
+        StudentData s3 = new StudentData("Isaac Newton", 3, 3, "Jupiter");
+
+        StudentData result = new StudentData("Alan Einstein", 69, 69, "Saturn" );
+
+        sdb.addData(s0);
+        sdb.addData(s1);
+        sdb.addData(s2);
+        sdb.addData(s3);
+
+        sdb.setCurrentEdit("Alan Einstein", 69, 69, "Saturn");
+        sdb.editData("Albert Einstein", 4);
+
+        assertEquals(result.name, sdb.getData(0).name);
+        assertEquals(result.address, sdb.getData(0).address);
+        assertEquals(result.saisId, sdb.getData(0).saisId);
+        assertEquals(result.studentNumber, sdb.getData(0).studentNumber);
+
+        StudentData result1 = new StudentData("Gauss", 24, 24, "Saturn" );
+
+        sdb.setCurrentEdit("Gauss", 24, 24, "Saturn");
+        sdb.editData("Arnold Euler", 1);
+
+        assertEquals(result1.name, sdb.getData(1).name);
+        assertEquals(result1.address, sdb.getData(1).address);
+        assertEquals(result1.saisId, sdb.getData(1).saisId);
+        assertEquals(result1.studentNumber, sdb.getData(1).studentNumber);
     }
 
     @Test

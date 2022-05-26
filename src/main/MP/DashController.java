@@ -55,6 +55,9 @@ public class DashController {
     @FXML
     public TextField editSaisIdTextField, editStudentNumberTextField, editNameTextField, editAddressTextField;
 
+    private String currentEditName;
+    private int currentEditSaisId;
+
     public void handleEdit() {
         String inputName = editNameTextField.getText();
         String inputSaisId = editSaisIdTextField.getText();
@@ -108,14 +111,18 @@ public class DashController {
             DialogBox dialogBox = new DialogBox();
             dialogBox.setConfirmButtonAction(()->{
                 database.setCurrentEdit(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
-                database.editData(inputName, Integer.parseInt(inputSaisId));
+                database.editData(currentEditName, currentEditSaisId);
 
                 editSaisIdTextField.clear();
                 editNameTextField.clear();
                 editAddressTextField.clear();
                 editNameTextField.clear();
+
+                // refresh contents
+                populateEntries("edit");
             });
             dialogBox.load("confirm_edit");
+
 
         }
 
@@ -221,6 +228,9 @@ public class DashController {
                         editNameTextField.setText(name);
                         editSaisIdTextField.setText(String.valueOf(saisId));
                         editStudentNumberTextField.setText(String.valueOf(studentNumber));
+
+                        currentEditName = name;
+                        currentEditSaisId = saisId;
                     });
                     editEntries.getChildren().add(editEntry);
 

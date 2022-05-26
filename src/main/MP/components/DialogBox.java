@@ -56,7 +56,7 @@ public class DialogBox extends Pane {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+type+".fxml"));
         fxmlLoader.setController(this);
         try {
-            root = (Parent) fxmlLoader.load();
+            root = fxmlLoader.load();
         } catch (IOException e){
             e.printStackTrace();
             return;
