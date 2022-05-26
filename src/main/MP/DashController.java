@@ -278,7 +278,7 @@ public class DashController {
 
     }
 
-    public void navigateTo(String paneName) {
+    public void changePage(String paneName) {
 
         homePane.setVisible(false);
         viewPane.setVisible(false);
@@ -320,43 +320,48 @@ public class DashController {
     public void handleClicks(ActionEvent actionEvent) {
 
         Button clickedButton = (Button) actionEvent.getSource();
+        String clickedButtonId = clickedButton.getId();
+        Stage stage = (Stage) btnMin.getScene().getWindow();
 
-        if (clickedButton == btnMin) {
-            Stage stage = (Stage) btnMin.getScene().getWindow();
-            stage.setIconified(true);
-        } else if (clickedButton == btnClose) {
-            Stage stage = (Stage) btnClose.getScene().getWindow();
-            stage.close();
+        switch (clickedButtonId) {
+            case "btnMin":
+                stage.setIconified(true);
+                break;
+            case "btnClose":
+                stage.close();
+                break;
+            case "btnView":
+                changePage("view");
+                break;
+            case "btnHome":
+                changePage("home");
+                break;
+            case "btnEdit":
+                changePage("edit");
+                break;
+            case "btnAdd":
+                changePage("add");
+                break;
+            case "btnSearch":
+                changePage("search");
+                break;
+            case "btnDelete":
+                changePage("delete");
+                break;
+            case "saveAdd":
+                handleAdd();
+                break;
+            case "saveEdit":
+                handleEdit();
+                break;
+
         }
-
-        if (clickedButton == btnView) {
-            navigateTo("view");
-        } else if (clickedButton == btnHome) {
-            navigateTo("home");
-        } else if (clickedButton == btnEdit) {
-            navigateTo("edit");
-        } else if (clickedButton == btnAdd) {
-            navigateTo("add");
-        } else if (clickedButton == btnSearch) {
-            navigateTo("search");
-        } else if (clickedButton == btnDelete) {
-            navigateTo("delete");
-        } else if (clickedButton == btnHelp) {
-            navigateTo("help");
-        }
-
-        if (clickedButton == saveAdd) {
-            handleAdd();
-        } else if (clickedButton == saveEdit) {
-            handleEdit();
-        }
-
     }
 
 
     @FXML
     public void keyPress(ActionEvent actionEvent) {
         searchContent.setVisible(true);
-        handleSearch(String.valueOf(searchField.getText()));
+        handleSearch(searchField.getText());
     }
 }
