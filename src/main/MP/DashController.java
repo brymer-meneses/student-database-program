@@ -21,13 +21,9 @@ import java.io.IOException;
 public class DashController {
 
     @FXML
-    private Button btnMin, btnClose;
-
+    private Button btnMin;
     @FXML
-    private Button btnHome, btnView, btnAdd, btnDelete, btnEdit, btnSearch, btnHelp;
-
-    @FXML
-    private Button saveAdd, saveEdit;
+    private Button saveEdit;
 
     @FXML
     private Pane homePane, viewPane, addPane, deletePane, editPane, searchPane, helpPane;
@@ -76,6 +72,9 @@ public class DashController {
         editNumOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
         editRequireNotif.setVisible(areSomeInputsBlank);
 
+        editCharOnlyReminder.setVisible(!isNameCharOnly);
+        editNumOnlyReminder1.setVisible(!isSaisIdNumberOnly);
+        editNumOnlyReminder2.setVisible(!isStudentNumberOnly);
 
         if (inputStudentNumber.isBlank()) {
             editNumOnlyReminder2.setVisible(true);
@@ -105,24 +104,6 @@ public class DashController {
             Utils.setStyleWarning(editAddressTextField);
         } else {
             Utils.setStyleNormal(editAddressTextField);
-        }
-        
-        if (Utils.isCharOnly(inputName)) {
-            editCharOnlyReminder.setVisible(false);
-        } else {
-            editCharOnlyReminder.setVisible(true);
-        }
-
-        if (Utils.isNumberOnly(inputSaisId)) {
-            editNumOnlyReminder1.setVisible(false);
-        } else {
-            editNumOnlyReminder1.setVisible(true);
-        }
-
-        if (Utils.isNumberOnly(inputStudentNumber)) {
-            editNumOnlyReminder2.setVisible(false);
-        } else {
-            editNumOnlyReminder2.setVisible(true);
         }
 
         if (areAllInputsValid) {
@@ -238,7 +219,7 @@ public class DashController {
                     database.addData(student);
                 });
 
-                dialogBox.load("notif_add_success", student);
+                dialogBox.load("notif_add_success");
             }
 
 
