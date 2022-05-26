@@ -21,13 +21,7 @@ import java.io.IOException;
 public class DashController {
 
     @FXML
-    private Button btnMin, btnClose;
-
-    @FXML
-    private Button btnHome, btnView, btnAdd, btnDelete, btnEdit, btnSearch, btnHelp;
-
-    @FXML
-    private Button saveAdd, saveEdit;
+    private Button btnMin;
 
     @FXML
     private Pane homePane, viewPane, addPane, deletePane, editPane, searchPane, helpPane;
