@@ -195,13 +195,8 @@ public class DashController {
         }
     }
 
-    public void handleView() {
-
-    }
-
-    public void showEntriesIn(String location) {
+    public void populateEntries(String location) {
         StudentDB database = StudentDB.readSavedData();
-        LinkedList<StudentData> students = database.showData();
 
         viewEntries.getChildren().clear();
         editEntries.getChildren().clear();
@@ -215,11 +210,11 @@ public class DashController {
 
             switch (location) {
                 case "view":
-                    DatabaseEntry viewEntry = new DatabaseEntry("view", database.getData(i), viewEntries);
+                    DatabaseEntry viewEntry = new DatabaseEntry("view", database.getData(i));
                     viewEntries.getChildren().add(viewEntry);
                     break;
                 case "edit":
-                    DatabaseEntry editEntry = new DatabaseEntry("edit", database.getData(i), editEntries);
+                    DatabaseEntry editEntry = new DatabaseEntry("edit", database.getData(i));
 
                     editEntry.setButtonAction(() -> {
                         editAddressTextField.setText(address);
@@ -231,7 +226,7 @@ public class DashController {
 
                     break;
                 case "delete":
-                    DatabaseEntry deleteEntry = new DatabaseEntry("delete", database.getData(i),deleteEntries);
+                    DatabaseEntry deleteEntry = new DatabaseEntry("delete", database.getData(i));
 
                     deleteEntry.setButtonAction(()-> {
                         DialogBox dialogBox = new DialogBox();
@@ -264,7 +259,7 @@ public class DashController {
             searchContent.setVisible(true);
 
             for (int i = 0; i < results.length; i++) {
-                DatabaseEntry entry = new DatabaseEntry("search", results.get(i), searchEntries);
+                DatabaseEntry entry = new DatabaseEntry("search", results.get(i));
 
                 searchEntries.getChildren().add(entry);
             }
@@ -287,6 +282,7 @@ public class DashController {
                 homePane.setVisible(true);
                 break;
             case "view":
+                populateEntries("view");
                 viewPane.setVisible(true);
                 break;
             case "add":
@@ -296,9 +292,11 @@ public class DashController {
                 searchPane.setVisible(true);
                 break;
             case "delete":
+                populateEntries("delete");
                 deletePane.setVisible(true);
                 break;
             case "edit":
+                populateEntries("edit");
                 editPane.setVisible(true);
                 break;
             case "help":
@@ -321,19 +319,16 @@ public class DashController {
         }
 
         if (clickedButton == btnView) {
-            showEntriesIn("view");
             navigateTo("view");
         } else if (clickedButton == btnHome) {
             navigateTo("home");
         } else if (clickedButton == btnEdit) {
-            showEntriesIn("edit");
             navigateTo("edit");
         } else if (clickedButton == btnAdd) {
             navigateTo("add");
         } else if (clickedButton == btnSearch) {
             navigateTo("search");
         } else if (clickedButton == btnDelete) {
-            showEntriesIn("delete");
             navigateTo("delete");
         } else if (clickedButton == btnHelp) {
             navigateTo("help");

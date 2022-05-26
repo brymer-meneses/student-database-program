@@ -29,6 +29,8 @@ public class DialogBox extends Pane {
 
     private Callback confirmButtonAction;
 
+    private double xOffset = 0;
+    private double yOffset = 0;
     public void setConfirmButtonAction(Callback callback) {
         this.confirmButtonAction = callback;
     }
@@ -75,7 +77,7 @@ public class DialogBox extends Pane {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+type+".fxml"));
         fxmlLoader.setController(this);
         try {
-            root = (Parent) fxmlLoader.load();
+            root = fxmlLoader.load();
         } catch (IOException e){
             e.printStackTrace();
             return;
@@ -91,6 +93,18 @@ public class DialogBox extends Pane {
             saisId.setText(String.valueOf(data.saisId));
             address.setText(data.address);
         }
+
+        // NOTE: the following methods enable the dialog box to be
+        //        movable.
+        root.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        root.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
 
         stage.showAndWait();
     }

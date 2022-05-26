@@ -24,14 +24,14 @@ public class DatabaseEntry extends Pane {
     @FXML
     private Button btn;
 
-    @FXML
-    public VBox parent;
-
     private final String type;
     private final StudentData data;
     private DialogBox dialogBox;
 
     private Callback buttonAction;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     public void setButtonAction(Callback buttonAction) {
         this.buttonAction = buttonAction;
@@ -53,22 +53,23 @@ public class DatabaseEntry extends Pane {
     }
 
 
-    public DatabaseEntry(String type, StudentData data, VBox parent) {
+    public DatabaseEntry(String type, StudentData data) {
 
         this.type = type;
         this.data = data;
-        this.parent = parent;
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
+
+        FXMLLoader root = new FXMLLoader(getClass().getResource(
                 "/fxml/DatabaseEntry.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        root.setRoot(this);
+        root.setController(this);
 
         try {
-            fxmlLoader.load();
+            root.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
 
         this.name.setText(data.name);
         this.saisId.setText(String.valueOf(data.saisId));
