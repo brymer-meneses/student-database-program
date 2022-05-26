@@ -137,7 +137,7 @@ public class DashController {
                 editSaisIdTextField.clear();
                 editNameTextField.clear();
                 editAddressTextField.clear();
-                editNameTextField.clear();
+                editStudentNumberTextField.clear();
 
                 // refresh contents
                 populateEntries("edit");
