@@ -187,7 +187,6 @@ public class DashController {
             } else if (database.length() + 1 > database.maxStorageLength) {
                 dialogBox.load("warn_overflow", student);
             } else {
-                dialogBox.load("notif_add_success", student);
 
                 dialogBox.setConfirmButtonAction(()-> {
                     addNameTextField.clear();
@@ -196,6 +195,8 @@ public class DashController {
                     addSaisIdTextField.clear();
                     database.addData(student);
                 });
+
+                dialogBox.load("notif_add_success", student);
             }
 
 

@@ -17,6 +17,14 @@ import MP.StudentData;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 
+/**
+ * The DatabaseEntry is a GUI component that is an abstraction
+ * the boxes that is seen in the view, edit, and delete pages.
+ *
+ * This GUI component contains the information that shows name, sais ID,
+ * student number and address of each entry in the database.
+ *
+ */
 public class DatabaseEntry extends Pane {
     @FXML
     private Text name, saisId, address, studentNumber;
@@ -33,25 +41,17 @@ public class DatabaseEntry extends Pane {
     private double xOffset = 0;
     private double yOffset = 0;
 
+    /**
+     * This function sets the data for the `buttonAction` field. It receives
+     * a lambda function that gets executed whenever the button that is on the right
+     * in it gets pressed.
+     *
+     * @param buttonAction Lambda function that gets "called" when the
+     *                     button is pressed.
+     */
     public void setButtonAction(Callback buttonAction) {
         this.buttonAction = buttonAction;
     }
-    private void configureButton() {
-
-        btn.setVisible(!type.equals("view") && !type.equals("search"));
-
-        // Capitalize first letter of the string "type"
-        String btnTitle =  type.substring(0, 1).toUpperCase() + type.substring(1);
-        btn.setText(btnTitle);
-
-        btn.setOnAction((ActionEvent e) -> {
-            if (buttonAction != null) {
-                buttonAction.call();
-            }
-        });
-
-    }
-
 
     public DatabaseEntry(String type, StudentData data) {
 
@@ -76,7 +76,18 @@ public class DatabaseEntry extends Pane {
         this.address.setText(data.address);
         this.studentNumber.setText(String.valueOf(data.studentNumber));
 
-        configureButton();
+        // Configure the button
+        btn.setVisible(!type.equals("view") && !type.equals("search"));
+
+        // Capitalize first letter of the string "type"
+        String btnTitle =  type.substring(0, 1).toUpperCase() + type.substring(1);
+        btn.setText(btnTitle);
+
+        btn.setOnAction((ActionEvent e) -> {
+            if (buttonAction != null) {
+                buttonAction.call();
+            }
+        });
 
     }
 }

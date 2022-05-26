@@ -1,7 +1,12 @@
 package MP.interfaces;
 
-// NOTE: we need this to create a function that takes in a lambda expression
-// https://stackoverflow.com/a/53377897
+/**
+ * An interface that is used to enable a function to receive a lambda function.
+ * This is need to simplify the process of setting the behavior of each button among the
+ * various GUI components.
+ *
+ * This solution was taken from here: https://stackoverflow.com/a/53377897
+ */
 public interface Callback {
     void call();
 }

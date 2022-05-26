@@ -27,6 +27,8 @@ public class DialogBox extends Pane {
 
     private String type;
 
+    private  Stage stage;
+
     private Callback confirmButtonAction;
 
     private double xOffset = 0;
@@ -44,17 +46,16 @@ public class DialogBox extends Pane {
             }
         }
 
-        Stage stage = (Stage) btnConfirm.getScene().getWindow();
         stage.close();
     }
 
-    public  void load(String type) {
-        Parent root;
+    private void commonLoad(String type) {
         this.type = type;
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+type+".fxml"));
         fxmlLoader.setController(this);
+        Parent root;
         try {
             root = fxmlLoader.load();
         } catch (IOException e){
@@ -62,7 +63,7 @@ public class DialogBox extends Pane {
             return;
         }
 
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initStyle(StageStyle.UNDECORATED);
 
@@ -77,46 +78,21 @@ public class DialogBox extends Pane {
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
         });
+    }
+    public void load(String type) {
+        commonLoad(type);
+
         stage.showAndWait();
     }
 
 
     public void load(String type, StudentData data) {
-        Parent root;
-        this.type = type;
+        commonLoad(type);
 
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+type+".fxml"));
-        fxmlLoader.setController(this);
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e){
-            e.printStackTrace();
-            return;
-        }
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.initStyle(StageStyle.UNDECORATED);
-
-        if (type.equals("confirm_delete")) {
-            name.setText(data.name);
-            studentNumber.setText(String.valueOf(data.studentNumber));
-            saisId.setText(String.valueOf(data.saisId));
-            address.setText(data.address);
-        }
-
-        // NOTE: the following methods enable the dialog box to be
-        //        movable.
-        root.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
-
-        root.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
-        });
+        name.setText(data.name);
+        address.setText(data.address);
+        studentNumber.setText(String.valueOf(data.studentNumber));
+        studentNumber.setText(String.valueOf(data.saisId));
 
         stage.showAndWait();
     }
