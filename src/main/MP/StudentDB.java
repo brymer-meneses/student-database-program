@@ -83,7 +83,7 @@ public class StudentDB implements DBInterface, Serializable {
         for (int i = 0; i < database.length; i++) {
             StudentData element = database.get(i);
 
-            if (element.keywordInEntries(toSearch)) {
+            if (Utils.keywordInEntries(element, toSearch)) {
                 results.append(element);
             }
         }
@@ -130,7 +130,7 @@ public class StudentDB implements DBInterface, Serializable {
 
         for (int i = 0; i < database.length; i++) {
 
-            if (database.get(i).isEqualTo(element)) {
+            if (Utils.isEqual(element , database.get(i))) {
                 return true;
             }
         }
@@ -140,7 +140,6 @@ public class StudentDB implements DBInterface, Serializable {
     public static void initializeDefaultData(StudentDB database) {
 
         try {
-
             FileOutputStream fileOut = new FileOutputStream(databasePath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(database);

@@ -1,12 +1,15 @@
 package MP;
 
+/**
+ * This is the class that contains the main method in the app.
+ */
 public class StudentDBDemo {
 
     public static void main(String[] args) {
 
-        if (StudentDB.savedDatabaseExists()) {
-            StudentDB.readSavedData();
-        } else {
+        // check if the file for saving the database does not
+        // exist, if so, set the initial data.
+        if (!StudentDB.savedDatabaseExists()) {
             StudentDB.initializeDefaultData(defaultData());
         }
 
@@ -14,6 +17,12 @@ public class StudentDBDemo {
         app.initialize(args);
     }
 
+    /**
+     * Initializes the default data that will be used in the program if the
+     * database file is not found.
+     *
+     * @return StudentDB containing the default data
+     */
     public static StudentDB defaultData() {
 
         StudentDB database = new StudentDB();

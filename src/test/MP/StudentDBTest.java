@@ -4,22 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import MP.core.LinkedList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;;
-
-import java.io.FileNotFoundException;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentDBTest {
 
-    @Test
-    public void testDuplicate() {
-
-        StudentData student1 = new StudentData("Leonhard Euler", 1, 1, "Earth");
-        StudentData student2 = new StudentData("Leonhard Euler", 1, 1, "Earth");
-
-        assertEquals(true, student1.isEqualTo(student2));
-
-    }
 
     @Test
     public void testMaxEntriesInDatabase() {
@@ -33,11 +21,11 @@ public class StudentDBTest {
         }
 
         assertEquals(8, sdb.length());
-        assertEquals(true, sdb.addData(new StudentData(names[8], 8, 8, names[8])));
-        assertEquals(true, sdb.addData(new StudentData(names[9], 9, 9, names[9])));
+        assertTrue(sdb.addData(new StudentData(names[8], 8, 8, names[8])));
+        assertTrue(sdb.addData(new StudentData(names[9], 9, 9, names[9])));
 
         assertEquals(10, sdb.length());
-        assertEquals(false, sdb.addData(new StudentData(names[10], 10, 10, names[10])));
+        assertFalse(sdb.addData(new StudentData(names[10], 10, 10, names[10])));
     }
 
     @Test
@@ -51,8 +39,8 @@ public class StudentDBTest {
 
         sdb.addData(student1);
 
-        assertEquals(true, sdb.isDuplicateOfDatabase(student2));
-        assertEquals(false, sdb.isDuplicateOfDatabase(student3));
+        assertTrue(sdb.isDuplicateOfDatabase(student2));
+        assertFalse(sdb.isDuplicateOfDatabase(student3));
 
     }
 
@@ -131,7 +119,7 @@ public class StudentDBTest {
     }
 
     @Test
-    public void testSaveData() throws FileNotFoundException {
+    public void testSaveData() {
         StudentDB sdb = new StudentDB();
 
         StudentData s0 = new StudentData("Albert Einstein", 4, 4, "Jupiter");
@@ -185,7 +173,7 @@ public class StudentDBTest {
     }
 
     @Test
-    public void testAutomaticDatabaseUpdate() throws FileNotFoundException {
+    public void testAutomaticDatabaseUpdate()  {
         StudentDB sdb = new StudentDB();
 
         sdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));
@@ -202,7 +190,7 @@ public class StudentDBTest {
     }
 
     @Test
-    public void testGetLatestData() throws FileNotFoundException {
+    public void testGetLatestData() {
         StudentDB sourceSdb = new StudentDB();
 
         sourceSdb.addData(new StudentData("Leonhard Euler", 2, 2, "Mars"));

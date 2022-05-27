@@ -49,11 +49,49 @@ public class AppController {
     private String currentEditName;
     private int currentEditSaisId;
 
-    public void handleEdit() {
-        String inputName = editNameTextField.getText();
-        String inputSaisId = editSaisIdTextField.getText();
-        String inputStudentNumber =  editStudentNumberTextField.getText();
-        String inputAddress = editAddressTextField.getText();
+    private boolean validateInputs(String inputType) {
+        String inputName, inputSaisId, inputStudentNumber, inputAddress;
+
+        Text charOnlyReminder, numOnlyReminder1, numOnlyReminder2;
+
+        TextField nameTextField, saisIdTextField, studentNumberTextField, addressTextField;
+
+        Pane requireNotif;
+
+        if (inputType.equals("edit")) {
+            inputName = editNameTextField.getText();
+            inputSaisId = editSaisIdTextField.getText();
+            inputStudentNumber =  editStudentNumberTextField.getText();
+            inputAddress = editAddressTextField.getText();
+
+            charOnlyReminder = editCharOnlyReminder;
+            numOnlyReminder1 = editNumOnlyReminder1;
+            numOnlyReminder2 = editNumOnlyReminder2;
+
+            requireNotif = editRequireNotif;
+
+            nameTextField = editNameTextField;
+            studentNumberTextField = editStudentNumberTextField;
+            saisIdTextField = editSaisIdTextField;
+            addressTextField = editAddressTextField;
+
+        } else {
+            inputName = addNameTextField.getText();
+            inputSaisId = addSaisIdTextField.getText();
+            inputStudentNumber = addStudentNumberTextField.getText();
+            inputAddress = addAddressTextField.getText();
+
+            charOnlyReminder = addCharOnlyReminder;
+            numOnlyReminder1 = addNumOnlyReminder1;
+            numOnlyReminder2 = addNumOnlyReminder2;
+
+            requireNotif = addRequireNotif;
+
+            nameTextField = addNameTextField;
+            studentNumberTextField = addStudentNumberTextField;
+            saisIdTextField = addSaisIdTextField;
+            addressTextField = addAddressTextField;
+        }
 
         boolean isNameCharOnly = Utils.isCharOnly(inputName);
         boolean isSaisIdNumberOnly = Utils.isNumberOnly(inputSaisId);
@@ -62,48 +100,56 @@ public class AppController {
         boolean areSomeInputsBlank = inputAddress.isBlank() || inputName.isBlank() || inputSaisId.isBlank() || inputStudentNumber.isBlank();
         boolean areAllInputsValid = !areSomeInputsBlank && isNameCharOnly && isSaisIdNumberOnly && isStudentNumberOnly;
 
-        editCharOnlyReminder.setVisible(!isNameCharOnly || inputName.isBlank());
-        editNumOnlyReminder1.setVisible(!isSaisIdNumberOnly || inputSaisId.isBlank());
-        editNumOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
-        editRequireNotif.setVisible(areSomeInputsBlank);
+        charOnlyReminder.setVisible(!isNameCharOnly || inputName.isBlank());
+        numOnlyReminder1.setVisible(!isSaisIdNumberOnly || inputSaisId.isBlank());
+        numOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
+        requireNotif.setVisible(areSomeInputsBlank);
 
-        editCharOnlyReminder.setVisible(!isNameCharOnly);
-        editNumOnlyReminder1.setVisible(!isSaisIdNumberOnly);
-        editNumOnlyReminder2.setVisible(!isStudentNumberOnly);
+        charOnlyReminder.setVisible(!isNameCharOnly);
+        numOnlyReminder1.setVisible(!isSaisIdNumberOnly);
+        numOnlyReminder2.setVisible(!isStudentNumberOnly);
 
         if (inputStudentNumber.isBlank()) {
-            editNumOnlyReminder2.setVisible(true);
-            Utils.setStyleWarning(editStudentNumberTextField);
+            Utils.setStyleWarning(studentNumberTextField);
         } else {
-            editNumOnlyReminder2.setVisible(false);
-            Utils.setStyleNormal(editStudentNumberTextField);
+            Utils.setStyleNormal(studentNumberTextField);
         }
 
         if (inputName.isBlank()) {
-            editCharOnlyReminder.setVisible(true);
-            Utils.setStyleWarning(editNameTextField);
+            Utils.setStyleWarning(nameTextField);
         } else {
-            editCharOnlyReminder.setVisible(false);
-            Utils.setStyleNormal(editNameTextField);
+            Utils.setStyleNormal(nameTextField);
         }
 
         if (inputSaisId.isBlank()) {
-            editNumOnlyReminder1.setVisible(true);
-            Utils.setStyleWarning(editSaisIdTextField);
+            Utils.setStyleWarning(saisIdTextField);
         } else {
-            editNumOnlyReminder1.setVisible(false);
-            Utils.setStyleNormal(editSaisIdTextField);
+            Utils.setStyleNormal(saisIdTextField);
         }
 
         if (inputAddress.isBlank()) {
-            Utils.setStyleWarning(editAddressTextField);
+            Utils.setStyleWarning(addressTextField);
         } else {
-            Utils.setStyleNormal(editAddressTextField);
+            Utils.setStyleNormal(addressTextField);
         }
 
+        return areAllInputsValid;
+
+    }
+
+    public void handleEdit() {
+
+        boolean areAllInputsValid = validateInputs("edit");
+
         if (areAllInputsValid) {
+
+            String inputName = editNameTextField.getText();
+            String inputAddress = editAddressTextField.getText();
+            int inputSaisId = Integer.parseInt(editSaisIdTextField.getText());
+            int inputStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
+
             StudentDB database = StudentDB.readSavedData();
-            StudentData newStudent = new StudentData(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
+            StudentData newStudent = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
 
             DialogBox dialogBox = new DialogBox();
 
@@ -119,7 +165,7 @@ public class AppController {
                 dialogBox.load("warn_duplicate_for_edit");
             } else {
                 dialogBox.setConfirmButtonAction(()->{
-                    database.setCurrentEdit(inputName, Integer.parseInt(inputSaisId), Integer.parseInt(inputStudentNumber), inputAddress);
+                    database.setCurrentEdit(inputName, inputSaisId, inputStudentNumber, inputAddress);
                     database.editData(currentEditName, currentEditSaisId);
 
                     editSaisIdTextField.clear();
@@ -139,64 +185,19 @@ public class AppController {
     }
 
     public void handleAdd() {
-        String inputName = addNameTextField.getText();
-        String inputSaisId = addSaisIdTextField.getText();
-        String inputStudentNumber = addStudentNumberTextField.getText();
-        String inputAddress = addAddressTextField.getText();
 
-        boolean isNameCharOnly = Utils.isCharOnly(inputName);
-        boolean isSaisIdNumberOnly = Utils.isNumberOnly(inputSaisId);
-        boolean isStudentNumberOnly = Utils.isNumberOnly(inputStudentNumber);
-
-        boolean areSomeInputsBlank = inputAddress.isBlank() || inputName.isBlank() || inputSaisId.isBlank() || inputStudentNumber.isBlank();
-        boolean areAllInputsValid = !areSomeInputsBlank && isNameCharOnly && isSaisIdNumberOnly && isStudentNumberOnly;
-
-        addCharOnlyReminder.setVisible(!isNameCharOnly || inputName.isBlank());
-        addNumOnlyReminder1.setVisible(!isSaisIdNumberOnly || inputSaisId.isBlank());
-        addNumOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
-        addRequireNotif.setVisible(areSomeInputsBlank);
-
-        if (inputStudentNumber.isBlank()) {
-            addNumOnlyReminder2.setVisible(true);
-            Utils.setStyleWarning(addStudentNumberTextField);
-        } else {
-            addNumOnlyReminder2.setVisible(false);
-            Utils.setStyleNormal(addStudentNumberTextField);
-        }
-
-        if (inputName.isBlank()) {
-            addCharOnlyReminder.setVisible(true);
-            Utils.setStyleWarning(addNameTextField);
-        } else {
-            addCharOnlyReminder.setVisible(false);
-            Utils.setStyleNormal(addNameTextField);
-        }
-
-        if (inputSaisId.isBlank()) {
-            addNumOnlyReminder1.setVisible(true);
-            Utils.setStyleWarning(addSaisIdTextField);
-        } else {
-            addNumOnlyReminder1.setVisible(false);
-            Utils.setStyleNormal(addSaisIdTextField);
-        }
-
-        if (inputAddress.isBlank()) {
-            Utils.setStyleWarning(addAddressTextField);
-        } else {
-            Utils.setStyleNormal(addAddressTextField);
-        }
-
-        addCharOnlyReminder.setVisible(!isNameCharOnly);
-        addNumOnlyReminder1.setVisible(!isSaisIdNumberOnly);
-        addNumOnlyReminder2.setVisible(!isStudentNumberOnly);
-
+        boolean areAllInputsValid = validateInputs("add");
 
         if (areAllInputsValid) {
 
+            String inputName = addNameTextField.getText();
+            String inputAddress = addAddressTextField.getText();
+            int inputSaisId = Integer.parseInt(addSaisIdTextField.getText());
+            int inputStudentNumber =  Integer.parseInt(addStudentNumberTextField.getText());
+
             DialogBox dialogBox = new DialogBox();
             StudentDB database = StudentDB.readSavedData();
-            StudentData student = new StudentData(inputName, Integer.parseInt(inputSaisId),
-                    Integer.parseInt(inputStudentNumber), inputAddress);
+            StudentData student = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
 
             if (database.isDuplicateOfDatabase(student)) {
                 dialogBox.setConfirmButtonAction(()-> {
@@ -234,6 +235,10 @@ public class AppController {
         }
     }
 
+    /**
+     *
+     * @param location
+     */
     public void populateEntries(String location) {
         StudentDB database = StudentDB.readSavedData();
 
@@ -310,7 +315,7 @@ public class AppController {
 
     }
 
-    public void changePage(String paneName) {
+    public void changePage(String page) {
 
         homePane.setVisible(false);
         viewPane.setVisible(false);
@@ -320,7 +325,7 @@ public class AppController {
         editPane.setVisible(false);
         helpPane.setVisible(false);
 
-        switch (paneName) {
+        switch (page) {
             case "home":
                 homePane.setVisible(true);
                 break;
@@ -371,7 +376,6 @@ public class AppController {
                 break;
             case "btnEdit":
                 changePage("edit");
-                saveEdit.setDisable(true);
                 break;
             case "btnAdd":
                 changePage("add");

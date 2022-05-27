@@ -15,8 +15,8 @@ import javafx.fxml.*;
  * The DatabaseEntry is a GUI component that is an abstraction
  * the boxes that is seen in the view, edit, and delete pages.
  *
- * This GUI component contains the information that shows name, sais ID,
- * student number and address of each entry in the database.
+ * This GUI component contains the information that shows name, SAIS ID,
+ * student number and address of each entry in the database
  *
  */
 public class DatabaseEntry extends Pane {
@@ -26,7 +26,7 @@ public class DatabaseEntry extends Pane {
     @FXML
     private Button btn;
 
-    private final String type;
+    private final String location;
     private final StudentData data;
     private DialogBox dialogBox;
 
@@ -47,9 +47,16 @@ public class DatabaseEntry extends Pane {
         this.buttonAction = buttonAction;
     }
 
-    public DatabaseEntry(String type, StudentData data) {
+    /**
+     * Constructor for the DatabaseEntry GUI component. This is used to facilitate the
+     * configuration of the entry.
+     *
+     * @param location the page wherein this GUI component is rendered
+     * @param data the student data that is used to configure this entry
+     */
+    public DatabaseEntry(String location, StudentData data) {
 
-        this.type = type;
+        this.location = location;
         this.data = data;
 
 
@@ -71,10 +78,10 @@ public class DatabaseEntry extends Pane {
         this.studentNumber.setText(String.valueOf(data.studentNumber));
 
         // Configure the button
-        btn.setVisible(!type.equals("view") && !type.equals("search"));
+        btn.setVisible(!location.equals("view") && !location.equals("search"));
 
         // Capitalize first letter of the string "type"
-        String btnTitle =  type.substring(0, 1).toUpperCase() + type.substring(1);
+        String btnTitle =  location.substring(0, 1).toUpperCase() + location.substring(1);
         btn.setText(btnTitle);
 
         btn.setOnAction((ActionEvent e) -> {

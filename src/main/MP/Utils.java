@@ -1,8 +1,6 @@
 package MP;
 
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 /**
  * This class holds commonly used utility functions that are used throughout the program.
@@ -29,6 +27,34 @@ public class Utils {
 
     public static void setStyleNormal(TextField input) {
         input.setStyle("-fx-border-color: #6a7281;-fx-border-radius: 5; -fx-background-color: #1a1d20;");
+    }
+
+    public static boolean isEqual(StudentData s1, StudentData s2) {
+
+        boolean hasSameName = s1.name.equals(s2.name);
+        boolean hasSameSaisId = s1.saisId == s2.saisId;
+
+        return hasSameName && hasSameSaisId;
+    }
+
+    public static  boolean keywordInEntries(StudentData student, String keyword) {
+
+        keyword = keyword.toLowerCase();
+
+        if (student.name.toLowerCase().contains(keyword))
+            return true;
+
+        if (student.address.toLowerCase().contains(keyword))
+            return true;
+
+        if (Integer.toString(student.saisId).contains(keyword))
+            return true;
+
+        if (Integer.toString(student.studentNumber).contains(keyword))
+            return true;
+
+        return false;
+
     }
 
 

@@ -20,29 +20,5 @@ public class StudentData implements Serializable {
         this.next = null;
     }
 
-    public boolean isEqualTo(StudentData other) {
-
-        if (name.equals(other.name) && saisId == other.saisId)
-            return true;
-
-        return false;
-    }
-
-    public boolean keywordInEntries(String keyword) {
-        if (name.toLowerCase().contains(keyword.toLowerCase()))
-            return true;
-
-        if (address.toLowerCase().contains(keyword.toLowerCase()))
-            return true;
-
-        if (Integer.toString(saisId).contains(keyword.toLowerCase()))
-            return true;
-
-        if (Integer.toString(studentNumber).contains(keyword.toLowerCase()))
-            return true;
-
-        return false;
-
-    }
 
 }
