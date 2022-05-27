@@ -2,7 +2,7 @@ package MP.interfaces;
 
 /**
  * An interface that is used to enable a function to receive a lambda function.
- * This is need to simplify the process of setting the behavior of each button among the
+ * This is needed to simplify the process of setting the behavior of each button among the
  * various GUI components.
  *
  * This solution was taken from here: https://stackoverflow.com/a/53377897

@@ -236,10 +236,12 @@ public class AppController {
     }
 
     /**
+     * Facilitates the dynamic rendering of DatabaseEntry to the various
+     * pages of the application.
      *
-     * @param location
+     * @param page the page in which each DatabaseEntry is added
      */
-    public void populateEntries(String location) {
+    public void populateEntries(String page) {
         StudentDB database = StudentDB.readSavedData();
 
         viewEntries.getChildren().clear();
@@ -252,7 +254,7 @@ public class AppController {
             int saisId = database.getData(i).saisId;
             String address = database.getData(i).address;
 
-            switch (location) {
+            switch (page) {
                 case "view":
                     DatabaseEntry viewEntry = new DatabaseEntry("view", database.getData(i));
                     viewEntries.getChildren().add(viewEntry);
@@ -315,6 +317,11 @@ public class AppController {
 
     }
 
+    /**
+     * Handles the changing of pages in the application.
+     * There are
+     * @param page
+     */
     public void changePage(String page) {
 
         homePane.setVisible(false);
@@ -323,7 +330,6 @@ public class AppController {
         searchPane.setVisible(false);
         deletePane.setVisible(false);
         editPane.setVisible(false);
-        helpPane.setVisible(false);
 
         switch (page) {
             case "home":
@@ -347,9 +353,6 @@ public class AppController {
                 saveEdit.setDisable(true);
                 populateEntries("edit");
                 editPane.setVisible(true);
-                break;
-            case "help":
-                helpPane.setVisible(true);
                 break;
         }
     }
