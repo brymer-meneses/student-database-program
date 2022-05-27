@@ -255,14 +255,14 @@ public class StudentDB implements Serializable, DBInterface {
     public void searchData(String toSearch) {
         searchEntries.getChildren().clear();
 
-        boolean isSearchResultZero = false;
+        boolean isSearchResultZero = true;
         for (int i=0; i<database.length; i++) {
             StudentData element = database.get(i);
 
             if (Utils.keywordInEntries(database.get(i), toSearch)) {
                 DatabaseEntry entry = new DatabaseEntry("search", element);
                 searchEntries.getChildren().add(entry);
-                isSearchResultZero = true;
+                isSearchResultZero = false;
             }
 
         }
