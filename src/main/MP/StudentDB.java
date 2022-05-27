@@ -21,9 +21,7 @@ import MP.interfaces.Callback;
 public class StudentDB implements Serializable, DBInterface {
 
     private Database database;
-    public final  int maxStorageLength = 10;
-    private final static String databasePath = "database.dat";
-    private final static boolean shouldSaveChanges = true;
+    public final int maxStorageLength = 10;
 
     @FXML private Button btnMin;
     @FXML private Button saveEdit;
@@ -221,6 +219,48 @@ public class StudentDB implements Serializable, DBInterface {
 
         }
     }
+
+    private void handleEdit() {
+
+        boolean areAllInputsValid = Utils.validateInputs(editNameTextField, editSaisIdTextField, editStudentNumberTextField, editAddressTextField,
+                editCharOnlyReminder, editNumOnlyReminder1, editNumOnlyReminder2, editRequireNotif );
+
+        if (areAllInputsValid) {
+
+            String updatedName = editNameTextField.getText();
+            String updatedAddress = editAddressTextField.getText();
+            int updatedSaisId = Integer.parseInt(editSaisIdTextField.getText());
+            int updatedStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
+
+            StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
+
+            boolean isNewEntryDuplicate = Utils.isDuplicate(database, updatedStudent);
+
+            DialogBox dialogBox = new DialogBox();
+
+            Callback clearEditTextFields = () -> {
+                editSaisIdTextField.clear();
+                editNameTextField.clear();
+                editAddressTextField.clear();
+                editStudentNumberTextField.clear();
+            };
+
+
+            if (isNewEntryDuplicate) {
+                dialogBox.setConfirmButtonAction(clearEditTextFields);
+                dialogBox.load("warn_duplicate_for_edit");
+            } else {
+                dialogBox.setConfirmButtonAction(()->{
+                    editData(currentEditName,currentEditSaisId);
+                    populateEntries("edit");
+                    clearEditTextFields.call();
+                });
+                dialogBox.load("confirm_edit");
+            }
+
+        }
+
+    }
     @Override
     public boolean addData(StudentData dbd) {
 
@@ -280,47 +320,6 @@ public class StudentDB implements Serializable, DBInterface {
 
     }
 
-    private void handleEdit() {
-
-        boolean areAllInputsValid = Utils.validateInputs(editNameTextField, editSaisIdTextField, editStudentNumberTextField, editAddressTextField,
-                editCharOnlyReminder, editNumOnlyReminder1, editNumOnlyReminder2, editRequireNotif );
-
-        if (areAllInputsValid) {
-
-            String updatedName = editNameTextField.getText();
-            String updatedAddress = editAddressTextField.getText();
-            int updatedSaisId = Integer.parseInt(editSaisIdTextField.getText());
-            int updatedStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
-
-            StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
-
-            boolean isNewEntryDuplicate = Utils.isDuplicate(database, updatedStudent);
-
-            DialogBox dialogBox = new DialogBox();
-
-            Callback clearEditTextFields = () -> {
-                editSaisIdTextField.clear();
-                editNameTextField.clear();
-                editAddressTextField.clear();
-                editStudentNumberTextField.clear();
-            };
-
-
-            if (isNewEntryDuplicate) {
-                dialogBox.setConfirmButtonAction(clearEditTextFields);
-                dialogBox.load("warn_duplicate_for_edit");
-            } else {
-                dialogBox.setConfirmButtonAction(()->{
-                    editData(currentEditName,currentEditSaisId);
-                    populateEntries("edit");
-                    clearEditTextFields.call();
-                });
-                dialogBox.load("confirm_edit");
-            }
-
-        }
-
-    }
 
     @Override
     public boolean editData(String name, int SAISID) {
