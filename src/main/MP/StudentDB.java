@@ -44,8 +44,12 @@ public class StudentDB implements Serializable, DBInterface {
     @FXML public TextField editSaisIdTextField, editStudentNumberTextField, editNameTextField, editAddressTextField;
 
     private String currentEditName;
-    private int currentEditSaisId;
+    private int currentEditSaisId, currentEditIndex;
 
+    /**
+     * Renders each DatabaseEntry in the page.
+     * @param page the page to render a DatabaseEntry GUI component
+     */
     private void populateEntries(String page) {
         editEntries.getChildren().clear();
         deleteEntries.getChildren().clear();
@@ -59,6 +63,7 @@ public class StudentDB implements Serializable, DBInterface {
             switch (page) {
                 case "edit":
                     DatabaseEntry editEntry = new DatabaseEntry("edit", database.get(i));
+                    int index = i;
 
                     editEntry.setButtonAction(() -> {
                         saveEdit.setDisable(false);
@@ -69,6 +74,7 @@ public class StudentDB implements Serializable, DBInterface {
 
                         currentEditName = name;
                         currentEditSaisId = saisId;
+                        currentEditIndex = index;
                     });
                     editEntries.getChildren().add(editEntry);
 
@@ -92,6 +98,12 @@ public class StudentDB implements Serializable, DBInterface {
         }
     }
 
+    /**
+     * Handles the changing of the page being presented to the
+     * user.
+     *
+     * @param page the page to render
+     */
     private void changePage(String page) {
         homePane.setVisible(false);
         viewPane.setVisible(false);
@@ -128,6 +140,11 @@ public class StudentDB implements Serializable, DBInterface {
     }
 
 
+    /*
+     * Listens to each button click done by the user.
+     *
+     * @param actionEvent the event being done by th user.
+     */
     public void handleClicks(ActionEvent actionEvent) {
         database = Database.readSavedFile();
 
@@ -173,18 +190,25 @@ public class StudentDB implements Serializable, DBInterface {
     }
 
     /**
-     * A method that listens to the
-     * @param actionEvent
+     * A method that listens to each key being pressed in the search text field
+     * found in the search page.
+     *
+     * @param actionEvent the event being done by the user
      */
     public void keyPress(ActionEvent actionEvent) {
         searchContent.setVisible(true);
         searchData(searchField.getText());
     }
 
+    /**
+     * Handles the adding of data. Facilitates the showing of
+     * dialog boxes that indicate the errors of the user.
+     */
     public void handleAdd() {
         boolean areAllInputsValid = Utils.validateInputs(addNameTextField, addSaisIdTextField, addStudentNumberTextField,
                 addAddressTextField, addCharOnlyReminder, addNumOnlyReminder1, addNumOnlyReminder2, addRequireNotif);
         if (areAllInputsValid) {
+
 
             String inputName = addNameTextField.getText();
             String inputAddress = addAddressTextField.getText();
@@ -193,6 +217,7 @@ public class StudentDB implements Serializable, DBInterface {
 
             DialogBox dialogBox = new DialogBox();
             StudentData student = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
+
 
             Callback clearTextFields = () -> {
                 addNameTextField.clear();
@@ -224,6 +249,11 @@ public class StudentDB implements Serializable, DBInterface {
         }
     }
 
+
+    /**
+     * Handles the editing of the data. Facilitates the showing of
+     * dialog boxes that indicate the errors of the user.
+     */
     private void handleEdit() {
 
         boolean areAllInputsValid = Utils.validateInputs(editNameTextField, editSaisIdTextField, editStudentNumberTextField, editAddressTextField,
@@ -238,8 +268,8 @@ public class StudentDB implements Serializable, DBInterface {
 
             StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
 
-            boolean isNewEntryDuplicate = Utils.isDuplicate(database, updatedStudent);
             boolean RangeCheck = Utils.outOfRange(updatedSaisId, updatedStudentNumber);
+            boolean isNewEditWillResultToDuplicate = !Utils.isEditingSameIndex(database, updatedStudent, currentEditIndex);
 
             DialogBox dialogBox = new DialogBox();
 
@@ -250,10 +280,7 @@ public class StudentDB implements Serializable, DBInterface {
                 editStudentNumberTextField.clear();
             };
 
-            if (RangeCheck) {
-                dialogBox.load("warn_number_out_of_range");
-            }
-            if (isNewEntryDuplicate) {
+            if (isNewEditWillResultToDuplicate) {
                 dialogBox.setConfirmButtonAction(clearEditTextFields);
                 dialogBox.load("warn_duplicate_for_edit");
             } else {
@@ -339,15 +366,15 @@ public class StudentDB implements Serializable, DBInterface {
         for (int i=0; i< database.length; i++) {
             StudentData element = database.get(i);
             if (element.name.equals(name) && element.saisId == SAISID) {
+
                 element.name = updatedName;
                 element.saisId = updatedSaisId;
-                element.address = updatedAddress;
                 element.studentNumber = updatedStudentNumber;
+                element.address = updatedAddress;
                 database.writeChangesToFile();
                 return true;
             }
         }
-
 
         return false;
     }

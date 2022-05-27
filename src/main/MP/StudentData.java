@@ -26,4 +26,12 @@ public class StudentData implements Serializable {
 
         this.next = null;
     }
+
+    public void update(String name, int saisId, int studentNumber, String address) {
+        this.name = name;
+        this.saisId = saisId;
+        this.studentNumber = studentNumber;
+        this.address = address;
+        System.out.println( "updated" );
+    }
 }
