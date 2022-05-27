@@ -4,7 +4,7 @@ import MP.interfaces.Callback;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-
+import javafx.scene.control.Label;
 import java.io.IOException;
 
 import MP.StudentData;
@@ -21,7 +21,10 @@ import javafx.fxml.*;
  */
 public class DatabaseEntry extends Pane {
     @FXML
-    private Text name, saisId, address, studentNumber;
+    private Text saisId, studentNumber;
+    
+    @FXML
+    private Label name, address;
 
     @FXML
     private Button btn;
