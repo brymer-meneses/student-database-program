@@ -2,9 +2,6 @@ package MP;
 
 import java.io.Serializable;
 
-
-import MP.components.DialogBox;
-import MP.interfaces.Callback;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +13,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import MP.components.DatabaseEntry;
+import MP.components.DialogBox;
+
 import MP.interfaces.DBInterface;
+import MP.interfaces.Callback;
 
 public class StudentDB implements Serializable, DBInterface {
 
@@ -192,32 +192,26 @@ public class StudentDB implements Serializable, DBInterface {
             DialogBox dialogBox = new DialogBox();
             StudentData student = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
 
+            Callback clearTextFields = () -> {
+                addNameTextField.clear();
+                addStudentNumberTextField.clear();
+                addAddressTextField.clear();
+                addSaisIdTextField.clear();
+            };
+
             if (Utils.isDuplicate(database,student)) {
-                dialogBox.setConfirmButtonAction(()-> {
-                    addNameTextField.clear();
-                    addStudentNumberTextField.clear();
-                    addAddressTextField.clear();
-                    addSaisIdTextField.clear();
-                });
+                dialogBox.setConfirmButtonAction(clearTextFields);
                 dialogBox.load("warn_duplicate_for_add");
                 return;
             }
 
             if (database.length + 1 > maxStorageLength) {
-                dialogBox.setConfirmButtonAction(()-> {
-                    addNameTextField.clear();
-                    addStudentNumberTextField.clear();
-                    addAddressTextField.clear();
-                    addSaisIdTextField.clear();
-                });
+                dialogBox.setConfirmButtonAction(clearTextFields);
                 dialogBox.load("warn_overflow");
             } else {
 
                 dialogBox.setConfirmButtonAction(()-> {
-                    addNameTextField.clear();
-                    addStudentNumberTextField.clear();
-                    addAddressTextField.clear();
-                    addSaisIdTextField.clear();
+                    clearTextFields.call();
                     addData(student);
                 });
 
@@ -237,6 +231,7 @@ public class StudentDB implements Serializable, DBInterface {
             return false;
         }
         database.append(dbd);
+        database.writeChangesToFile();
         return  true;
 
     }
@@ -339,7 +334,4 @@ public class StudentDB implements Serializable, DBInterface {
 
         return false;
     }
-
-
-
 }
