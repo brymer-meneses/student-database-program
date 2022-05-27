@@ -14,9 +14,13 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-import MP.StudentDB;
 import MP.StudentData;
 
+/**
+ * DialogBox is a GUI component responsible for notifying the user of
+ * errors and the changes he committed to the database.
+ *
+ */
 public class DialogBox extends Pane {
 
     @FXML
@@ -31,12 +35,24 @@ public class DialogBox extends Pane {
 
     private Callback confirmButtonAction;
 
-    private double xOffset = 0;
-    private double yOffset = 0;
-    public void setConfirmButtonAction(Callback callback) {
-        this.confirmButtonAction = callback;
+    private double xOffset = 0, yOffset = 0;
+
+    /**
+     * This function sets the data for the `confirmButtonAction` field. It receives
+     * a lambda function that gets executed whenever the ok button on the
+     *
+     * @param action Lambda function that gets "called" when the OK
+     *                     button is pressed.
+     */
+    public void setConfirmButtonAction(Callback action) {
+        this.confirmButtonAction = action;
     }
 
+    /**
+     * Receives the button clicks the
+     *
+     * @param actionEvent the action being committed by the user.
+     */
     public void handleClicks(ActionEvent actionEvent) {
         Button clickedButton = (Button) actionEvent.getSource();
 

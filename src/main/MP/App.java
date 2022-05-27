@@ -22,7 +22,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashFX.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/App.fxml"));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
         // grab your root here

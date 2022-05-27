@@ -1,4 +1,4 @@
-package MP.core;
+package MP.linkedList;
 
 import java.io.Serializable;
 

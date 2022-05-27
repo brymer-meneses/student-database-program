@@ -1,7 +1,7 @@
 package MP.interfaces;
 
 import MP.StudentData;
-import MP.core.LinkedList;
+import MP.linkedList.LinkedList;
 
 public interface DBInterface {
 
@@ -9,9 +9,9 @@ public interface DBInterface {
 
     abstract boolean deleteData(String name, int SAISID);
 
-    abstract LinkedList<StudentData> searchData(String toSearch);
+    abstract void searchData(String toSearch);
 
-    abstract LinkedList<StudentData> showData();
+    abstract void showData();
 
     abstract boolean editData(String name, int SAISID);
 
