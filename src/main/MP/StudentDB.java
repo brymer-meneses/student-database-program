@@ -167,7 +167,7 @@ public class StudentDB implements Serializable, DBInterface {
                 handleAdd();
                 break;
             case "saveEdit":
-                editData(currentEditName, currentEditSaisId);
+                handleEdit();
                 break;
 
         }
@@ -278,11 +278,9 @@ public class StudentDB implements Serializable, DBInterface {
             viewEntries.getChildren().add(entry);
         }
 
-        return;
     }
 
-    @Override
-    public boolean editData(String name, int SAISID) {
+    private void handleEdit() {
 
         boolean areAllInputsValid = Utils.validateInputs(editNameTextField, editSaisIdTextField, editStudentNumberTextField, editAddressTextField,
                 editCharOnlyReminder, editNumOnlyReminder1, editNumOnlyReminder2, editRequireNotif );
@@ -306,34 +304,44 @@ public class StudentDB implements Serializable, DBInterface {
                 editAddressTextField.clear();
                 editStudentNumberTextField.clear();
             };
-            Callback saveNewUpdates = () -> {
-                for (int i=0; i< database.length; i++) {
-                    StudentData element = database.get(i);
-                    if (element.name.equals(name) && element.saisId == SAISID) {
-                        element.name = updatedName;
-                        element.saisId = updatedSaisId;
-                        element.address = updatedAddress;
-                        element.studentNumber = updatedStudentNumber;
-                    }
-                }
-            };
 
 
             if (isNewEntryDuplicate) {
                 dialogBox.setConfirmButtonAction(clearEditTextFields);
                 dialogBox.load("warn_duplicate_for_edit");
-                return false;
             } else {
                 dialogBox.setConfirmButtonAction(()->{
+                    editData(currentEditName,currentEditSaisId);
                     clearEditTextFields.call();
-                    saveNewUpdates.call();
-                    populateEntries("edit");
                 });
                 dialogBox.load("confirm_edit");
-                return true;
             }
 
         }
+
+    }
+
+    @Override
+    public boolean editData(String name, int SAISID) {
+
+        String updatedName = editNameTextField.getText();
+        String updatedAddress = editAddressTextField.getText();
+        int updatedSaisId = Integer.parseInt(editSaisIdTextField.getText());
+        int updatedStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
+
+        for (int i=0; i< database.length; i++) {
+            StudentData element = database.get(i);
+            if (element.name.equals(name) && element.saisId == SAISID) {
+                element.name = updatedName;
+                element.saisId = updatedSaisId;
+                element.address = updatedAddress;
+                element.studentNumber = updatedStudentNumber;
+                database.writeChangesToFile();
+                return true;
+            }
+        }
+
+        populateEntries("edit");
 
         return false;
     }
