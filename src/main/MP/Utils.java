@@ -188,11 +188,13 @@ public class Utils {
 
 
     }
-    public static boolean outOfRange(int saisId, int studentNumber) {
-        if(saisId > Integer.MAX_VALUE|| studentNumber > Integer.MAX_VALUE) {
-            return true;
-        } else {
+    public static boolean isOutOfRange(String saisId, String studentNumber) {
+        try {
+            Integer.parseInt(saisId);
+            Integer.parseInt(studentNumber);
             return false;
+        } catch (NumberFormatException e) {
+            return true;
         }
     }
 

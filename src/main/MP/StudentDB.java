@@ -209,15 +209,8 @@ public class StudentDB implements Serializable, DBInterface {
                 addAddressTextField, addCharOnlyReminder, addNumOnlyReminder1, addNumOnlyReminder2, addRequireNotif);
         if (areAllInputsValid) {
 
-
-            String inputName = addNameTextField.getText();
-            String inputAddress = addAddressTextField.getText();
-            int inputSaisId = Integer.parseInt(addSaisIdTextField.getText());
-            int inputStudentNumber =  Integer.parseInt(addStudentNumberTextField.getText());
-
             DialogBox dialogBox = new DialogBox();
-            StudentData student = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
-
+            boolean isOutOfRange = Utils.isOutOfRange(addSaisIdTextField.getText(), addStudentNumberTextField.getText());
 
             Callback clearTextFields = () -> {
                 addNameTextField.clear();
@@ -225,6 +218,20 @@ public class StudentDB implements Serializable, DBInterface {
                 addAddressTextField.clear();
                 addSaisIdTextField.clear();
             };
+
+            if (isOutOfRange) {
+                dialogBox.setConfirmButtonAction(clearTextFields);
+                dialogBox.load("warn_number_out_of_range");
+                return;
+            }
+
+            String inputName = addNameTextField.getText();
+            String inputAddress = addAddressTextField.getText();
+            int inputSaisId = Integer.parseInt(addSaisIdTextField.getText());
+            int inputStudentNumber =  Integer.parseInt(addStudentNumberTextField.getText());
+
+            StudentData student = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
+
 
             if (Utils.isDuplicate(database,student)) {
                 dialogBox.setConfirmButtonAction(clearTextFields);
@@ -261,16 +268,6 @@ public class StudentDB implements Serializable, DBInterface {
 
         if (areAllInputsValid) {
 
-            String updatedName = editNameTextField.getText();
-            String updatedAddress = editAddressTextField.getText();
-            int updatedSaisId = Integer.parseInt(editSaisIdTextField.getText());
-            int updatedStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
-
-            StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
-
-            boolean RangeCheck = Utils.outOfRange(updatedSaisId, updatedStudentNumber);
-            boolean isNewEditWillResultToDuplicate = !Utils.isEditingSameIndex(database, updatedStudent, currentEditIndex);
-
             DialogBox dialogBox = new DialogBox();
 
             Callback clearEditTextFields = () -> {
@@ -279,6 +276,24 @@ public class StudentDB implements Serializable, DBInterface {
                 editAddressTextField.clear();
                 editStudentNumberTextField.clear();
             };
+
+            boolean isOutOfRange = Utils.isOutOfRange(editSaisIdTextField.getText(), editStudentNumberTextField.getText());
+
+            if (isOutOfRange) {
+                dialogBox.setConfirmButtonAction(clearEditTextFields);
+                dialogBox.load("warn_number_out_of_range");
+                return;
+            }
+
+            String updatedName = editNameTextField.getText();
+            String updatedAddress = editAddressTextField.getText();
+            int updatedSaisId = Integer.parseInt(editSaisIdTextField.getText());
+            int updatedStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
+
+            StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
+            boolean isNewEditWillResultToDuplicate = !Utils.isEditingSameIndex(database, updatedStudent, currentEditIndex);
+
+
 
             if (isNewEditWillResultToDuplicate) {
                 dialogBox.setConfirmButtonAction(clearEditTextFields);
