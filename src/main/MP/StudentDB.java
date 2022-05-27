@@ -312,6 +312,7 @@ public class StudentDB implements Serializable, DBInterface {
             } else {
                 dialogBox.setConfirmButtonAction(()->{
                     editData(currentEditName,currentEditSaisId);
+                    populateEntries("edit");
                     clearEditTextFields.call();
                 });
                 dialogBox.load("confirm_edit");
@@ -341,7 +342,6 @@ public class StudentDB implements Serializable, DBInterface {
             }
         }
 
-        populateEntries("edit");
 
         return false;
     }
