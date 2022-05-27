@@ -1,15 +1,12 @@
 package MP;
 
-import javafx.application.*;
-import javafx.scene.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.control.*;
-import javafx.stage.*;
-import javafx.scene.layout.*;
-import javafx.geometry.*;
-import javafx.event.*;
-import javafx.fxml.*;
-import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
     // define your offsets here

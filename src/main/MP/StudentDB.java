@@ -172,6 +172,10 @@ public class StudentDB implements Serializable, DBInterface {
 
     }
 
+    /**
+     * A method that listens to the
+     * @param actionEvent
+     */
     public void keyPress(ActionEvent actionEvent) {
         searchContent.setVisible(true);
         searchData(searchField.getText());

@@ -48,7 +48,7 @@ public class LinkedList<T> implements LinkedListInterface<T>, Serializable {
     }
 
     /**
-     * Deletes the given index from the list.
+     * Deletes the element given by its index from the list.
      *
      * @param index the index of the element to be deleted.
      */
