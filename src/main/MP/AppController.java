@@ -2,7 +2,7 @@ package MP;
 
 import MP.components.DatabaseEntry;
 import MP.components.DialogBox;
-import MP.core.LinkedList;
+import MP.linkedList.LinkedList;
 
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;

@@ -3,7 +3,7 @@ package MP;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import MP.core.LinkedList;
+import MP.linkedList.LinkedList;
 
 public class LinkedListTest {
     @Test

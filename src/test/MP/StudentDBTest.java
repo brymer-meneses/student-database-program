@@ -2,7 +2,7 @@ package MP;
 
 import org.junit.jupiter.api.Test;
 
-import MP.core.LinkedList;
+import MP.linkedList.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.File;
 
-import MP.core.LinkedList;
+import MP.linkedList.LinkedList;
 import MP.interfaces.DBInterface;
 
 public class StudentDB implements DBInterface, Serializable {

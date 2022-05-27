@@ -1,7 +1,7 @@
 package MP.interfaces;
 
 import MP.StudentData;
-import MP.core.LinkedList;
+import MP.linkedList.LinkedList;
 
 public interface DBInterface {
 
