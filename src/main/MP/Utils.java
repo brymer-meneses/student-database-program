@@ -197,7 +197,7 @@ public class Utils {
      /**
      * Checks if new input from the user is within the range of the integer value
      *
-     * @param saisID the updated input from the user
+     * @param saisId the updated input from the user
      * @param studentNumber the updated input from the user
      *
      * @return true if the condition holds otherwise returns false

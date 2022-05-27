@@ -16,15 +16,11 @@ public class StudentData implements Serializable {
     public int studentNumber;
     public String address;
 
-    public StudentData next;
-
     public StudentData(String name, int saisId, int studentNumber, String address) {
         this.name = name;
         this.saisId = saisId;
         this.studentNumber = studentNumber;
         this.address = address;
-
-        this.next = null;
     }
 
     public void update(String name, int saisId, int studentNumber, String address) {
