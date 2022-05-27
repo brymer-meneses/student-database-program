@@ -125,6 +125,13 @@ public class Utils {
 
 
     }
+    public static boolean outOfRange(int saisId, int studentNumber) {
+        if(saisId > Integer.MAX_VALUE|| studentNumber > Integer.MAX_VALUE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 }

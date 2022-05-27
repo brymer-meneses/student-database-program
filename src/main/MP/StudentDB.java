@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+import MP.Utils;
 import MP.components.DatabaseEntry;
 import MP.components.DialogBox;
 
@@ -239,6 +239,7 @@ public class StudentDB implements Serializable, DBInterface {
             StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
 
             boolean isNewEntryDuplicate = Utils.isDuplicate(database, updatedStudent);
+            boolean RangeCheck = Utils.outOfRange(updatedSaisId, updatedStudentNumber);
 
             DialogBox dialogBox = new DialogBox();
 
@@ -249,7 +250,9 @@ public class StudentDB implements Serializable, DBInterface {
                 editStudentNumberTextField.clear();
             };
 
-
+            if (RangeCheck) {
+                dialogBox.load("warn_number_out_of_range");
+            }
             if (isNewEntryDuplicate) {
                 dialogBox.setConfirmButtonAction(clearEditTextFields);
                 dialogBox.load("warn_duplicate_for_edit");
