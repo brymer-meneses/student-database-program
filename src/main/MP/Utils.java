@@ -87,9 +87,9 @@ public class Utils {
      * Checks if the element is a duplicate of the database and has the
      * same index in the database, that is if they are "really" equal.
      *
-     * @param database
-     * @param element
-     * @param index
+     * @param database the database that is checked
+     * @param element the element that is passed
+     * @param index index of the selected entry that is being edited
      *
      * @return true if the condition holds otherwise returns false
      */
@@ -109,9 +109,9 @@ public class Utils {
     /**
      * Checks if each field of the StudentData being passed contains the string keyword.
      *
-     * @param student
-     * @param keyword the keyword
-     * @return
+     * @param student index of an entry
+     * @param keyword the keyword from the search field
+     * @return true if there's any matches in each component otherwise false
      */
     public static  boolean keywordInEntries(StudentData student, String keyword) {
 
@@ -132,7 +132,13 @@ public class Utils {
         return false;
 
     }
-
+    /**
+     * Checks if each field of the StudentData being passed contains the string keyword.
+     *
+     * @param nameTF, saisTF, studentNumber TF, addressTF <- contents of the textfield
+     * @param charOnlyReminder, numOnlyReminder1, numOnlyReminder2, requireNotif <- user prompts if the user gives invalid formats of input
+     * @return true if all inputs passes all filters otherwise false
+     */
     public static boolean validateInputs(
             TextField nameTF, TextField saisIdTF, TextField studentNumberTF, TextField addressTF,
             Text charOnlyReminder, Text numOnlyReminder1, Text numOnlyReminder2, Pane requireNotif ) {
@@ -188,6 +194,14 @@ public class Utils {
 
 
     }
+    /**
+     * Checks if new input from the user is within the range of the integer value
+     *
+     * @param saisID the updated input from the user
+     * @param studentNumber the updated input from the user
+     *
+     * @return true if the condition holds otherwise returns false
+     */
     public static boolean outOfRange(int saisId, int studentNumber) {
         if(saisId > Integer.MAX_VALUE|| studentNumber > Integer.MAX_VALUE) {
             return true;
