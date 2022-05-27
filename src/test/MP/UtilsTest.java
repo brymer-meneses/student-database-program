@@ -7,6 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UtilsTest {
 
     @Test
+    public void testDuplicateEntries() {
+
+        Database database = new Database();
+
+        StudentData student1 = new StudentData("Leonhard Euler", 1, 1, "Earth");
+        StudentData student2 = new StudentData("Leonhard Euler", 1, 1, "Earth");
+        StudentData student3 = new StudentData("Isaac Newton", 1, 7, "Earth");
+
+        database.append(student1);
+
+        assertTrue(Utils.isDuplicate(database, student2));
+        assertFalse(Utils.isDuplicate(database,student3));
+
+    }
+
+    @Test
     public void testIsEqual() {
 
         StudentData student1 = new StudentData("Leonhard Euler", 1, 1, "Earth");

@@ -1,6 +1,8 @@
 package MP;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 /**
  * This class holds commonly used utility functions that are used throughout the program.
@@ -37,6 +39,17 @@ public class Utils {
         return hasSameName && hasSameSaisId;
     }
 
+    public static boolean isDuplicate(Database database, StudentData element) {
+
+        for (int i = 0; i < database.length; i++) {
+
+            if (Utils.isEqual(element , database.get(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static  boolean keywordInEntries(StudentData student, String keyword) {
 
         keyword = keyword.toLowerCase();
@@ -54,6 +67,62 @@ public class Utils {
             return true;
 
         return false;
+
+    }
+
+    public static boolean validateInputs(
+            TextField nameTF, TextField saisIdTF, TextField studentNumberTF, TextField addressTF,
+            Text charOnlyReminder, Text numOnlyReminder1, Text numOnlyReminder2, Pane requireNotif ) {
+
+
+        String inputName = nameTF.getText();
+        String inputSaisId = saisIdTF.getText();
+        String inputStudentNumber =  studentNumberTF.getText();
+        String inputAddress = addressTF.getText();
+
+        boolean isNameCharOnly = Utils.isCharOnly(inputName);
+        boolean isSaisIdNumberOnly = Utils.isNumberOnly(inputSaisId);
+        boolean isStudentNumberOnly = Utils.isNumberOnly(inputStudentNumber);
+
+        boolean areSomeInputsBlank = inputAddress.isBlank() || inputName.isBlank() || inputSaisId.isBlank() || inputStudentNumber.isBlank();
+        boolean areAllInputsValid = !areSomeInputsBlank && isNameCharOnly && isSaisIdNumberOnly && isStudentNumberOnly;
+
+        charOnlyReminder.setVisible(!isNameCharOnly || inputName.isBlank());
+        numOnlyReminder1.setVisible(!isSaisIdNumberOnly || inputSaisId.isBlank());
+        numOnlyReminder2.setVisible(!isStudentNumberOnly || inputStudentNumber.isBlank());
+        requireNotif.setVisible(areSomeInputsBlank);
+
+        charOnlyReminder.setVisible(!isNameCharOnly);
+        numOnlyReminder1.setVisible(!isSaisIdNumberOnly);
+        numOnlyReminder2.setVisible(!isStudentNumberOnly);
+
+        if (inputStudentNumber.isBlank()) {
+            Utils.setStyleWarning(studentNumberTF);
+        } else {
+            Utils.setStyleNormal(studentNumberTF);
+        }
+
+        if (inputName.isBlank()) {
+            Utils.setStyleWarning(nameTF);
+        } else {
+            Utils.setStyleNormal(nameTF);
+        }
+
+        if (inputSaisId.isBlank()) {
+            Utils.setStyleWarning(saisIdTF);
+        } else {
+            Utils.setStyleNormal(saisIdTF);
+        }
+
+        if (inputAddress.isBlank()) {
+            Utils.setStyleWarning(addressTF);
+        } else {
+            Utils.setStyleNormal(addressTF);
+        }
+
+        return areAllInputsValid;
+
+
 
     }
 

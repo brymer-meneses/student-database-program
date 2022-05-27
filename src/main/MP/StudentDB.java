@@ -1,192 +1,345 @@
 package MP;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.io.File;
 
-import MP.linkedList.LinkedList;
+
+import MP.components.DialogBox;
+import MP.interfaces.Callback;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import MP.components.DatabaseEntry;
 import MP.interfaces.DBInterface;
 
-public class StudentDB implements DBInterface, Serializable {
+public class StudentDB implements Serializable, DBInterface {
 
-    private LinkedList<StudentData> database;
-
+    private Database database;
     public final  int maxStorageLength = 10;
     private final static String databasePath = "database.dat";
     private final static boolean shouldSaveChanges = true;
 
-    public StudentDB() {
-        database = new LinkedList<StudentData>();
+    @FXML private Button btnMin;
+    @FXML private Button saveEdit;
+
+    @FXML private Pane homePane, viewPane, addPane, deletePane, editPane, searchPane, helpPane;
+
+    @FXML private VBox viewEntries, searchEntries, editEntries, deleteEntries;
+
+    @FXML private ScrollPane searchContent;
+
+    @FXML private TextField searchField;
+
+    @FXML private Pane nothingMatchedDialog, editRequireNotif, addRequireNotif;
+
+    @FXML private Text editCharOnlyReminder, editNumOnlyReminder1, editNumOnlyReminder2;
+
+    @FXML private Text addCharOnlyReminder, addNumOnlyReminder1, addNumOnlyReminder2;
+
+    @FXML public TextField addSaisIdTextField, addStudentNumberTextField, addNameTextField, addAddressTextField;
+    @FXML public TextField editSaisIdTextField, editStudentNumberTextField, editNameTextField, editAddressTextField;
+
+    private String currentEditName;
+    private int currentEditSaisId;
+
+    private void populateEntries(String page) {
+        editEntries.getChildren().clear();
+        deleteEntries.getChildren().clear();
+
+        for (int i = 0; i < database.length; i++) {
+            String name = database.get(i).name;
+            int studentNumber = database.get(i).studentNumber;
+            int saisId = database.get(i).saisId;
+            String address = database.get(i).address;
+
+            switch (page) {
+                case "edit":
+                    DatabaseEntry editEntry = new DatabaseEntry("edit", database.get(i));
+
+                    editEntry.setButtonAction(() -> {
+                        saveEdit.setDisable(false);
+                        editAddressTextField.setText(address);
+                        editNameTextField.setText(name);
+                        editSaisIdTextField.setText(String.valueOf(saisId));
+                        editStudentNumberTextField.setText(String.valueOf(studentNumber));
+
+                        currentEditName = name;
+                        currentEditSaisId = saisId;
+                    });
+                    editEntries.getChildren().add(editEntry);
+
+                    break;
+                case "delete":
+                    DatabaseEntry deleteEntry = new DatabaseEntry("delete", database.get(i));
+
+                    deleteEntry.setButtonAction(()-> {
+                        DialogBox dialogBox = new DialogBox();
+                        dialogBox.setConfirmButtonAction(()-> {
+
+                            deleteData(name, saisId);
+                            deleteEntries.getChildren().remove(deleteEntry);
+                        });
+                        dialogBox.load("confirm_delete", new StudentData(name, saisId, studentNumber, address));
+                    });
+
+                    deleteEntries.getChildren().add(deleteEntry);
+                    break;
+            }
+        }
     }
 
-    public int length() {
-        return database.length;
+    private void changePage(String page) {
+        homePane.setVisible(false);
+        viewPane.setVisible(false);
+        addPane.setVisible(false);
+        searchPane.setVisible(false);
+        deletePane.setVisible(false);
+        editPane.setVisible(false);
+
+        switch (page) {
+            case "home":
+                homePane.setVisible(true);
+                break;
+            case "view":
+                viewEntries.getChildren().clear();
+                showData();
+                viewPane.setVisible(true);
+                break;
+            case "add":
+                addPane.setVisible(true);
+                break;
+            case "search":
+                searchPane.setVisible(true);
+                break;
+            case "delete":
+                populateEntries("delete");
+                deletePane.setVisible(true);
+                break;
+            case "edit":
+                saveEdit.setDisable(true);
+                populateEntries("edit");
+                editPane.setVisible(true);
+                break;
+        }
     }
 
-    public static boolean savedDatabaseExists() {
-        if (new File(databasePath).exists()) {
-            return true;
-        } else {
-            return false;
+
+    public void handleClicks(ActionEvent actionEvent) {
+        database = Database.readSavedFile();
+
+        Button clickedButton = (Button) actionEvent.getSource();
+        String clickedButtonId = clickedButton.getId();
+        Stage stage = (Stage) btnMin.getScene().getWindow();
+
+
+        switch (clickedButtonId) {
+            case "btnMin":
+                stage.setIconified(true);
+                break;
+            case "btnClose":
+                stage.close();
+                break;
+            case "btnView":
+                changePage("view");
+                break;
+            case "btnHome":
+                changePage("home");
+                break;
+            case "btnEdit":
+                changePage("edit");
+                break;
+            case "btnAdd":
+                changePage("add");
+                break;
+            case "btnSearch":
+                changePage("search");
+                break;
+            case "btnDelete":
+                changePage("delete");
+                break;
+            case "saveAdd":
+                handleAdd();
+                break;
+            case "saveEdit":
+                editData(currentEditName, currentEditSaisId);
+                break;
+
         }
 
     }
 
-    private String currentNameEdit;
-    private int currentSaisIdEdit;
-    private String currentAddressEdit;
-    private int currentStudentNumberEdit;
-
-    public void setCurrentEdit(String currentNameEdit, int currentSaisIdEdit, int currentStudentNumberEdit, String currentAddressEdit) {
-        this.currentNameEdit = currentNameEdit;
-        this.currentSaisIdEdit = currentSaisIdEdit;
-        this.currentStudentNumberEdit = currentStudentNumberEdit;
-        this.currentAddressEdit = currentAddressEdit;
+    public void keyPress(ActionEvent actionEvent) {
+        searchContent.setVisible(true);
+        searchData(searchField.getText());
     }
 
+    public void handleAdd() {
+        boolean areAllInputsValid = Utils.validateInputs(addNameTextField, addSaisIdTextField, addStudentNumberTextField,
+                addAddressTextField, addCharOnlyReminder, addNumOnlyReminder1, addNumOnlyReminder2, addRequireNotif);
+        if (areAllInputsValid) {
+
+            String inputName = addNameTextField.getText();
+            String inputAddress = addAddressTextField.getText();
+            int inputSaisId = Integer.parseInt(addSaisIdTextField.getText());
+            int inputStudentNumber =  Integer.parseInt(addStudentNumberTextField.getText());
+
+            DialogBox dialogBox = new DialogBox();
+            StudentData student = new StudentData(inputName, inputSaisId, inputStudentNumber, inputAddress);
+
+            if (Utils.isDuplicate(database,student)) {
+                dialogBox.setConfirmButtonAction(()-> {
+                    addNameTextField.clear();
+                    addStudentNumberTextField.clear();
+                    addAddressTextField.clear();
+                    addSaisIdTextField.clear();
+                });
+                dialogBox.load("warn_duplicate_for_add");
+                return;
+            }
+
+            if (database.length + 1 > maxStorageLength) {
+                dialogBox.setConfirmButtonAction(()-> {
+                    addNameTextField.clear();
+                    addStudentNumberTextField.clear();
+                    addAddressTextField.clear();
+                    addSaisIdTextField.clear();
+                });
+                dialogBox.load("warn_overflow");
+            } else {
+
+                dialogBox.setConfirmButtonAction(()-> {
+                    addNameTextField.clear();
+                    addStudentNumberTextField.clear();
+                    addAddressTextField.clear();
+                    addSaisIdTextField.clear();
+                    addData(student);
+                });
+
+                dialogBox.load("notif_add_success");
+            }
+
+
+        }
+    }
     @Override
     public boolean addData(StudentData dbd) {
 
-        if (isDuplicateOfDatabase(dbd)) {
+        if (Utils.isDuplicate(database, dbd)) {
             return false;
         }
         if (database.length + 1 > maxStorageLength) {
             return false;
         }
-
         database.append(dbd);
-        updateSavedData();
-        return true;
+        return  true;
+
     }
 
     @Override
     public boolean deleteData(String name, int SAISID) {
+        for (int i=0; i<database.length; i++) {
+            StudentData element = database.get(i);
+            if (element.name.equals(name) && element.saisId == SAISID) {
 
-        for (int i = 0; i < database.length; i++) {
-
-            if (database.get(i).name.equals(name) && database.get(i).saisId == SAISID) {
                 database.delete(i);
-                updateSavedData();
+                database.writeChangesToFile();
+
                 return true;
             }
         }
-
         return false;
     }
 
-    public LinkedList<StudentData> searchData(String toSearch) {
-        LinkedList<StudentData> results = new LinkedList<StudentData>();
+    @Override
+    public void searchData(String toSearch) {
+        searchEntries.getChildren().clear();
 
-        for (int i = 0; i < database.length; i++) {
+        for (int i=0; i<database.length; i++) {
             StudentData element = database.get(i);
 
-            if (Utils.keywordInEntries(element, toSearch)) {
-                results.append(element);
+            if (Utils.keywordInEntries(database.get(i), toSearch)) {
+                DatabaseEntry entry = new DatabaseEntry("search", element);
+                searchEntries.getChildren().add(entry);
             }
-        }
 
-        return results;
+        }
+        return;
     }
 
     @Override
-    public LinkedList<StudentData> showData() {
-        LinkedList<StudentData> results = new LinkedList<StudentData>();
-        for (int i = 0; i < database.length; i++) {
-            results.append(database.get(i));
+    public void showData() {
+
+        for (int i=0; i<database.length; i++) {
+            DatabaseEntry entry = new DatabaseEntry("view", database.get(i));
+            viewEntries.getChildren().add(entry);
         }
-        return results;
+
+        return;
     }
 
     @Override
-    public boolean editData(String name, int saisId) {
-        StudentData element;
-        for (int i=0; i < database.length; i++) {
-            element = database.get(i);
-            if (element.name.equals(name) && element.saisId == saisId) {
-                element.name = currentNameEdit;
-                element.saisId = currentSaisIdEdit;
-                element.address = currentAddressEdit;
-                element.studentNumber = currentStudentNumberEdit;
-                updateSavedData();
+    public boolean editData(String name, int SAISID) {
+
+        boolean areAllInputsValid = Utils.validateInputs(editNameTextField, editSaisIdTextField, editStudentNumberTextField, editAddressTextField,
+                editCharOnlyReminder, editNumOnlyReminder1, editNumOnlyReminder2, editRequireNotif );
+
+        if (areAllInputsValid) {
+
+            String updatedName = editNameTextField.getText();
+            String updatedAddress = editAddressTextField.getText();
+            int updatedSaisId = Integer.parseInt(editSaisIdTextField.getText());
+            int updatedStudentNumber =  Integer.parseInt(editStudentNumberTextField.getText());
+
+            StudentData updatedStudent = new StudentData(updatedName, updatedSaisId, updatedStudentNumber, updatedAddress);
+
+            boolean isNewEntryDuplicate = Utils.isDuplicate(database, updatedStudent);
+
+            DialogBox dialogBox = new DialogBox();
+
+            Callback clearEditTextFields = () -> {
+                editSaisIdTextField.clear();
+                editNameTextField.clear();
+                editAddressTextField.clear();
+                editStudentNumberTextField.clear();
+            };
+            Callback saveNewUpdates = () -> {
+                for (int i=0; i< database.length; i++) {
+                    StudentData element = database.get(i);
+                    if (element.name.equals(name) && element.saisId == SAISID) {
+                        element.name = updatedName;
+                        element.saisId = updatedSaisId;
+                        element.address = updatedAddress;
+                        element.studentNumber = updatedStudentNumber;
+                    }
+                }
+            };
+
+
+            if (isNewEntryDuplicate) {
+                dialogBox.setConfirmButtonAction(clearEditTextFields);
+                dialogBox.load("warn_duplicate_for_edit");
+                return false;
+            } else {
+                dialogBox.setConfirmButtonAction(()->{
+                    clearEditTextFields.call();
+                    saveNewUpdates.call();
+                    populateEntries("edit");
+                });
+                dialogBox.load("confirm_edit");
                 return true;
             }
+
         }
 
         return false;
     }
 
-    public StudentData getData(int index) {
-        try {
-            return database.get(index);
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
-    public boolean isDuplicateOfDatabase(StudentData element) {
 
-        for (int i = 0; i < database.length; i++) {
-
-            if (Utils.isEqual(element , database.get(i))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static void initializeDefaultData(StudentDB database) {
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream(databasePath);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(database);
-            objectOut.close();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
-    public static StudentDB readSavedData() {
-
-        try {
-
-            FileInputStream fileIn = new FileInputStream(databasePath);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-            Object obj = objectIn.readObject();
-
-            objectIn.close();
-            return (StudentDB) obj;
-
-        } catch (Exception ex) {
-            throw new java.lang.Error("Error: " + ex.getMessage());
-        }
-
-    }
-
-    private void updateSavedData() {
-        if (!shouldSaveChanges)
-            return;
-
-        try {
-
-            FileOutputStream fileOut = new FileOutputStream(databasePath);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(this);
-            objectOut.close();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
-    public void getLatestData() {
-        database = readSavedData().database;
-    }
 }
