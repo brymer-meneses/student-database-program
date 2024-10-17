@@ -2,6 +2,7 @@ package MP;
 
 import MP.linkedList.LinkedList;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.io.FileInputStream;
@@ -63,4 +64,11 @@ public class Database extends LinkedList<StudentData> implements Serializable {
 
     }
 
+    /**
+     * @return whether `database.dat` exists
+     */
+    public static boolean isSavedToDisk() {
+        File f = new File(databasePath);
+        return f.exists() && !f.isDirectory();
+    }
 }
